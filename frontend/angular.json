@@ -1,14 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "ba413013-cd7d-465e-9fd7-ec1da5810372"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "frontend": {
+    "frontend-MaxiAula": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
-          "style": "sass"
-        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -20,18 +20,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/frontend",
+            "outputPath": "dist/frontend-MaxiAula",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -72,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "frontend:build:production"
+              "browserTarget": "frontend-MaxiAula:build:production"
             },
             "development": {
-              "browserTarget": "frontend:build:development"
+              "browserTarget": "frontend-MaxiAula:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "frontend-MaxiAula:build"
           }
         },
         "test": {
@@ -93,13 +92,12 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -107,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "frontend"
+  "defaultProject": "frontend-MaxiAula"
 }
