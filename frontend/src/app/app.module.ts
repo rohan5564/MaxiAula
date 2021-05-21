@@ -12,7 +12,7 @@ import { ScreensModule } from './screens/screens.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ScreensModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
