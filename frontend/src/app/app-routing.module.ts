@@ -8,6 +8,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./screens/screens.module').then(m => m.ScreensModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
   {path: '**', redirectTo: '/'}
 ];
 
