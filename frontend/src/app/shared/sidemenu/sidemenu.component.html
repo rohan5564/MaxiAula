@@ -1,0 +1,48 @@
+<h2 class="mt-3 ml-3">Menú</h2>
+<ng-container *ngIf="tipo === 1">
+    <hr>
+
+    <ul class="list-group">
+
+        <li *ngFor="let item of adminMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+            {{ item.texto }}
+        </li>
+
+    </ul>
+</ng-container>
+
+<ng-container *ngIf="tipo === 2">
+    <hr>
+
+    <ul class="list-group">
+
+        <li *ngFor="let item of profeMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+            {{ item.texto }}
+        </li>
+
+    </ul>
+</ng-container>
+
+<ng-container *ngIf="tipo === 3">
+    <hr>
+
+    <ul class="list-group">
+
+        <li *ngFor="let item of alumnoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+            {{ item.texto }}
+        </li>
+
+    </ul>
+</ng-container>
+
+<ng-container *ngIf="tipo === 4">
+    <hr>
+
+    <ul class="list-group">
+
+        <li *ngFor="let item of apoderadoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+            {{ item.texto }}
+        </li>
+
+    </ul>
+</ng-container>

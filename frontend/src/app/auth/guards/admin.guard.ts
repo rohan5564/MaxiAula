@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate, CanLoad {
       if (this.authService.loggedIn() && this.authService.user.tipo === 1) {
         return true;
       }
-  
+      alert('Acceso restringido, debe ser usuario administrador!');
       this.router.navigate(['/auth/login']);
       return false;
   }
@@ -31,7 +31,7 @@ export class AdminGuard implements CanActivate, CanLoad {
       if (this.authService.loggedIn() && this.authService.user.tipo === 1) {
         return true;
       }
-  
+      alert('Acceso restringido, debe ser usuario administrador!');
       this.router.navigate(['/auth/login']);
       return false;
   }

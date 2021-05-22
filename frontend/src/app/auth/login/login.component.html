@@ -1,35 +1,44 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<div id="cuerpo">
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Login form</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
-                            <h3 class="text-center text-info">Ingresar</h3>
-                            <div class="form-group">
-                                <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                            </div>
-                            <div id="register-link" class="text-right">
-                                <a routerLink="/auth/registro" class="text-info">Registrarse aquí</a>
-                            </div>
-                        </form>
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+
+
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4">Ingresa a MaxiAula!</h3>
+                            <p class="text-muted mb-4">Usa tu correo y tu contraseña para accesder a miles de posibilidades.</p>
+                            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+                                <div class="form-group mb-3">
+                                    <input id="inputEmail" formControlName="correo" type="email" placeholder="Correo electronico" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                    <span class="form-text text-danger" *ngIf="campoEsValido('correo')">
+                                        Ingrese un correo válido
+                                    </span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input id="inputPassword" formControlName="contraseña" type="password" placeholder="Contraseña" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <span class="form-text text-danger" *ngIf="campoEsValido('contraseña')">
+                                        Ingrese un una contraseña
+                                    </span>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Ingresar</button>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
+                <!-- End -->
+
             </div>
         </div>
-    </div>
+        <!-- End -->
 
+    </div>
 </div>

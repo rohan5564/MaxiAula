@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-screens',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScreensComponent implements OnInit {
 
-  constructor() { }
+  isLogged;
+  constructor(private auth: AuthService) {
+      this.isLogged = auth.loggedIn;
+   }
 
   ngOnInit(): void {
   }

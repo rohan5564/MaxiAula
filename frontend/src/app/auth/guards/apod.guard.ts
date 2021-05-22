@@ -20,7 +20,7 @@ export class ApodGuard implements CanActivate, CanLoad {
       if (this.authService.loggedIn() && this.authService.user.tipo === 4) {
         return true;
       }
-  
+      alert('Acceso restringido, debe ser un apoderado válido!');
       this.router.navigate(['/auth/login']);
       return false;
   }
@@ -31,7 +31,7 @@ export class ApodGuard implements CanActivate, CanLoad {
       if (this.authService.loggedIn() && this.authService.user.tipo === 4) {
         return true;
       }
-  
+      alert('Acceso restringido, debe ser un apoderado válido!');
       this.router.navigate(['/auth/login']);
       return false;
   }

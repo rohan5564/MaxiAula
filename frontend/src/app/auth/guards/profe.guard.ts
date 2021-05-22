@@ -20,7 +20,7 @@ export class ProfeGuard implements CanActivate, CanLoad {
       if (this.authService.loggedIn() && this.authService.user.tipo === 2) {
         return true;
       }
-  
+      alert('Acceso restringido, debe ser un profesor válido!');
       this.router.navigate(['/auth/login']);
       return false;
   }
@@ -31,7 +31,7 @@ export class ProfeGuard implements CanActivate, CanLoad {
       if (this.authService.loggedIn() && this.authService.user.tipo === 2) {
         return true;
       }
-  
+      alert('Acceso restringido, debe ser un profesor válido!');
       this.router.navigate(['/auth/login']);
       return false;
   }
