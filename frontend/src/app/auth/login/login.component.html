@@ -21,16 +21,17 @@
                                         Ingrese un correo válido
                                     </span>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class=" mb-3 form-outline">
                                     <input id="inputPassword" formControlName="contraseña" type="password" placeholder="Contraseña" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
                                     <span class="form-text text-danger" *ngIf="campoEsValido('contraseña')">
                                         Ingrese un una contraseña
                                     </span>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Ingresar</button>
-
+                                <button type="submit" class="btn btn-primary btn-xl">Ingresar</button>
+                                <button class="btn btn-light btn-xl inline" [routerLink]="['/']">Volver</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
