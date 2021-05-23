@@ -57,19 +57,19 @@ export class LoginComponent implements OnInit {
 
           switch (this.authService.user.tipo) { // segun el tipo de usuario se le manda a su seccion
             case 1: {
-                    this.router.navigate(['./admin']);
+                    this.router.navigate(['./maxiaula/admin']);
                     break;
             }
             case 2: {
-                    this.router.navigate(['./profesor']);
+                    this.router.navigate(['./maxiaula/profesor']);
                     break;
             }
             case 3: {
-                    this.router.navigate(['./alumno']);
+                    this.router.navigate(['./maxiaula/alumno']);
                     break;
             }
             case 4: {
-                    this.router.navigate(['./apoderado']);
+                    this.router.navigate(['./maxiaula/apoderado']);
                     break;
             }
             default: {

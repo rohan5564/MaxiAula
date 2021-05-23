@@ -6,15 +6,21 @@ import { AlumnoScreenComponent } from './alumno-screen/alumno-screen.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/material/material.module';
+import { SharedModule } from '../../shared/shared.module';
+import { MisNotasScreenComponent } from './mis-notas-screen/mis-notas-screen.component';
+import { MisCursosScreenComponent } from './mis-cursos-screen/mis-cursos-screen.component';
 
 
 @NgModule({
   declarations: [
     AlumnoScreenComponent,
+    MisNotasScreenComponent,
+    MisCursosScreenComponent,
   ],
   imports: [
     CommonModule,
     AlumnoRoutingModule,
+    SharedModule,
     MaterialModule,
     RouterModule,
     ReactiveFormsModule

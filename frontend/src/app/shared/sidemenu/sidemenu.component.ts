@@ -18,7 +18,10 @@ export class SidemenuComponent implements OnInit {
   tipo: number | undefined = 0;
   
   constructor(private auth:AuthService) {
-    this.tipo = this.auth.user.tipo;
+    this.auth.obtenerTipo().subscribe(res => {
+      this.tipo = res;
+    });
+    
    }
 
   ngOnInit(): void {
@@ -27,44 +30,52 @@ export class SidemenuComponent implements OnInit {
   alumnoMenu: NavItem[] = [
     {
       texto: 'Mi Perfil',
-      ruta: './miperfil'
+      ruta: '/maxiaula/miperfil'
     },
     {
-      texto: 'Notas',
-      ruta: './alumno/notas'
+      texto: 'Mis Notas',
+      ruta: '/maxiaula/alumno/mis-notas'
+    },
+    {
+      texto: 'Mis Cursos',
+      ruta: '/maxiaula/alumno/mis-cursos'
     },
   ];
 
   profeMenu: NavItem[] = [
     {
       texto: 'Mi Perfil',
-      ruta: './miperfil'
+      ruta: '/maxiaula/miperfil'
     },
     {
       texto: 'Cursos',
-      ruta: './profesor/cursos'
+      ruta: '/maxiaula/profesor/cursos'
     },
   ];
 
   adminMenu: NavItem[] = [
     {
       texto: 'Mi Perfil',
-      ruta: './miperfil'
+      ruta: '/maxiaula/miperfil'
     },
     {
       texto: 'Administrar Usuarios',
-      ruta: './admin/administrar-usuarios'
+      ruta: '/maxiaula/admin/administrar-usuarios'
+    },
+    {
+      texto: 'Administrar Cursos',
+      ruta: '/maxiaula/admin/administrar-cursos'
     },
   ];
 
   apoderadoMenu: NavItem[] = [
     {
       texto: 'Mi Perfil',
-      ruta: './miperfil'
+      ruta: '/maxiaula/miperfil'
     },
     {
       texto: 'Notas',
-      ruta: './apoderado/notas'
+      ruta: '/maxiaula/apoderado/notas'
     },
   ];
 

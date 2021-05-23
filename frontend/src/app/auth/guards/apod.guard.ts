@@ -26,7 +26,7 @@ export class ApodGuard implements CanActivate, CanLoad {
             return false;
           }
           return true;
-        })
+        }) 
       );
     }
 

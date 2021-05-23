@@ -35,9 +35,20 @@ export class AuthService {
       }
       return this.userp.getUsuarioByID(localStorage.getItem('id')!).pipe(
               map(resp =>{
-                  return tipo === resp.tipo;          // para saber si el el usuario logeado es del tipo que dice se obtiene por el id del local storage y se verifica su autenticidad
+                  return tipo === resp.tipo;          // retorna el observable booleano para saber si el el usuario logeado es del tipo que dice se obtiene por el id del local storage y se verifica su autenticidad
               })
             );
+  }
+
+  obtenerTipo( ): Observable<number>{
+    if (!localStorage.getItem('token') || !localStorage.getItem('id')) {
+      return of(0); // la funcion of transforma en observable las variables 
+    }
+    return this.userp.getUsuarioByID(localStorage.getItem('id')!).pipe(
+            map(resp =>{
+                return resp.tipo;          // retorna el observable del tipo desde el backend
+            })
+          );
   }
 
   signUpUser(user: any) {

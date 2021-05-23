@@ -7,17 +7,21 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/material/material.module';
 import { ProfesorScreenComponent } from './profesor-screen/profesor-screen.component';
 import { AgregarAlumnosScreenComponent } from './agregar-alumnos-screen/agregar-alumnos-screen.component';
+import { SharedModule } from '../../shared/shared.module';
+import { CursosScreenComponent } from './cursos-screen/cursos-screen.component';
 
 
 @NgModule({
   declarations: [
     ProfesorScreenComponent,
     AgregarAlumnosScreenComponent,
+    CursosScreenComponent,
   ],
   imports: [
     CommonModule,
     ProfesorRoutingModule,
     MaterialModule,
+    SharedModule,
     RouterModule,
     ReactiveFormsModule
   ]

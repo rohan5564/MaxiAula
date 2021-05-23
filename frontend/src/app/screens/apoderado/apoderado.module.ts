@@ -6,16 +6,20 @@ import { ApoderadoScreenComponent } from './apoderado-screen/apoderado-screen.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/material/material.module';
+import { SharedModule } from '../../shared/shared.module';
+import { NotasScreenComponent } from './notas-screen/notas-screen.component';
 
 
 @NgModule({
   declarations: [
-    ApoderadoScreenComponent
+    ApoderadoScreenComponent,
+    NotasScreenComponent
   ],
   imports: [
     CommonModule,
     ApoderadoRoutingModule,
     MaterialModule,
+    SharedModule,
     RouterModule,
     ReactiveFormsModule
   ]
