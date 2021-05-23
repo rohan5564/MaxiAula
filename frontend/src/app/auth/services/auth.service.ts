@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { UserProviderService } from '../../core/providers/user/user-provider.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,8 @@ export class AuthService {
 
   private baseURL = environment.baseURL;
   private _user: User | undefined; 
-
  
-  constructor(private http: HttpClient, public router: Router) { 
+  constructor(private http: HttpClient, public router: Router, private userp: UserProviderService) { 
 
   }
 
@@ -23,7 +24,20 @@ export class AuthService {
   }
   
   loggedIn() {
-    return !!localStorage.getItem('token'); // devuelve true or false si se encontro un token en localStorage para saber si el usuario esta logeado
+    
+     return !!localStorage.getItem('token'); // devuelve true or false si se encontro un token en localStorage para saber si el usuario esta logeado
+  }
+
+  verificaAutenticacion(tipo : number): Observable<boolean> {
+
+      if (!localStorage.getItem('token') || !localStorage.getItem('id')) {
+        return of(false); // la funcion of transforma en observable las variables 
+      }
+      return this.userp.getUsuarioByID(localStorage.getItem('id')!).pipe(
+              map(resp =>{
+                  return tipo === resp.tipo;          // para saber si el el usuario logeado es del tipo que dice se obtiene por el id del local storage y se verifica su autenticidad
+              })
+            );
   }
 
   signUpUser(user: any) {

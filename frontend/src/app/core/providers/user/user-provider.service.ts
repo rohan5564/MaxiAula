@@ -19,9 +19,17 @@ export class UserProviderService {
     return this.httpService.post<User>('/user/add', usuario);
   }
 
+  /*
   public getUsuarioById(id: string): Observable<User | undefined> {
     return this.getUsuarios().pipe(map((usuarios: User[]) => {
       return usuarios.find((usuario: User) => usuario._id === id);
+    }));
+  }
+  */
+
+  public getUsuarioByRUT(rut: string): Observable<User | undefined> {
+    return this.getUsuarios().pipe(map((usuarios: User[]) => {
+      return usuarios.find((usuario: User) => usuario.rut === rut);
     }));
   }
 
