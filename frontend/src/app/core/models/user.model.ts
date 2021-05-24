@@ -6,4 +6,5 @@ export interface User {
     contraseña: string;     /* Contraseña de usuario*/
     correo: string;         /* Correo de usuario */
     tipo: number;        /* Nivel de permiso del usuario: 1=administrador 2=profesor 3=alumno 4=apoderado*/
+    hijos?: string[];    /* rut de los hijos que pueda tener un apoderado*/
 }

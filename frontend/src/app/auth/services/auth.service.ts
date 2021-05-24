@@ -35,6 +35,7 @@ export class AuthService {
       }
       return this.userp.getUsuarioByID(localStorage.getItem('id')!).pipe(
               map(resp =>{
+                  this._user = resp; // en caso de recargar la pagina, actualiza la infomacion del usuario logeado en la memoria
                   return tipo === resp.tipo;          // retorna el observable booleano para saber si el el usuario logeado es del tipo que dice se obtiene por el id del local storage y se verifica su autenticidad
               })
             );
@@ -59,6 +60,12 @@ export class AuthService {
     return this.http.post<any>(this.baseURL + '/user/signin', user).pipe(
       tap( res => this._user = res.user) // la respuesta del backend devuelve el usuario y el token, este pipe tap guarda el usuario en una variable persistente al logearse
     );
+  }
+
+  salir() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/']);
   }
 
 }

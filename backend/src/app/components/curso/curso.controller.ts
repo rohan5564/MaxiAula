@@ -26,6 +26,17 @@ async function putCurso(_id: string, noticia: Curso): Promise<Curso> {
 }
 
 
+async function getCursosProf(rut: string): Promise<Curso[]> {
+    let cursos: Curso[] = await cursoRepository.getCursos();
+    let cursosProf: Curso[] = cursos.map((curso) => {
+        if(curso.profACargo === rut) {
+            return curso;
+        }
+    });
+    cursosProf = cursosProf.filter(Boolean);
+    
+    return cursosProf;
+}
 
 
-export default { addCurso, getCursos, getCursoById, deleteCurso, putCurso };
+export default { addCurso, getCursos, getCursoById, deleteCurso, putCurso, getCursosProf };

@@ -8,7 +8,8 @@ const definition: Partial<Record<keyof User, any>> = {
     contraseña: { type: String },
     fechaNac: { type: Date},
     correo: { type: String },
-    tipo: { type: Number }
+    tipo: { type: Number },
+    hijos: {type: Array}
   
 }
 

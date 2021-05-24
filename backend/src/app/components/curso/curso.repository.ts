@@ -22,4 +22,6 @@ async function putCurso(_id: string, curso: Curso): Promise<Curso> {
     return cursoSchema.findByIdAndUpdate(_id, curso);
 }
 
+
+
 export default { addCurso, getCursos, getCursoById, deleteCurso, putCurso };
