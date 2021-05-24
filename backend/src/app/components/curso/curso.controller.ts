@@ -38,5 +38,18 @@ async function getCursosProf(rut: string): Promise<Curso[]> {
     return cursosProf;
 }
 
+async function getCursosAlu(rut: string): Promise<Curso[]> {
+    let cursos: Curso[] = await cursoRepository.getCursos();
+    let cursosAlu: Curso[] = cursos.map((curso) => {
+        if(curso.participantes.find(item => item === rut)) {
+            return curso;
+        }
 
-export default { addCurso, getCursos, getCursoById, deleteCurso, putCurso, getCursosProf };
+    });
+    cursosAlu = cursosAlu.filter(Boolean);
+    
+    return cursosAlu;
+}
+
+
+export default { addCurso, getCursos, getCursoById, deleteCurso, putCurso, getCursosProf, getCursosAlu };

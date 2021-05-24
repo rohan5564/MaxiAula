@@ -60,9 +60,19 @@ router.put('/put/:_id', async(req: Request, res: Response) => {
 
 router.get('/cursosProf/:rut', async(req: Request, res: Response) => {
     const rut: string = req.params.rut;
-    console.log(rut)
     try {
         const result = await cursoController.getCursosProf(rut);
+        responseModule.success(req, res, result);
+    } catch (error) {
+        responseModule.error(req, res, "Error Desconocido");
+    }
+});
+
+router.get('/cursosAlu/:rut', async(req: Request, res: Response) => {
+    const rut: string = req.params.rut;
+    console.log(rut)
+    try {
+        const result = await cursoController.getCursosAlu(rut);
         responseModule.success(req, res, result);
     } catch (error) {
         responseModule.error(req, res, "Error Desconocido");
