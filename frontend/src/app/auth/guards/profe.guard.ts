@@ -18,6 +18,10 @@ export class ProfeGuard implements CanActivate, CanLoad {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+      if (this.authService.user.tipo === 2) {
+        return true;
+      }
+
       return this.authService.verificaAutenticacion(2).pipe( // se verifica la autenticacion segun el tipo a traves del auth service y se hace tap para comprobar
         tap( estaAuth => {
           if (!estaAuth){
@@ -34,6 +38,9 @@ export class ProfeGuard implements CanActivate, CanLoad {
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       
+      if (this.authService.user.tipo === 2) {
+        return true;
+      }
 
       return this.authService.verificaAutenticacion(2).pipe(
         tap( estaAuth => {

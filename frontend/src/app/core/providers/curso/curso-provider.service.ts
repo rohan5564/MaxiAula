@@ -34,4 +34,9 @@ export class CursoProviderService {
   public getCursosProf(rut: string): Observable<Curso[]> {
     return this.httpService.get<Curso[]>('/curso/cursosProf/' + rut);
   }
+
+  public getCursosAlu(rut: string): Observable<Curso[]> {
+    return this.httpService.get<Curso[]>('/curso/cursosAlu/' + rut);
+  }
+
 }

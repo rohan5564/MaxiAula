@@ -10,16 +10,18 @@ import { AuthService } from '../../../auth/services/auth.service';
 })
 export class CursosScreenComponent implements OnInit {
 
-  cursosProfe;
+  cursosProfe = this.cursosP.getCursosProf(this.auth.user.rut!);
+  cursos: Curso[] | undefined;
   constructor(private cursosP: CursoProviderService, private auth: AuthService) {
 
-    this.cursosProfe = this.cursosP.getCursosProf(this.auth.user.rut!);
     this.cursosProfe.subscribe(
       cursos => {
-        console.log(cursos)
+        console.log(cursos);
+        this.cursos = cursos;
       }
     )
-    console.log(this.cursosProfe)
+
+    
    }
 
 

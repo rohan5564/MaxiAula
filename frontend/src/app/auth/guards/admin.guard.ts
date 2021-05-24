@@ -17,7 +17,10 @@ export class AdminGuard implements CanActivate, CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
+      
+      if (this.authService.user.tipo === 1) {
+        return true;
+      }
       return this.authService.verificaAutenticacion(1).pipe( // se verifica la autenticacion segun el tipo a traves del auth service y se hace tap para comprobar
         tap( estaAuth => {
           if (!estaAuth){
@@ -34,6 +37,9 @@ export class AdminGuard implements CanActivate, CanLoad {
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       
+      if (this.authService.user.tipo === 1) {
+        return true;
+      }
 
       return this.authService.verificaAutenticacion(1).pipe(
         tap( estaAuth => {
