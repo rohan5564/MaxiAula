@@ -29,6 +29,10 @@ export class SidemenuComponent implements OnInit {
 
   alumnoMenu: NavItem[] = [
     {
+      texto: 'Principal',
+      ruta: '/maxiaula/alumno'
+    },
+    {
       texto: 'Mi Perfil',
       ruta: '/maxiaula/miperfil'
     },
@@ -44,6 +48,10 @@ export class SidemenuComponent implements OnInit {
 
   profeMenu: NavItem[] = [
     {
+      texto: 'Principal',
+      ruta: '/maxiaula/profesor'
+    },
+    {
       texto: 'Mi Perfil',
       ruta: '/maxiaula/miperfil'
     },
@@ -54,6 +62,10 @@ export class SidemenuComponent implements OnInit {
   ];
 
   adminMenu: NavItem[] = [
+    {
+      texto: 'Principal',
+      ruta: '/maxiaula/admin'
+    },
     {
       texto: 'Mi Perfil',
       ruta: '/maxiaula/miperfil'
@@ -69,6 +81,10 @@ export class SidemenuComponent implements OnInit {
   ];
 
   apoderadoMenu: NavItem[] = [
+    {
+      texto: 'Principal',
+      ruta: '/maxiaula/apoderado'
+    },
     {
       texto: 'Mi Perfil',
       ruta: '/maxiaula/miperfil'

@@ -4,7 +4,7 @@
 
     <ul class="list-group">
 
-        <li *ngFor="let item of adminMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+        <li *ngFor="let item of adminMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             {{ item.texto }}
         </li>
 
@@ -16,7 +16,7 @@
 
     <ul class="list-group">
 
-        <li *ngFor="let item of profeMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+        <li *ngFor="let item of profeMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             {{ item.texto }}
         </li>
 
@@ -28,7 +28,7 @@
 
     <ul class="list-group">
 
-        <li *ngFor="let item of alumnoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+        <li *ngFor="let item of alumnoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             {{ item.texto }}
         </li>
 
@@ -40,7 +40,7 @@
 
     <ul class="list-group">
 
-        <li *ngFor="let item of apoderadoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+        <li *ngFor="let item of apoderadoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             {{ item.texto }}
         </li>
 
