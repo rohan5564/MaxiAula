@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row no-gutter">
         <!-- The image half -->
-        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <div class="col-md-6 d-none d-md-flex bg-image animate__animated  animate__fadeInLeft"></div>
 
 
         <!-- The content half -->
@@ -9,11 +9,11 @@
             <div class="login d-flex align-items-center py-5">
 
                 <!-- Demo content-->
-                <div class="container">
+                <div class="container animate__animated animate__fadeInRight">
                     <div class="row">
                         <div class="col-lg-10 col-xl-7 mx-auto">
                             <h3 class="display-4">Ingresa a MaxiAula!</h3>
-                            <p class="text-muted mb-4">Usa tu correo y tu contraseña para accesder a miles de posibilidades.</p>
+                            <p class="text-muted mb-4">Usa tu correo y tu contraseña para acceder a miles de posibilidades.</p>
                             <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
                                 <div class="form-group mb-3">
                                     <input id="inputEmail" formControlName="correo" type="email" placeholder="Correo electronico" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
@@ -31,7 +31,11 @@
                                 <button type="submit" class="btn btn-primary btn-xl">Ingresar</button>
                                 <button class="btn btn-light btn-xl inline" [routerLink]="['/']">Volver</button>
                             </form>
-
+                            <hr>
+                            <div class="col text-center">
+                                <h3>¿No tienes un usuario?</h3>
+                                <button class="btn btn-primary btn-xl" [routerLink]="['/auth/registro']">¡Registrate aquí!</button>
+                            </div>
                         </div>
                     </div>
                 </div>

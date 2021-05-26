@@ -53,7 +53,9 @@ export class AuthService {
   }
 
   signUpUser(user: any) {
-    return this.http.post<any>(this.baseURL + '/user/signup', user);
+    return this.http.post<any>(this.baseURL + '/user/signup', user).pipe(
+      tap( res => this._user = res.user)
+    );
   }
 
   signInUser(user: any) {

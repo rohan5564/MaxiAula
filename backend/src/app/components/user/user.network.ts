@@ -106,6 +106,26 @@ router.get('/id/:_id', async(req: Request, res: Response) => {
     }
 });
 
+router.get('/email/:email', async(req: Request, res: Response) => {
+    const email: string = req.params.email;
+    try {
+        const result = await userController.getUserByEmail(email);
+        responseModule.success(req, res, result);
+    } catch (error) {
+        responseModule.error(req, res, "Error Desconocido");
+    }
+});
+
+router.get('/rut/:rut', async(req: Request, res: Response) => {
+    const rut: string = req.params.rut;
+    try {
+        const result = await userController.getUserByRUT(rut);
+        responseModule.success(req, res, result);
+    } catch (error) {
+        responseModule.error(req, res, "Error Desconocido");
+    }
+});
+
 router.delete('/delete/:_id', async(req: Request, res: Response) => {
     const _id: string = req.params._id;
     try {

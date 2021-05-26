@@ -20,7 +20,10 @@ export class LoginComponent implements OnInit {
   });
   
 
-  constructor( private router: Router, private authService: AuthService, private fb: FormBuilder ) { 
+  constructor( 
+    private router: Router, 
+    private authService: AuthService,
+    private fb: FormBuilder ) { 
    
   }
 
@@ -54,7 +57,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user._id);
           console.log(this.authService.user);
-
+          
           switch (this.authService.user.tipo) { // segun el tipo de usuario se le manda a su seccion
             case 1: {
                     this.router.navigate(['./maxiaula/admin']);

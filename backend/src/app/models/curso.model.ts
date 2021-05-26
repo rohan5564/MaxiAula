@@ -1,6 +1,7 @@
 export interface Curso {
     _id: string;            /* Identificador del curso */
     profACargo: string;     /* RUT del profesor a cargo*/
+    descripcion: string;    /* profesor a cargo */
     nombre: string;         /* Nombre del curso*/
     año: number;            /* año de imparticion del curso */
     semestre: number;       /* semestre de imparticion del curso */

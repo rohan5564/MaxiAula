@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { User } from 'src/app/core/models/user.model';
 import { HttpService } from '../../services/http/http.service';
 
@@ -19,24 +18,12 @@ export class UserProviderService {
     return this.httpService.post<User>('/user/add', usuario);
   }
 
-  /*
-  public getUsuarioById(id: string): Observable<User | undefined> {
-    return this.getUsuarios().pipe(map((usuarios: User[]) => {
-      return usuarios.find((usuario: User) => usuario._id === id);
-    }));
-  }
-  */
-
   public getUsuarioByRUT(rut: string): Observable<User | undefined> {
-    return this.getUsuarios().pipe(map((usuarios: User[]) => {
-      return usuarios.find((usuario: User) => usuario.rut === rut);
-    }));
+    return this.httpService.get<User>('/user/rut/' + rut);
   }
 
   public getUsuarioByEmail(email: string): Observable<User | undefined> {
-    return this.getUsuarios().pipe(map((usuarios: User[]) => {
-      return usuarios.find((usuario: User) => usuario.correo === email);
-    }));
+     return this.httpService.get<User>('/user/email/' + email);
   }
 
   public deleteUsuarioById(_id: string): Observable<User> {

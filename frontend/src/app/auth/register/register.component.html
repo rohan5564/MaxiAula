@@ -1,1 +1,117 @@
-<p>register works!</p>
+<div class="container-fluid">
+    <div class="row no-gutter">
+
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+
+                <!-- Paso 1 -->
+                <div class="container animate__animated animate__fadeInLeft" *ngIf="paso">
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-7 mx-auto">
+                            <h3 class="display-5">Registrate en MaxiAula!</h3>
+                            <p class="text-muted mb-4">Ingresa tu correo y define una contraseña para acceder.</p>
+                            <!--Formulario 1-->
+                            <form (ngSubmit)="onSubmitStep1()" [formGroup]="registroForm1">
+
+                                <!--correo electronico-->
+                                <div class="form-group mb-3">
+                                    <input id="inputEmail" formControlName="correo" type="email" placeholder="Ingrese un correo electronico" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                    <span class="form-text text-danger" *ngIf="campoNoValido('correo')">
+                                        {{ emailErrorMsg }}
+                                    </span>
+                                </div>
+
+                                <!--Contraseña-->
+                                <div class="mb-3 form-outline">
+                                    <input id="inputPassword" formControlName="contra" type="password" placeholder="Ingrese una contraseña" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+
+                                    <span class="form-text text-danger" *ngIf="campoNoValido('contra')">
+                                            La contraseña debe tener al menos 8 caracteres
+                                        </span>
+
+                                </div>
+
+                                <!--Confirmacion de contraseña-->
+                                <div class=" mb-3 form-outline">
+                                    <input id="inputPassword2" formControlName="confcontra" type="password" placeholder="Confirme su contraseña" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <span class="form-text text-danger" *ngIf="campoNoValido('confcontra')">
+                                        Las contraseñas no coinciden
+                                    </span>
+
+                                </div>
+
+                                <div class="text-center">
+                                    <button class="btn btn-light btn-xl inline" [routerLink]="['/']">Cancelar</button>
+                                    <button type="submit" [disabled]="registroForm1.pending" class="btn btn-primary btn-xl ">Siguiente</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Paso 2 -->
+                <div class="container animate__animated animate__fadeInRight" *ngIf="!paso">
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-7 mx-auto">
+                            <h3 class="display-5">¡Continua así!</h3>
+                            <p class="text-muted mb-9">¿Que tipo de usuario quieres crearte?</p>
+                            <form (ngSubmit)="onSubmitStep2()" [formGroup]="registroForm2">
+
+                                <!-- Radio con el Tipo de usuario-->
+                                <div class="btn-group text-center">
+                                    <input formControlName="tipo" type="radio" class="btn-check" value=3 id="option1" autocomplete="off" checked />
+                                    <label class="btn btn-primary" for="option1">Alumno</label>
+
+                                    <input formControlName="tipo" type="radio" class="btn-check" value=2 id="option2" autocomplete="off" />
+                                    <label class="btn btn-primary" for="option2">Profesor</label>
+
+                                    <input formControlName="tipo" type="radio" class="btn-check" value=4 id="option3" autocomplete="off" />
+                                    <label class="btn btn-primary" for="option3">Apoderado</label>
+                                </div>
+
+                                <!-- Nombre -->
+                                <div class="form-group mb-3 mt-3">
+                                    <input type="text" class="form-control rounded-pill border-0 shadow-sm px-4" formControlName="nombre" placeholder="Ingrese su Nombre y Apellido">
+                                    <span class="form-text text-danger" *ngIf="campoNoValido2('nombre')">
+                                        Debe ingresar su Nombre
+                                    </span>
+                                </div>
+
+                                <!--RUT-->
+                                <div class="form-group mb-3 mt-3">
+                                    <input type="text" class="form-control rounded-pill border-0 shadow-sm px-4" formControlName="rut" placeholder="Ingrese su RUT">
+                                    <span class="form-text text-danger" *ngIf="campoNoValido2('rut')">
+                                            {{rutErrorMsg}}
+                                    </span>
+                                </div>
+
+                                <!--Fecha de Nacimiento-->
+                                <div class="form-group text-center mr-3 mb-3 mt-3">
+                                    <span class="form-text">
+                                        Ingrese su fecha de nacimiento por favor.
+                                    </span>
+                                    <hr>
+                                    <span class="form-text text-danger" *ngIf="campoNoValido2('fecha')">
+                                        Por favor ingrese una fecha de nacimiento válida
+                                    </span>
+                                    <p-calendar [inline]="true" [monthNavigator]="true" dateFormat="dd/mm/yy" [yearNavigator]="true" yearRange="1900:2021" type="date" class="date" formControlName="fecha" placeholder="Ingrese su Fecha de Nacimiento"></p-calendar>
+                                </div>
+
+
+                                <div class="text-center">
+                                    <button type="submit" [disabled]="registroForm2.pending" class="btn btn-primary btn-xl ">Aceptar Registrarse</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+            </div>
+        </div>
+        <!-- End -->
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image animate__animated animate__fadeInRight"></div>
+    </div>
+</div>
