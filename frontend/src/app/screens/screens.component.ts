@@ -10,7 +10,11 @@ export class ScreensComponent implements OnInit {
 
   isLogged;
   constructor(private auth: AuthService) {
-      this.isLogged = auth.loggedIn;
+      this.isLogged = this.auth.loggedIn;
+   }
+
+   salir() {
+     this.auth.salir();
    }
 
   ngOnInit(): void {

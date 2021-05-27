@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { AdministrarCursosScreenComponent } from './administrar-cursos-screen/administrar-cursos-screen.component';
 import { AdministrarUsuariosScreenComponent } from './administrar-usuarios-screen/administrar-usuarios-screen.component';
+import { ScreensModule } from '../screens.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AdministrarUsuariosScreenComponent } from './administrar-usuarios-scree
     CommonModule,
     AdminRoutingModule,
     SharedModule,
+    ScreensModule,
     RouterModule,
     ReactiveFormsModule
   ]

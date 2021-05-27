@@ -1,1 +1,28 @@
-<p>mi-perfil-screen works!</p>
+<div class="card animate__animated animate__fadeInDown">
+    <div class="card-header text-center"><strong>Mi Perfil</strong></div>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="card-title text-center"><strong>Mi información</strong> </h5>
+                    <hr>
+                    <p class="card-text">
+                        <strong>Nombre: </strong> {{usuario.nombre | titlecase}}
+                    </p>
+                    <p class="card-text">
+                        <strong>RUT: </strong> {{usuario.rut}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Correo electrónico: </strong> {{usuario.correo}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Fecha de Nacimiento: </strong>{{usuario.fechaNac | date:'longDate'}}
+                    </p>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary float-end" [disabled]="true">Modificar perfil</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

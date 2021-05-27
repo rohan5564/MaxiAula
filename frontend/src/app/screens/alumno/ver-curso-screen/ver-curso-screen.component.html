@@ -1,1 +1,12 @@
-<p>ver-curso-screen works!</p>
+<mat-grid-list cols="1" *ngIf="!curso; else divCurso">
+    <mat-grid-tile>
+        <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<ng-template #divCurso>
+
+
+
+</ng-template>

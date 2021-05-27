@@ -8,6 +8,7 @@ import { ProfesorScreenComponent } from './profesor-screen/profesor-screen.compo
 import { AgregarAlumnosScreenComponent } from './agregar-alumnos-screen/agregar-alumnos-screen.component';
 import { SharedModule } from '../../shared/shared.module';
 import { CursosScreenComponent } from './cursos-screen/cursos-screen.component';
+import { ScreensModule } from '../screens.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CursosScreenComponent } from './cursos-screen/cursos-screen.component';
     ProfesorRoutingModule,
     SharedModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScreensModule
   ]
 })
 export class ProfesorModule { }

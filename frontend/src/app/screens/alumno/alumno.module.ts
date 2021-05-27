@@ -9,6 +9,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { MisNotasScreenComponent } from './mis-notas-screen/mis-notas-screen.component';
 import { MisCursosScreenComponent } from './mis-cursos-screen/mis-cursos-screen.component';
 import { VerCursoScreenComponent } from './ver-curso-screen/ver-curso-screen.component';
+import { ScreensModule } from '../screens.module';
+import { MaterialModule } from '../../utilities/material.module';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { VerCursoScreenComponent } from './ver-curso-screen/ver-curso-screen.com
   imports: [
     CommonModule,
     AlumnoRoutingModule,
+    ScreensModule,
+    MaterialModule,
     SharedModule,
     RouterModule,
     ReactiveFormsModule

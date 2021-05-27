@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   get user() {
-    return { ...this._user } // el get del usuario devuelve una copia de este y no va por referencia
+    return { ...this._user! } // el get del usuario devuelve una copia de este y no va por referencia
   }
   
   loggedIn() {

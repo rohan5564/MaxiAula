@@ -5,10 +5,11 @@ export interface Curso {
     nombre: string;         /* Nombre del curso*/
     año: number;            /* año de imparticion del curso */
     semestre: number;       /* semestre de imparticion del curso */
-    cratedAt: Date;          /*Fecha de creacion del curso */
+    cratedAt: Date;         /*Fecha de creacion del curso */
     participantes: string[];/* arreglo de ruts de los participantes del curso */ 
-    recursos?: Recurso[];    /* arreglo de los recursos opcionales correspondientes al curso*/
+    recursos?: Recurso[];   /* arreglo de los recursos opcionales correspondientes al curso*/
     notas?: Notas[];        /* Las notas del curso en un arreglo de notas que guarda el rut las notas y el promedio de cada alumno */
+    portadaURL?: string;    /* Imagen de portada del curso */
 }
 
 export interface Recurso {

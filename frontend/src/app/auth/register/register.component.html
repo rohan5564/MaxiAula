@@ -95,12 +95,12 @@
                                     <span class="form-text text-danger" *ngIf="campoNoValido2('fecha')">
                                         Por favor ingrese una fecha de nacimiento válida
                                     </span>
-                                    <p-calendar [inline]="true" [monthNavigator]="true" dateFormat="dd/mm/yy" [yearNavigator]="true" yearRange="1900:2021" type="date" class="date" formControlName="fecha" placeholder="Ingrese su Fecha de Nacimiento"></p-calendar>
+                                    <p-calendar [locale]="es" [inline]="true" [monthNavigator]="true" dateFormat="dd/mm/yy" [yearNavigator]="true" yearRange="1900:2021" type="date" class="date" formControlName="fecha" placeholder="Ingrese su Fecha de Nacimiento"></p-calendar>
                                 </div>
 
 
                                 <div class="text-center">
-                                    <button type="submit" [disabled]="registroForm2.pending" class="btn btn-primary btn-xl ">Aceptar Registrarse</button>
+                                    <button type="submit" [disabled]="!registroForm2.valid" class="btn btn-primary btn-xl ">Aceptar Registrarse</button>
                                 </div>
 
                             </form>

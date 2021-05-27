@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         res => {
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user._id);
-          console.log(this.authService.user);
+          //console.log(this.authService.user);
           
           switch (this.authService.user.tipo) { // segun el tipo de usuario se le manda a su seccion
             case 1: {

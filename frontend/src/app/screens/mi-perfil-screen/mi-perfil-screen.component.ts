@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-mi-perfil-screen',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiPerfilScreenComponent implements OnInit {
 
-  constructor() { }
+  usuario: any;
+  constructor(
+    private auth : AuthService
+  ) { }
 
   ngOnInit(): void {
+
+     this.usuario = this.auth.user;
   }
 
 }

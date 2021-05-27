@@ -1,1 +1,20 @@
-<p>card-list works!</p>
+<!--
+<div class="mt-4 m-6 d-flex justify-content-center">
+    <div *ngFor="let curso of cursos">
+        <div class="col-11">
+            <app-card [curso]="curso"></app-card>
+        </div>
+
+    </div>
+</div>
+
+-->
+
+
+<div class="mt-4 animate__animated animate__fadeInDown" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
+
+    <div fxFlex="30" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let curso of cursos">
+        <app-card [curso]="curso"></app-card>
+    </div>
+
+</div>

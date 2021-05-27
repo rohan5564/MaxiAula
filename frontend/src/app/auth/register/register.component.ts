@@ -168,7 +168,7 @@ export class RegisterComponent implements OnInit {
         },
         err => {
           console.log(err);
-          alert('El Usuario ya esta registrado!');
+          alert('El Usuario ya se encuentra registrado!');
         }
         );
    

@@ -1,8 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 import { ScreensComponent } from './screens.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { ScreensRoutingModule } from './screens-routing.module';
-import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../utilities/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { MiPerfilScreenComponent } from './mi-perfil-screen/mi-perfil-screen.component';
@@ -19,13 +23,20 @@ import { CardListComponent } from './components/card-list/card-list.component';
     MiPerfilScreenComponent,
     CardComponent,
     CardListComponent,
-
+    
+  ],
+  exports:[
+    MiPerfilScreenComponent,
+    CardComponent,
+    CardListComponent
   ],
   imports: [
+    CommonModule,
     ScreensRoutingModule,
     RouterModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule,
   ]
 })
 export class ScreensModule { }

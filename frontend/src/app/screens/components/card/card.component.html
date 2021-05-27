@@ -1,1 +1,20 @@
-<p>card works!</p>
+<mat-card *ngIf="curso">
+    <mat-card-header>
+        <!--
+            <div mat-card-avatar class="example-header-image"></div>
+            -->
+        <mat-card-title>{{curso.nombre | titlecase}}</mat-card-title>
+        <mat-card-subtitle>{{curso.descripcion}}</mat-card-subtitle>
+    </mat-card-header>
+    <div *ngIf="curso.portadaURL" class="div">
+        <img mat-card-image src="{{curso.portadaURL}}" alt="Photo of a Shiba Inu">
+    </div>
+    <mat-card-content>
+        <p>
+            Ingresa ahora al curso para acceder a sus posibilidades
+        </p>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button [routerLink]="['../curso', curso._id]" class="btn btn-primary">Ingresar al Curso</button>
+    </mat-card-actions>
+</mat-card>

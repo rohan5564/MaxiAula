@@ -1,16 +1,32 @@
-<div class="row container ">
-    <div class="col-4 mt-4 ml-3 animate__animated animate__fadeInDownBig">
-        <app-sidemenu></app-sidemenu>
+<mat-toolbar color="warn">
 
-    </div>
+    <button mat-icon-button routerLink="/">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>MaxiAula</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="salir()">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
 
-    <div class="col ">
-        <div class="animate__animated animate__fadeIn">
-            <app-mi-perfil-screen></app-mi-perfil-screen>
-            <router-outlet></router-outlet>
+</mat-toolbar>
+
+<div class="container ">
+    <div class="row">
+        <div class="col-4 animate__animated animate__fadeInDownBig">
+            <app-sidemenu></app-sidemenu>
+
+        </div>
+
+        <div class="col ">
+            <div class="animate__animated animate__fadeIn">
+
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>
+
 <!--
 <router-outlet></router-outlet>
 -->

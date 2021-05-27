@@ -1,55 +1,79 @@
-<h2 class="text-center">Menú</h2>
-<ng-container *ngIf="tipo === 1">
-    <hr>
+<mat-nav-list>
+    <!--Administrador-->
+    <ng-container *ngIf="tipo === 1">
 
-    <ul class="list-group">
+        <!--Principal-->
+        <a [routerLink]="['/maxiaula/admin']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>admin_panel_settings</mat-icon>
+            <span>Principal</span>
+        </a>
+        <!--Adm. Usuarios-->
+        <a [routerLink]="['/maxiaula/admin/administrar-usuarios']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>group</mat-icon>
+            <span>Administrar Usuarios</span>
+        </a>
+        <!--Adm. Cursos-->
+        <a [routerLink]="['/maxiaula/admin/administrar-cursos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>school</mat-icon>
+            <span>Administrar Cursos</span>
+        </a>
 
-        <li *ngFor="let item of adminMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            {{ item.texto }}
-        </li>
+    </ng-container>
 
-    </ul>
-</ng-container>
+    <!--Profesor-->
+    <ng-container *ngIf="tipo === 2">
 
-<ng-container *ngIf="tipo === 2">
-    <hr>
+        <!--Principal-->
+        <a [routerLink]="['/maxiaula/profesor']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>home</mat-icon>
+            <span>Principal</span>
+        </a>
+        <!--Cursos-->
+        <a [routerLink]="['/maxiaula/profesor/cursos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>school</mat-icon>
+            <span>Cursos</span>
+        </a>
 
-    <ul class="list-group">
+    </ng-container>
 
-        <li *ngFor="let item of profeMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            {{ item.texto }}
-        </li>
+    <!--Alumno-->
+    <ng-container *ngIf="tipo === 3">
 
-    </ul>
-</ng-container>
+        <!--Principal-->
+        <a [routerLink]="['/maxiaula/alumno']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>home</mat-icon>
+            <span>Principal</span>
+        </a>
+        <!--Notas-->
+        <a [routerLink]="['/maxiaula/alumno/mis-notas']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>class</mat-icon>
+            <span>Mis Notas</span>
+        </a>
+        <!--Cursos-->
+        <a [routerLink]="['/maxiaula/alumno/mis-cursos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>school</mat-icon>
+            <span>Mis Cursos</span>
+        </a>
+    </ng-container>
 
-<ng-container *ngIf="tipo === 3">
-    <hr>
+    <!--Apoderado-->
+    <ng-container *ngIf="tipo === 4">
+        <!--Principal-->
+        <a [routerLink]="['/maxiaula/apoderado']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>home</mat-icon>
+            <span>Principal</span>
+        </a>
+        <!--Cursos-->
+        <a [routerLink]="['/maxiaula/apoderado/notas']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon mat-list-icon>class</mat-icon>
+            <span>Notas de mis hijos</span>
+        </a>
+    </ng-container>
 
-    <ul class="list-group">
+    <!--Salir-->
+    <a [routerLink]="['/']" mat-list-item>
+        <mat-icon mat-list-icon>logout</mat-icon>
+        <span>Salir</span>
+    </a>
 
-        <li *ngFor="let item of alumnoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            {{ item.texto }}
-        </li>
-
-    </ul>
-</ng-container>
-
-<ng-container *ngIf="tipo === 4">
-    <hr>
-
-    <ul class="list-group">
-
-        <li *ngFor="let item of apoderadoMenu" class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            {{ item.texto }}
-        </li>
-
-    </ul>
-</ng-container>
-
-
-<hr>
-
-<div class="col text-center">
-    <button (click)="salir()" class="center btn btn-primary btn-xl">Salir</button>
-</div>
+</mat-nav-list>
