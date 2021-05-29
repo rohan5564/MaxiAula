@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
+import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -76,14 +77,28 @@ export class LoginComponent implements OnInit {
                     break;
             }
             default: {
-              alert('Usuario no válido, no tiene rol asignado');
+              Swal.fire({
+                title: 'Usuario no válido!',
+                text: 'No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: 'rgb(240,95,64)'
+              })
+              //alert('Usuario no válido, no tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema');
             }
           }
 
         },
         err => {
           console.log(err);
-          alert('Correo o Contraseña Incorrectos!!');
+          Swal.fire({
+            title: 'Usuario no válido!',
+            text: 'Correo o Contraseña Incorrectos!!, asegurese que se encuentran bien igresados',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: 'rgb(240,95,64)'
+          })
+          //alert('Correo o Contraseña Incorrectos!!');
         }
       );
     }

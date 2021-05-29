@@ -8,6 +8,7 @@ import { EmailValidatorService } from '../../utilities/validator/email-validator
 
 import { formatRut } from '@fdograph/rut-utilities'; // formateador de rut para guardar
 import { RutValidatorService } from '../../utilities/validator/rut-validator.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -147,7 +148,14 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user._id);
 
-          alert('Usuario registrado con exito!');
+          //alert('Usuario registrado con exito!');
+          Swal.fire({
+            title: 'Felicidades!',
+            text: 'El usuario ha sido registrado exitosamente!',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: 'rgb(240,95,64)'
+          });
           switch (this.authService.user.tipo) { // segun el tipo de usuario se le manda a su seccion
             case 2: {
                     this.router.navigate(['./maxiaula/profesor']);
@@ -162,12 +170,25 @@ export class RegisterComponent implements OnInit {
                     break;
             }
             default: {
-              alert('Usuario no válido, no tiene rol asignado');
+              Swal.fire({
+                title: 'Usuario no válido!',
+                text: 'No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: 'rgb(240,95,64)'
+              });
             }
           }
         },
         err => {
           console.log(err);
+          Swal.fire({
+            title: 'Usuario no válido!',
+            text: 'El usuario ya se encuentra registrado',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: 'rgb(240,95,64)'
+          });
           alert('El Usuario ya se encuentra registrado!');
         }
         );
