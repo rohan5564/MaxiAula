@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from 'src/app/core/models/user.model';
 import { HttpService } from '../../services/http/http.service';
 
@@ -37,4 +37,25 @@ export class UserProviderService {
   public getUsuarioByID(_id: string): Observable<User> {
     return this.httpService.get<User>('/user/id/' + _id);
   }
+
+  public getHijos(user: User): Observable<User[]> {
+
+    let users: User[] = [];
+    if (user.hijos) {
+
+      user.hijos.forEach( hijo => {
+        this.getUsuarioByRUT(hijo).subscribe(
+          hijo => {
+            users.push(hijo!);
+          }
+        )
+      } )
+      
+    }
+    
+    return of(users);
+  } 
+  
+  
+
 }

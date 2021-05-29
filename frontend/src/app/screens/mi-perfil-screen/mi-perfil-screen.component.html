@@ -1,9 +1,10 @@
-<div class="card animate__animated animate__fadeInDown">
+<!--
+<div class="card animate__animated animate__fadeInDown mt-1" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
     <div class="card-header text-center"><strong>Mi Perfil</strong></div>
     <div class="card-body">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6 " fxFlex="30" fxFlex.lg="15" fxFlex.sm="30">
                     <h5 class="card-title text-center"><strong>Mi información</strong> </h5>
                     <hr>
                     <p class="card-text">
@@ -25,4 +26,46 @@
             </div>
         </div>
     </div>
+</div>
+
+-->
+
+<div class="div mt-3  animate__animated animate__fadeInDown">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title><strong>Mi Perfil</strong></mat-card-title>
+            <mat-card-subtitle>Información</mat-card-subtitle>
+            <mat-card-actions class="text-center">
+                <button [routerLink]="['../modificar-perfil', usuario._id]" [disabled]="true" class="btn btn-primary float-end">
+                            <mat-icon mat-list-icon>edit_note</mat-icon>
+                            <span class=" d-none d-sm-inline float-end"></span>   
+                        </button>
+            </mat-card-actions>
+        </mat-card-header>
+        <div class="row">
+            <div class="col-6">
+                <mat-card-content>
+                    <p class="card-text">
+                        <strong>Nombre: </strong> {{usuario.nombre | titlecase}}
+                    </p>
+                    <p class="card-text">
+                        <strong>RUT: </strong> {{usuario.rut}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Correo electrónico: </strong> {{usuario.correo}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Fecha de Nacimiento: </strong>{{usuario.fechaNac | date:'longDate'}}
+                    </p>
+
+                </mat-card-content>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+
+
+
+    </mat-card>
 </div>

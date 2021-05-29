@@ -9,6 +9,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { AdministrarCursosScreenComponent } from './administrar-cursos-screen/administrar-cursos-screen.component';
 import { AdministrarUsuariosScreenComponent } from './administrar-usuarios-screen/administrar-usuarios-screen.component';
 import { ScreensModule } from '../screens.module';
+import { MaterialModule } from '../../utilities/material.module';
+import { PrimeNgModule } from '../../utilities/prime-ng.module';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { ScreensModule } from '../screens.module';
     AdminRoutingModule,
     SharedModule,
     ScreensModule,
+    MaterialModule,
+    PrimeNgModule,
     RouterModule,
     ReactiveFormsModule
   ]

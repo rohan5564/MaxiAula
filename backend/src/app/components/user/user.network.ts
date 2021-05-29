@@ -116,6 +116,18 @@ router.get('/email/:email', async(req: Request, res: Response) => {
     }
 });
 
+/*
+router.get('/hijos/:rut', async(req: Request, res: Response) => {
+    const rut: string = req.params.rut;
+    try {
+        const result = await userController.getHijos(rut);
+        responseModule.success(req, res, result);
+    } catch (error) {
+        responseModule.error(req, res, "Error Desconocido");
+    }
+});
+*/
+
 router.get('/rut/:rut', async(req: Request, res: Response) => {
     const rut: string = req.params.rut;
     try {

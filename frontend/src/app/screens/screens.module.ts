@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MiPerfilScreenComponent } from './mi-perfil-screen/mi-perfil-screen.component';
 import { CardComponent } from './components/card/card.component';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
 
 
 
@@ -23,12 +24,14 @@ import { CardListComponent } from './components/card-list/card-list.component';
     MiPerfilScreenComponent,
     CardComponent,
     CardListComponent,
+    VerNotasComponent,
     
   ],
   exports:[
     MiPerfilScreenComponent,
     CardComponent,
-    CardListComponent
+    CardListComponent,
+    VerNotasComponent,
   ],
   imports: [
     CommonModule,

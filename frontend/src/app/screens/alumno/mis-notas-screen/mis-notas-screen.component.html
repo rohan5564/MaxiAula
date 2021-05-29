@@ -1,1 +1,14 @@
-<p>mis-notas-screen works!</p>
+<mat-grid-list cols="1" *ngIf="!cursosAlu$; else divNotas">
+    <mat-grid-tile>
+        <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<ng-template #divNotas>
+
+    <app-ver-notas [cursos]="cursosAlu$ | async" [rut]="rut"></app-ver-notas>
+
+
+
+</ng-template>

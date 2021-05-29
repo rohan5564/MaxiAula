@@ -26,6 +26,7 @@ import { MaterialModule } from '../../utilities/material.module';
     ScreensModule,
     MaterialModule,
     SharedModule,
+    ScreensModule,
     RouterModule,
     ReactiveFormsModule
   ]

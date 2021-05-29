@@ -4,10 +4,10 @@
             <div mat-card-avatar class="example-header-image"></div>
             -->
         <mat-card-title>{{curso.nombre | titlecase}}</mat-card-title>
-        <mat-card-subtitle>{{curso.descripcion}}</mat-card-subtitle>
+        <mat-card-subtitle>{{curso.descripcion | uppercase}}</mat-card-subtitle>
     </mat-card-header>
     <div *ngIf="curso.portadaURL" class="div">
-        <img mat-card-image src="{{curso.portadaURL}}" alt="Photo of a Shiba Inu">
+        <img mat-card-image src="{{curso.portadaURL}}" alt="Foto del Curso">
     </div>
     <mat-card-content>
         <p>

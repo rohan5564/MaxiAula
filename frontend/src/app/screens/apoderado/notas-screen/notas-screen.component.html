@@ -1,1 +1,18 @@
-<p>notas-screen works!</p>
+<mat-grid-list cols="1" *ngIf="!hijos; else divNotas">
+    <mat-grid-tile>
+        <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<ng-template #divNotas>
+    <div class="div" *ngFor="let hijo of hijos">
+
+        <app-ver-notas [cursos]="" [rut]=hijo.rut></app-ver-notas>
+
+    </div>
+
+
+
+
+</ng-template>

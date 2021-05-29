@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { NotasScreenComponent } from './notas-screen/notas-screen.component';
 import { ScreensModule } from '../screens.module';
+import { MaterialModule } from '../../utilities/material.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ScreensModule } from '../screens.module';
     SharedModule,
     RouterModule,
     ReactiveFormsModule,
-    ScreensModule
+    ScreensModule,
+    MaterialModule
   ]
 })
 export class ApoderadoModule { }

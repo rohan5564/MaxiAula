@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpService } from '../../services/http/http.service';
 import { Curso } from '../../models/curso.model';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,18 @@ export class CursoProviderService {
 
   public getCursosAlu(rut: string): Observable<Curso[]> {
     return this.httpService.get<Curso[]>('/curso/cursosAlu/' + rut);
+  }
+
+  public getCursosAluSta( user: User): Curso[] {
+
+      let cursos: Curso[] = [];
+      this.getCursosAlu(user.rut).subscribe(
+        cursosAlu => {
+          cursos = cursosAlu;
+        }
+      )
+      console.log(cursos);
+      return cursos;
   }
 
 }

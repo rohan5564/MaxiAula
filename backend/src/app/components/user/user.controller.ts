@@ -32,4 +32,21 @@ async function getUserByRUT(rut:string) {
     return UserRepository.getUserByRUT(rut);
 }
 
+/*
+async function getHijos(rut: string): Promise<User[]> {
+    let padre: User = await UserRepository.getUserByRUT(rut);
+    let mishijos: User[] = await padre.hijos.map((user) => {
+        
+       return getUserByRUT(user)
+
+    });
+    console.log(mishijos)
+    mishijos = mishijos.filter(Boolean);
+    
+    return mishijos;
+}
+*/
+
+
+
 export default { addUser, getUsers, getUserById, getUserByEmail, deleteUser, putUser, getUserByRUT };

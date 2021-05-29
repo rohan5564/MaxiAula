@@ -1,3 +1,15 @@
 .spacer {
     flex: 1 1 auto;
 }
+
+.Fixed {
+    position: fixed;
+    margin-left: 10px;
+    margin-right: 10px;
+    z-index: 1;
+}
+
+.row {
+    margin-right: auto;
+    margin-left: 10px;
+}
