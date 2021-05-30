@@ -22,7 +22,6 @@ export class AdministrarUsuariosScreenComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
 
   usuarios$ : Observable<User[]> | undefined;
-  usuarios: User[] = [];
   usuarioActual: User | undefined;
   
 
@@ -33,14 +32,7 @@ export class AdministrarUsuariosScreenComponent implements OnInit {
   ) { 
     this.usuarios$ = this.userP.getUsuarios();
     this.usuarioActual = this.userAuth.user;
-    /*
-    this.usuarios$.subscribe(
-      users => {
-        this.usuarios = users;
-      }
-    )
 
-    */
   }
 
   ngOnInit(): void {

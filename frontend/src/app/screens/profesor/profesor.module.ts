@@ -9,6 +9,8 @@ import { AgregarAlumnosScreenComponent } from './agregar-alumnos-screen/agregar-
 import { SharedModule } from '../../shared/shared.module';
 import { CursosScreenComponent } from './cursos-screen/cursos-screen.component';
 import { ScreensModule } from '../screens.module';
+import { MaterialModule } from '../../utilities/material.module';
+import { PrimeNgModule } from '../../utilities/prime-ng.module';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ScreensModule } from '../screens.module';
     SharedModule,
     RouterModule,
     ReactiveFormsModule,
-    ScreensModule
+    ScreensModule,
+    MaterialModule,
+    PrimeNgModule
   ]
 })
 export class ProfesorModule { }

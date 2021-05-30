@@ -14,22 +14,37 @@
 
     <div class="div mt-3">
         <mat-card>
-            <mat-card-header>
-                <mat-card-title>{{curso.nombre | titlecase}}</mat-card-title>
 
-            </mat-card-header>
             <mat-card-content>
-
-                <div class="container mt-2">
+                <h1>{{curso.nombre | titlecase}}</h1>
+                <div class="row container mt-2">
+                    <div class="col-4"></div>
 
                     <img mat-card-image src="{{curso.portadaURL}}" alt="Portada del Curso">
 
                 </div>
+
+                <mat-grid-list cols="2" rowHeight="2:1">
+                    <mat-grid-tile *ngIf="curso.recursos">
+
+                        <div class="row">
+                            <h1>Imagenenes realacionadas</h1>
+                            <div class="div" *ngFor="let recurso of curso.recursos">
+                                <img mat-card-md-image src="{{recurso.imagenURL}}">
+                            </div>
+                        </div>
+
+                    </mat-grid-tile>
+                    <mat-grid-tile>2</mat-grid-tile>
+                    <mat-grid-tile>3</mat-grid-tile>
+                    <mat-grid-tile>4</mat-grid-tile>
+                </mat-grid-list>
+
+
+
+
+
             </mat-card-content>
-
-
-
-
         </mat-card>
     </div>
 

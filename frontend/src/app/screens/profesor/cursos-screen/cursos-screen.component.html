@@ -1,2 +1,19 @@
-<p>cursos-screen works!</p>
-<h1>{{cursos | json}}</h1>
+<div class="text-center">
+    <h1>Cursos en los que soy profesor</h1>
+</div>
+
+
+<ng-container *ngIf="!cursos; else divCursos">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-template #divCursos>
+    <app-card-list [cursos]="cursos">
+    </app-card-list>
+</ng-template>

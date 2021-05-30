@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
 import { AuthService } from '../../auth/services/auth.service';
+import { PopupService } from '../../core/services/popup/popup.service';
 
 
 @Component({
@@ -14,7 +14,10 @@ export class SidemenuComponent implements OnInit {
   
   tipo = 0;
   
-  constructor(private auth:AuthService) {
+  constructor(
+    private auth:AuthService,
+    private popUp: PopupService
+    ) {
     this.auth.obtenerTipo().subscribe(res => {
       this.tipo = res;
     });
@@ -25,17 +28,8 @@ export class SidemenuComponent implements OnInit {
   }
 
   salir () {
-
-    Swal.fire({
-      title: '¿Quieres Salir?',
-      text: "Salir de la plataforma",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: 'rgb(240,95,64)',
-      cancelButtonColor: 'black',
-      confirmButtonText: 'Salir',
-      cancelButtonText: 'Volver',
-    }).then((result) => {
+    this.popUp.pregunta('¿Quieres Salir?','Salir de la plataforma','warning')
+    .then((result) => {
       if (result.isConfirmed) {
         this.auth.salir();
       }

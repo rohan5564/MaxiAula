@@ -16,11 +16,14 @@ export class MisCursosScreenComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
 
 
-  cursosAlu = this.cursosP.getCursosAlu(this.auth.user.rut!);
+  cursosAlu$ = this.cursosP.getCursosAlu(this.auth.user.rut!);
   cursos: Curso[] | undefined;
 
-  constructor(private cursosP: CursoProviderService, private auth: AuthService) { 
-    this.cursosAlu.subscribe(
+  constructor(
+    private cursosP: CursoProviderService, 
+    private auth: AuthService) { 
+      
+    this.cursosAlu$.subscribe(
       cursos => {
        
         this.cursos = cursos;
