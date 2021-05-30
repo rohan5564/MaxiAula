@@ -24,7 +24,8 @@ export class AdminGuard implements CanActivate, CanLoad {
       return this.authService.verificaAutenticacion(1).pipe( // se verifica la autenticacion segun el tipo a traves del auth service y se hace tap para comprobar
         tap( estaAuth => {
           if (!estaAuth){
-            alert('Acceso restringido, debe ser usuario administrador!');
+            this.authService.accesoInvalido('administrador');
+            //alert('Acceso restringido, debe ser usuario administrador!');
             this.router.navigate(['/auth/login']);
             return false;
           }
@@ -44,7 +45,8 @@ export class AdminGuard implements CanActivate, CanLoad {
       return this.authService.verificaAutenticacion(1).pipe(
         tap( estaAuth => {
           if (!estaAuth){
-            alert('Acceso restringido, debe ser usuario administrador!');
+            this.authService.accesoInvalido('administrador');
+           // alert('Acceso restringido, debe ser usuario administrador!');
             this.router.navigate(['/auth/login']);
             return false;
           }

@@ -25,7 +25,8 @@ export class ProfeGuard implements CanActivate, CanLoad {
       return this.authService.verificaAutenticacion(2).pipe( // se verifica la autenticacion segun el tipo a traves del auth service y se hace tap para comprobar
         tap( estaAuth => {
           if (!estaAuth){
-            alert('Acceso restringido, debe ser un profesor!');
+            this.authService.accesoInvalido('profesor');
+            //alert('Acceso restringido, debe ser un profesor!');
             this.router.navigate(['/auth/login']);
             return false;
           }
@@ -45,7 +46,8 @@ export class ProfeGuard implements CanActivate, CanLoad {
       return this.authService.verificaAutenticacion(2).pipe(
         tap( estaAuth => {
           if (!estaAuth){
-            alert('Acceso restringido, debe ser un profesor!');
+            this.authService.accesoInvalido('profesor');
+           // alert('Acceso restringido, debe ser un profesor!');
             this.router.navigate(['/auth/login']);
             return false;
           }

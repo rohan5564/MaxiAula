@@ -1,0 +1,130 @@
+<ng-container *ngIf="!usuarios || !usuarioActual; else tablaUsuarios">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
+
+
+
+
+<ng-template #tablaUsuarios>
+
+    <div class="div mt-3 mb-3 animate__animated animate__fadeInDown">
+        <mat-card>
+            <mat-card-content>
+
+                <div class="p-grid">
+                    <div class="p-col p-mt-2">
+                        <!--Tabla-->
+                        <p-table [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" editMode="row">
+                            <!--Header-->
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="nombre">Nombre
+                                        <p-sortIcon field="nombre"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="rut">RUT
+                                        <p-sortIcon field="rut"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="correo">Email
+                                        <p-sortIcon field="correo"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="tipo">Permisos
+                                        <p-sortIcon field="tipo"></p-sortIcon>
+                                    </th>
+                                    <th>
+                                        Opciones
+                                    </th>
+                                    <th style="width:8rem"></th>
+                                </tr>
+                            </ng-template>
+
+                            <!--Body-->
+                            <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
+                                <!--definer la fila editable-->
+                                <tr [pEditableRow]="user">
+                                    <td>
+                                        <p-cellEditor>
+                                            <ng-template pTemplate="input">
+                                                <input pInputText type="text" [(ngModel)]="user.nombre" required>
+                                            </ng-template>
+                                            <ng-template pTemplate="output">
+                                                {{ user.nombre | titlecase }}
+                                            </ng-template>
+                                        </p-cellEditor>
+                                    </td>
+                                    <td>{{ user.rut }}</td>
+                                    <td>
+                                        <p-cellEditor>
+                                            <ng-template pTemplate="input">
+                                                <input pInputText type="email" [(ngModel)]="user.correo" required>
+                                            </ng-template>
+                                            <ng-template pTemplate="output">
+                                                {{ user.correo }}
+                                            </ng-template>
+                                        </p-cellEditor>
+
+
+
+                                    </td>
+                                    <!--tipo de usuario solo editable para administrador-->
+                                    <td class="text-center" *ngIf="usuarioActual!.tipo === 1">
+                                        <p-cellEditor>
+                                            <ng-template pTemplate="input">
+                                                <p-dropdown [options]="statuses" [(ngModel)]="user.tipo" [style]="{'width':'100%'}"></p-dropdown>
+                                            </ng-template>
+                                            <ng-template pTemplate="output">
+                                                {{user.tipo | tipoUsuario}}
+                                            </ng-template>
+                                        </p-cellEditor>
+
+                                    </td>
+
+                                    <td class="text-center" *ngIf="usuarioActual!.tipo !== 1">
+                                        {{user.tipo | tipoUsuario}}
+                                    </td>
+                                    <ng-container *ngIf="usuarioActual!.tipo === 1 || usuarioActual!.tipo === 2">
+                                        <td>
+                                            <button *ngIf="!editing" pInitEditableRow (click)="onRowEditInit(user)" pButton class="p-button-rounded p-button-warning ">
+                                                <mat-icon mat-list-icon>edit</mat-icon>
+                                                <span class=" d-none d-sm-inline float-end">Editar</span>   
+                                            </button>
+                                            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(user)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                                            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(user, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+
+                                            <button pButton class="p-button-rounded p-button-danger mt-1" (click)="deleteUser(user, ri)">
+                                                <mat-icon mat-list-icon>delete</mat-icon>
+                                                <span class=" d-none d-sm-inline float-end">Eliminar</span>   
+                                            </button>
+                                        </td>
+
+                                    </ng-container>
+
+                                    <ng-container *ngIf="user.tipo === 0 && usuarioActual!.tipo === 1">
+
+                                        <td>
+                                            Solicita ser Profesor
+                                        </td>
+
+                                        <td>
+                                            <button pButton class="p-button-rounded p-button-success " (click)="aprobarProfesor(user)">
+                                                <mat-icon mat-list-icon>done</mat-icon>
+                                                <span class=" d-none d-sm-inline float-end">Aprobar</span>   
+                                            </button>
+                                        </td>
+
+                                    </ng-container>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</ng-template>

@@ -13,6 +13,10 @@ import { MiPerfilScreenComponent } from './mi-perfil-screen/mi-perfil-screen.com
 import { CardComponent } from './components/card/card.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
+import { TablaUsuariosComponent } from './components/tabla-usuarios/tabla-usuarios.component';
+import { PrimeNgModule } from '../utilities/prime-ng.module';
+import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -25,6 +29,8 @@ import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
     CardComponent,
     CardListComponent,
     VerNotasComponent,
+    TablaUsuariosComponent,
+    TipoUsuarioPipe,
     
   ],
   exports:[
@@ -32,14 +38,20 @@ import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
     CardComponent,
     CardListComponent,
     VerNotasComponent,
+    TablaUsuariosComponent,
+    
   ],
   imports: [
     CommonModule,
     ScreensRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     MaterialModule,
     SharedModule,
     FlexLayoutModule,
+    PrimeNgModule,
+    
   ]
 })
 export class ScreensModule { }

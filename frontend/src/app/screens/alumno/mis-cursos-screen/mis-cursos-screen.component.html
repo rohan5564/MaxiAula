@@ -2,11 +2,16 @@
     <h1>Mis Cursos</h1>
 </div>
 
-<mat-grid-list cols="1" *ngIf="!cursos; else divCursos">
-    <mat-grid-tile>
-        <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
-    </mat-grid-tile>
-</mat-grid-list>
+
+<ng-container *ngIf="!cursos; else divCursos">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
 
 <ng-template #divCursos>
     <app-card-list [cursos]="cursos">

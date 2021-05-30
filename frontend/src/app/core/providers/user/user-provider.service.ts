@@ -30,7 +30,7 @@ export class UserProviderService {
     return this.httpService.delete<User>('/user/delete/'+ _id);
   }
 
-  public updateUsuarioById(_id: string, user: Partial<User>): Observable<User> {
+  public updateUsuarioById(_id: string, user: Partial<User> | User): Observable<User> {
     return this.httpService.put<User>('/user/put/' + _id, user);
   }
 

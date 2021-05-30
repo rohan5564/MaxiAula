@@ -8,7 +8,7 @@ import { EmailValidatorService } from '../../utilities/validator/email-validator
 
 import { formatRut } from '@fdograph/rut-utilities'; // formateador de rut para guardar
 import { RutValidatorService } from '../../utilities/validator/rut-validator.service';
-import Swal from 'sweetalert2';
+import { PopupService } from '../../core/services/popup/popup.service';
 
 
 @Component({
@@ -47,7 +47,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private validSer: ValidatorService,
     private emailValidator: EmailValidatorService,
-    private rutValidator: RutValidatorService
+    private rutValidator: RutValidatorService,
+    private popUp : PopupService
     
      ) { 
     this.paso = true;
@@ -116,23 +117,29 @@ export class RegisterComponent implements OnInit {
 
 
     
-    console.log(this.correo, this.contraseña)
+   // console.log(this.correo, this.contraseña)
 
   }
+
+
+  /*
   rut1 = '';
   fechas:Date | undefined;
   estado : any;
 
+  */
   async onSubmitStep2() {
     if ( this.registroForm2.invalid )  {
       this.registroForm2.markAllAsTouched();
       return;
     }
+    /*
     this.rut1 = this.registroForm2.controls['rut'].value;
     this.fechas = this.registroForm2.controls['fecha'].value;
     this.estado = this.registroForm2.controls['tipo'].value;
-
+   
     console.log(this.rut1, this.fechas, this.estado)
+    */
     let usuario: Partial<User> = {
         correo : this.correo,
         nombre: this.registroForm2.controls['nombre'].value,
@@ -141,7 +148,7 @@ export class RegisterComponent implements OnInit {
         fechaNac: this.registroForm2.controls['fecha'].value,
         tipo: this.registroForm2.controls['tipo'].value
     }
-    
+
     try {
       this.authService.signUpUser(usuario).subscribe(
         res => {
@@ -149,16 +156,12 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('id', res.user._id);
 
           //alert('Usuario registrado con exito!');
-          Swal.fire({
-            title: 'Felicidades!',
-            text: 'El usuario ha sido registrado exitosamente!',
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: 'rgb(240,95,64)'
-          });
+          this.popUp.aviso('Felicidades!','El usuario ha sido registrado exitosamente!','success');
+      
           switch (this.authService.user.tipo) { // segun el tipo de usuario se le manda a su seccion
-            case 2: {
-                    this.router.navigate(['./maxiaula/profesor']);
+            case 0: {
+                    this.popUp.aviso('Debe esperar!','Ahora debe esperar que un administrador le autorice el acceso','info');
+                    this.router.navigate(['./']);
                     break;
             }
             case 3: {
@@ -170,31 +173,21 @@ export class RegisterComponent implements OnInit {
                     break;
             }
             default: {
-              Swal.fire({
-                title: 'Usuario no válido!',
-                text: 'No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema',
-                icon: 'error',
-                confirmButtonText: 'Aceptar',
-                confirmButtonColor: 'rgb(240,95,64)'
-              });
+              this.popUp.aviso('Usuario no válido!','No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema','info');
+            
             }
           }
         },
         err => {
           console.log(err);
-          Swal.fire({
-            title: 'Usuario no válido!',
-            text: 'El usuario ya se encuentra registrado',
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: 'rgb(240,95,64)'
-          });
-          alert('El Usuario ya se encuentra registrado!');
+          this.popUp.aviso('Usuario no válido!','El usuario ya se encuentra registrado','error');
+            
         }
         );
    
     }
     catch(error){
+      this.popUp.aviso('Error!','Algo falló','error');
       console.log('fallo :c', error);
     }
 

@@ -6,6 +6,7 @@ import { User } from 'src/app/core/models/user.model';
 import { tap, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { UserProviderService } from '../../core/providers/user/user-provider.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class AuthService {
 
   verificaAutenticacion(tipo : number): Observable<boolean> {
 
-      if (!localStorage.getItem('token') || !localStorage.getItem('id')) {
+      if (!localStorage.getItem('token') && !localStorage.getItem('id')) {
         return of(false); // la funcion of transforma en observable las variables 
       }
       return this.userp.getUsuarioByID(localStorage.getItem('id')!).pipe(
@@ -39,6 +40,16 @@ export class AuthService {
                   return tipo === resp.tipo;          // retorna el observable booleano para saber si el el usuario logeado es del tipo que dice se obtiene por el id del local storage y se verifica su autenticidad
               })
             );
+  }
+
+  accesoInvalido(usuario: string){ // muestra un mensaje pop up de erro de acceso al area inválido
+    Swal.fire({
+      title: 'Acceso restringido!',
+      text: 'No tiene permiso para acceder a esta area, debe ser un ' + usuario + ' válido!',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: 'rgb(240,95,64)'
+    })
   }
 
   obtenerTipo( ): Observable<number>{

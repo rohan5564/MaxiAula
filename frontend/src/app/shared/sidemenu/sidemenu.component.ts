@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { AuthService } from '../../auth/services/auth.service';
 
 
@@ -24,7 +25,22 @@ export class SidemenuComponent implements OnInit {
   }
 
   salir () {
-    this.auth.salir();
+
+    Swal.fire({
+      title: '¿Quieres Salir?',
+      text: "Salir de la plataforma",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'rgb(240,95,64)',
+      cancelButtonColor: 'black',
+      confirmButtonText: 'Salir',
+      cancelButtonText: 'Volver',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.auth.salir();
+      }
+    })
+    
   }
 
   get user() {

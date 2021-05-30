@@ -24,7 +24,9 @@ export class ApodGuard implements CanActivate, CanLoad {
       return this.authService.verificaAutenticacion(4).pipe( // se verifica la autenticacion segun el tipo a traves del auth service y se hace tap para comprobar
         tap( estaAuth => {
           if (!estaAuth){
-            alert('Acceso restringido, debe ser un apoderado!');
+            this.authService.accesoInvalido('apoderado');
+            
+            //alert('Acceso restringido, debe ser un apoderado!');
             this.router.navigate(['/auth/login']);
             return false;
           }
@@ -43,7 +45,9 @@ export class ApodGuard implements CanActivate, CanLoad {
       return this.authService.verificaAutenticacion(4).pipe(
         tap( estaAuth => {
           if (!estaAuth){
-            alert('Acceso restringido, debe ser un apoderado!');
+            this.authService.accesoInvalido('apoderado');
+            
+            //alert('Acceso restringido, debe ser un apoderado!');
             this.router.navigate(['/auth/login']);
             return false;
           }

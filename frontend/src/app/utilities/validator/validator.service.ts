@@ -42,7 +42,7 @@ export class ValidatorService {
       const rut = formGroup.get(campo)?.value; //obtener el valor del rut
       
       if ( !validateRut(rut) ) {
-        console.log(validateRut(rut));
+        //console.log(validateRut(rut));
         formGroup.get(campo)?.setErrors({ rutInvalido: true });
         return { rutInvalido: true }
       } 
