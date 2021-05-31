@@ -1,0 +1,15 @@
+<ng-container *ngIf="!cursos || !usuarioActual; else tablaCursos">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
+
+
+<ng-template #tablaCursos>
+    {{cursos | json}} {{usuarioActual | json}}
+
+</ng-template>

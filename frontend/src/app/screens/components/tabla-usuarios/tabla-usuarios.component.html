@@ -33,7 +33,7 @@
                                     <th pSortableColumn="correo">Email
                                         <p-sortIcon field="correo"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="tipo">Permisos
+                                    <th pSortableColumn="tipo" *ngIf="usuarioActual!.tipo === 1">Permisos
                                         <p-sortIcon field="tipo"></p-sortIcon>
                                     </th>
                                     <th>
@@ -84,9 +84,7 @@
 
                                     </td>
 
-                                    <td class="text-center" *ngIf="usuarioActual!.tipo !== 1">
-                                        {{user.tipo | tipoUsuario}}
-                                    </td>
+
                                     <ng-container *ngIf="usuarioActual!.tipo === 1 || usuarioActual!.tipo === 2">
                                         <td>
                                             <button *ngIf="!editing" pInitEditableRow (click)="onRowEditInit(user)" pButton class="p-button-rounded p-button-warning ">

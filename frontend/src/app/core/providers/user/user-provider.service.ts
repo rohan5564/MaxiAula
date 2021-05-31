@@ -55,6 +55,23 @@ export class UserProviderService {
     
     return of(users);
   } 
+
+  public getParticipantes(users: string[]): Observable<User[]> {
+
+    let participantes: User[] = [];
+    console.log(users)
+    users.forEach( rut =>{
+        this.getUsuarioByRUT(rut).subscribe(
+          user => {
+            participantes.push(user!);
+          }
+        )
+    } )
+    
+    participantes.filter(Boolean);
+    console.log(participantes)
+    return of(participantes);
+  }
   
   
 

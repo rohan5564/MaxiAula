@@ -9,7 +9,7 @@ import { Curso } from '../../../core/models/curso.model';
 export class CardListComponent implements OnInit {
 
   @Input()
-  cursos: Curso[] | undefined;
+  cursos: Curso[] | undefined | null;
 
   constructor() { }
 

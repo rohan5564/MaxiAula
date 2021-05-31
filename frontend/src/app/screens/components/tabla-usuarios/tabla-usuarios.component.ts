@@ -6,6 +6,8 @@ import { SelectItem } from 'primeng/api';
 import { User } from 'src/app/core/models/user.model';
 import { UserProviderService } from '../../../core/providers/user/user-provider.service';
 import { PopupService } from '../../../core/services/popup/popup.service';
+import { Curso } from '../../../core/models/curso.model';
+import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
 
 @Component({
   selector: 'app-tabla-usuarios',
@@ -22,6 +24,8 @@ export class TablaUsuariosComponent implements OnInit {
   usuarioActual: User | undefined;
   @Input()
   usuarios: any;
+  @Input()
+  cursoActual: Curso | undefined;
 
   statuses : SelectItem[] = [{label: 'Administrador', value: 1},{label: 'Profesor', value: 2},{label: 'Alumno', value: 3},
                             {label: 'Apoderado', value: 4},{label: 'Solicitante', value: 0}];
@@ -31,6 +35,7 @@ export class TablaUsuariosComponent implements OnInit {
 
   constructor(
     private userP: UserProviderService,
+    private cursoP: CursoProviderService,
     private popUp : PopupService
   ) {
  
@@ -73,22 +78,52 @@ export class TablaUsuariosComponent implements OnInit {
 
   async deleteUser(user: User, index: number){
 
-    this.popUp.pregunta('Eliminar Usuario','¿Desea eliminar este usuario de forma permanente?','error')
-              .then(async (result) => {
-                if (result.isConfirmed) {                  
-                  try {
+  
+    if (this.usuarioActual?.tipo === 1) {
+        this.popUp.pregunta('Eliminar Usuario','¿Desea eliminar este usuario de forma permanente?','error')
+                  .then(async (result) => {
+                    if (result.isConfirmed) {                  
+                      try {
 
-                    await this.userP.deleteUsuarioById(user._id).toPromise(); // eliminar de la base de datos
-                    this.popUp.aviso('Usuario Eliminado','Se ha eliminado correctamente el usuario','success');  
-                    delete this.usuarios[index]; // eliminar de la tabla
-                  } catch (error) {
+                        await this.userP.deleteUsuarioById(user._id).toPromise(); // eliminar de la base de datos
+                        this.popUp.aviso('Usuario Eliminado','Se ha eliminado correctamente el usuario','success');  
+                        delete this.usuarios[index]; // eliminar de la tabla
+                      } catch (error) {
 
-                    this.popUp.aviso('Error al eliminar el usuario!','No se pudo eliminar el usuario','error');
+                        this.popUp.aviso('Error al eliminar el usuario!','No se pudo eliminar el usuario','error');
 
-                 }
-                
-                }
-              });
+                    }
+                    
+                    }
+                  });
+    }
+
+    if (this.usuarioActual?.tipo === 2) {
+      this.popUp.pregunta('Eliminar Usuario','¿Desea eliminar este usuario del curso forma permanente?','error')
+                .then(async (result) => {
+                  if (result.isConfirmed) {                  
+                    try {
+                      console.log(this.usuarioActual, this.cursoActual)
+
+                      this.cursoActual?.participantes.filter(
+                        rut => {
+                          rut !== user.rut;
+                        }
+                      )
+                      await this.cursoP.updateCursoById(this.cursoActual!._id , this.cursoActual!).toPromise(); // actualizar curso
+                      this.popUp.aviso('Usuario Eliminado','Se ha eliminado correctamente el usuario del curso','success');  
+                      delete this.usuarios[index]; // eliminar de la tabla
+                    } catch (error) {
+
+                      this.popUp.aviso('Error al eliminar el usuario!','No se pudo eliminar el usuario','error');
+
+                  }
+                  
+                  }
+                });
+  }
+
+
   }
 
   async aprobarProfesor(user: User) {

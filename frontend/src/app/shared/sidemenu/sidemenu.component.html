@@ -37,6 +37,16 @@
                     <mat-icon mat-list-icon>school</mat-icon>
                     <span class="d-none d-sm-inline">Cursos</span>
                 </a>
+                <!--Crear Curso-->
+                <a [routerLink]="['/maxiaula/profesor/crear-curso']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>add</mat-icon>
+                    <span class="d-none d-sm-inline">Crear Curso</span>
+                </a>
+                <!--Administrar Cursos-->
+                <a [routerLink]="['/maxiaula/profesor/administrar-cursos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>toc</mat-icon>
+                    <span class="d-none d-sm-inline">Administrar Cursos</span>
+                </a>
 
             </ng-container>
 

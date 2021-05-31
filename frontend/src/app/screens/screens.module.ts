@@ -17,6 +17,10 @@ import { TablaUsuariosComponent } from './components/tabla-usuarios/tabla-usuari
 import { PrimeNgModule } from '../utilities/prime-ng.module';
 import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CursoViewComponent } from './components/curso-view/curso-view.component';
+import { CursoOptionsComponent } from './components/curso-options/curso-options.component';
+import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
+import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
 
 
 
@@ -31,6 +35,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VerNotasComponent,
     TablaUsuariosComponent,
     TipoUsuarioPipe,
+    CursoViewComponent,
+    CursoOptionsComponent,
+    CrearCursoComponent,
+    TablaCursosComponent,
     
   ],
   exports:[
@@ -39,6 +47,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardListComponent,
     VerNotasComponent,
     TablaUsuariosComponent,
+    CursoViewComponent,
+    TablaCursosComponent,
+    
     
   ],
   imports: [

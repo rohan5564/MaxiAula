@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpService } from '../../services/http/http.service';
 import { Curso } from '../../models/curso.model';
 import { User } from '../../models/user.model';
@@ -24,7 +24,7 @@ export class CursoProviderService {
     return this.httpService.delete<Curso>('/curso/delete/'+ _id);
   }
 
-  public updateCursoById(_id: string, curso: Partial<Curso>): Observable<Curso> {
+  public updateCursoById(_id: string, curso: Partial<Curso> | Curso): Observable<Curso> {
     return this.httpService.put<Curso>('/curso/put/' + _id, curso);
   }
 
@@ -40,7 +40,7 @@ export class CursoProviderService {
     return this.httpService.get<Curso[]>('/curso/cursosAlu/' + rut);
   }
 
-  public getCursosAluSta( user: User): Curso[] {
+  public getCursosAluSta( user: User): Observable<Curso[]> {
 
       let cursos: Curso[] = [];
       this.getCursosAlu(user.rut).subscribe(
@@ -49,7 +49,7 @@ export class CursoProviderService {
         }
       )
       console.log(cursos);
-      return cursos;
+      return of(cursos);
   }
 
 }

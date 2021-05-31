@@ -1,0 +1,32 @@
+<mat-card class="mt-3 Fixed animate__animated animate__fadeInDown">
+
+    <mat-card-content>
+        <mat-nav-list fxLayout="row">
+
+            <ng-container>
+
+
+                <!--Adm. Usuarios-->
+                <a [routerLink]="['../add-paricipante']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>person_add</mat-icon>
+                    <span class="d-none d-sm-inline">Añadir Participante</span>
+                </a>
+                <!--Adm. Cursos-->
+                <a [routerLink]="['../participantes/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>group</mat-icon>
+                    <span class="d-none d-sm-inline">Editar Participantes</span>
+                </a>
+                <a [routerLink]="['../edit', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>school</mat-icon>
+                    <span class="d-none d-sm-inline">Editar Curso</span>
+                </a>
+                <a [routerLink]="['../add-material']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>add</mat-icon>
+                    <span class="d-none d-sm-inline">Añadir Material</span>
+                </a>
+
+
+            </ng-container>
+        </mat-nav-list>
+    </mat-card-content>
+</mat-card>

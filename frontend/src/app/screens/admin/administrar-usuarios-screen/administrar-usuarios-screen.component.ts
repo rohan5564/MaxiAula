@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 
-import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/api';
 import { User } from 'src/app/core/models/user.model';
 import { UserProviderService } from '../../../core/providers/user/user-provider.service';
 import { AuthService } from '../../../auth/services/auth.service';
@@ -18,8 +14,6 @@ import { Observable } from 'rxjs';
 })
 export class AdministrarUsuariosScreenComponent implements OnInit {
 
-  color: ThemePalette = 'warn';
-  mode: ProgressSpinnerMode = 'indeterminate';
 
   usuarios$ : Observable<User[]> | undefined;
   usuarioActual: User | undefined;

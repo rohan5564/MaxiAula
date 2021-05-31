@@ -11,6 +11,8 @@ import { CursosScreenComponent } from './cursos-screen/cursos-screen.component';
 import { ScreensModule } from '../screens.module';
 import { MaterialModule } from '../../utilities/material.module';
 import { PrimeNgModule } from '../../utilities/prime-ng.module';
+import { ParticipantesComponent } from './participantes/participantes.component';
+import { AdministrarCursosComponent } from './administrar-cursos/administrar-cursos.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { PrimeNgModule } from '../../utilities/prime-ng.module';
     ProfesorScreenComponent,
     AgregarAlumnosScreenComponent,
     CursosScreenComponent,
+    ParticipantesComponent,
+    AdministrarCursosComponent,
   ],
   imports: [
     CommonModule,

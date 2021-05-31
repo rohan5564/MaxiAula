@@ -10,13 +10,21 @@
 
 <ng-template #divCurso>
 
+    <div *ngIf="usuarioActual.tipo === 1 || usuarioActual.tipo === 2" class="opciones row">
 
 
-    <div class="div mt-3">
+        <app-curso-options [usuarioActual]="usuarioActual" [cursoActual]="curso"></app-curso-options>
+
+    </div>
+
+
+
+    <div class="div mt-3 animate__animated animate__fadeInUp">
         <mat-card>
 
             <mat-card-content>
                 <h1>{{curso.nombre | titlecase}}</h1>
+
                 <div class="row container mt-2">
                     <div class="col-4"></div>
 
@@ -45,6 +53,7 @@
 
 
             </mat-card-content>
+
         </mat-card>
     </div>
 
