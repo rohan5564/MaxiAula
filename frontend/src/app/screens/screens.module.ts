@@ -21,6 +21,7 @@ import { CursoViewComponent } from './components/curso-view/curso-view.component
 import { CursoOptionsComponent } from './components/curso-options/curso-options.component';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
+import { SemestrePipe } from './pipes/semestre.pipe';
 
 
 
@@ -39,6 +40,7 @@ import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.com
     CursoOptionsComponent,
     CrearCursoComponent,
     TablaCursosComponent,
+    SemestrePipe,
     
   ],
   exports:[

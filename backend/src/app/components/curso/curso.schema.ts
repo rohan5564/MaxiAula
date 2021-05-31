@@ -6,7 +6,7 @@ const definition: Partial<Record<keyof Curso, any>> = {
     profACargo: { type: String, required: true},
     nombre: { type: String, required: true },
     descripcion: {type: String},
-    año: { type: Number },
+    anio: { type: Number },
     semestre: { type: Number},
     cratedAt: { type: Date},
     participantes: { type: Array },
