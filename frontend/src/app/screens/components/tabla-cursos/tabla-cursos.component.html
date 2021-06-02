@@ -23,6 +23,9 @@
                             <!--Header-->
                             <ng-template pTemplate="header">
                                 <tr>
+                                    <th pSortableColumn="profACargo" *ngIf="usuarioActual!.tipo === 1">Prof. a Cargo
+                                        <p-sortIcon field="profACargo"></p-sortIcon>
+                                    </th>
                                     <th pSortableColumn="nombre">Nombre
                                         <p-sortIcon field="nombre"></p-sortIcon>
                                     </th>
@@ -46,6 +49,17 @@
                             <ng-template pTemplate="body" let-curso let-editing="editing" let-ri="rowIndex">
                                 <!--definer la fila editable-->
                                 <tr [pEditableRow]="curso">
+                                    <td *ngIf="usuarioActual!.tipo === 1">
+                                        <p-cellEditor>
+                                            <ng-template pTemplate="input">
+                                                <input pInputText type="text" [(ngModel)]="curso.profACargo" placeholder="12345678-9" required>
+                                            </ng-template>
+                                            <ng-template pTemplate="output">
+                                                {{curso.profACargo}}
+                                            </ng-template>
+                                        </p-cellEditor>
+
+                                    </td>
                                     <td>
                                         <p-cellEditor>
                                             <ng-template pTemplate="input">
