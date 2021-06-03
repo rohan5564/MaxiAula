@@ -8,6 +8,8 @@ import { CursoViewComponent } from '../components/curso-view/curso-view.componen
 import { ParticipantesComponent } from './participantes/participantes.component';
 import { CrearCursoComponent } from '../components/crear-curso/crear-curso.component';
 import { AdministrarCursosComponent } from './administrar-cursos/administrar-cursos.component';
+import { AgregarParticipantesComponent } from './agregar-participantes/agregar-participantes.component';
+import { AgregarMaterialComponent } from './agregar-material/agregar-material.component';
 
 const routes: Routes = [
   {path: '', component: ProfesorScreenComponent},
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path: 'curso/:id', component: CursoViewComponent},
   {path: 'curso/participantes/:id', component: ParticipantesComponent},
   {path: 'crear-curso', component: CrearCursoComponent},
-  {path: 'administrar-cursos', component: AdministrarCursosComponent}
+  {path: 'administrar-cursos', component: AdministrarCursosComponent},
+  {path: 'curso/agregar-participantes/:id', component: AgregarParticipantesComponent},
+  {path: 'curso/agregar-material/:id', component: AgregarMaterialComponent}
 
 ];
 

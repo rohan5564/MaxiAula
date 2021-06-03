@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { PrimeNgModule } from '../utilities/prime-ng.module';
+import { MaterialModule } from '../utilities/material.module';
 
 
 
@@ -21,7 +22,8 @@ import { PrimeNgModule } from '../utilities/prime-ng.module';
     RouterModule,
     ReactiveFormsModule,
     SharedModule,
-    PrimeNgModule
+    PrimeNgModule,
+    MaterialModule
   ]
 })
 export class AuthModule { }

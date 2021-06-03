@@ -11,6 +11,11 @@
                     <span class="d-none d-sm-inline">Principal</span>
                     <!-- se oculta en telefono-->
                 </a>
+                <!--Agregar Usuarios-->
+                <a [routerLink]="['/maxiaula/admin/agregar-usuarios']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>person_add</mat-icon>
+                    <span class="d-none d-sm-inline">Agregar Usuarios</span>
+                </a>
                 <!--Adm. Usuarios-->
                 <a [routerLink]="['/maxiaula/admin/administrar-usuarios']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>group</mat-icon>
@@ -35,7 +40,12 @@
                 <!--Cursos-->
                 <a [routerLink]="['/maxiaula/profesor/cursos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>school</mat-icon>
-                    <span class="d-none d-sm-inline">Cursos</span>
+                    <span class="d-none d-sm-inline">Mis Cursos</span>
+                </a>
+                <!--Agregar Usuarios-->
+                <a [routerLink]="['/maxiaula/profesor/agregar-alumnos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>person_add</mat-icon>
+                    <span class="d-none d-sm-inline">Agregar Alumnos</span>
                 </a>
                 <!--Crear Curso-->
                 <a [routerLink]="['/maxiaula/profesor/crear-curso']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">

@@ -28,7 +28,7 @@
 
                                     <span class="form-text text-danger" *ngIf="campoNoValido('contra')">
                                             La contraseña debe tener al menos 8 caracteres
-                                        </span>
+                                    </span>
 
                                 </div>
 
@@ -95,7 +95,13 @@
                                     <span class="form-text text-danger" *ngIf="campoNoValido2('fecha')">
                                         Por favor ingrese una fecha de nacimiento válida
                                     </span>
-                                    <p-calendar [locale]="es" [inline]="true" [monthNavigator]="true" dateFormat="dd/mm/yy" [yearNavigator]="true" yearRange="1900:2021" type="date" class="date" formControlName="fecha" placeholder="Ingrese su Fecha de Nacimiento"></p-calendar>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Su fecha de Nacimiento</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="fecha">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker touchUi #picker></mat-datepicker>
+                                    </mat-form-field>
+
                                 </div>
 
 

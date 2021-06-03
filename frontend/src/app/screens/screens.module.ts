@@ -22,6 +22,8 @@ import { CursoOptionsComponent } from './components/curso-options/curso-options.
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
 import { SemestrePipe } from './pipes/semestre.pipe';
+import { AgregarUsuariosComponent } from './components/agregar-usuarios/agregar-usuarios.component';
+import { AgregarMaterialComponent } from './components/agregar-material/agregar-material.component';
 
 
 
@@ -41,6 +43,8 @@ import { SemestrePipe } from './pipes/semestre.pipe';
     CrearCursoComponent,
     TablaCursosComponent,
     SemestrePipe,
+    AgregarUsuariosComponent,
+    AgregarMaterialComponent,
     
   ],
   exports:[
@@ -51,6 +55,8 @@ import { SemestrePipe } from './pipes/semestre.pipe';
     TablaUsuariosComponent,
     CursoViewComponent,
     TablaCursosComponent,
+    AgregarUsuariosComponent,
+    AgregarMaterialComponent,
     
     
   ],

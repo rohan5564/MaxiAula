@@ -7,9 +7,9 @@
 
 
                 <!--Adm. Usuarios-->
-                <a [routerLink]="['../add-paricipante']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['../agregar-participantes', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>person_add</mat-icon>
-                    <span class="d-none d-sm-inline">Añadir Participante</span>
+                    <span class="d-none d-sm-inline">Añadir Participantes</span>
                 </a>
                 <!--Adm. Cursos-->
                 <a [routerLink]="['../participantes/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
@@ -20,7 +20,7 @@
                     <mat-icon mat-list-icon>school</mat-icon>
                     <span class="d-none d-sm-inline">Editar Curso</span>
                 </a>
-                <a [routerLink]="['../add-material']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['../agregar-material', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>add</mat-icon>
                     <span class="d-none d-sm-inline">Añadir Material</span>
                 </a>

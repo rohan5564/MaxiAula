@@ -1,0 +1,50 @@
+<ng-container *ngIf="!curso; else divAgregarUsuarios">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-template #divAgregarUsuarios>
+
+    <button *ngIf="curso" [routerLink]="['/maxiaula/profesor/curso/' + curso!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
+    <mat-tab-group dynamicHeight mat-align-tabs="center">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">add</mat-icon>
+                Agregar Alumno ya existente
+            </ng-template>
+            <div class="mb-3 mt-4 row">
+                <label class="col-sm-3 col-form-label">RUT del Alumno ya inscrito a agregar:</label>
+                <div class="col-sm-9">
+
+                    <form (ngSubmit)="onSubmitRut()" [formGroup]="rutForm">
+
+                        <input class="form-control" formControlName="rut" laceholder="RUT del Alumno">
+
+
+                        <button class="btn btn-primary mt-3" type="submit">
+                                Agregar al curso
+                            </button>
+                    </form>
+
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">person_add</mat-icon>
+                Inscribir Alumno y agregarlo al curso
+            </ng-template>
+            <!--Agregar usuarios-->
+            <app-agregar-usuarios [cursoActual]="curso" [usuarioActual]="usuarioActual"></app-agregar-usuarios>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+</ng-template>

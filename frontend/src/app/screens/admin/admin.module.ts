@@ -11,6 +11,7 @@ import { AdministrarUsuariosScreenComponent } from './administrar-usuarios-scree
 import { ScreensModule } from '../screens.module';
 import { MaterialModule } from '../../utilities/material.module';
 import { PrimeNgModule } from '../../utilities/prime-ng.module';
+import { AddUsersComponent } from './add-users/add-users.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { PrimeNgModule } from '../../utilities/prime-ng.module';
     AdminScreenComponent,
     AdministrarCursosScreenComponent,
     AdministrarUsuariosScreenComponent,
+    AddUsersComponent,
   ],
   imports: [
     CommonModule,

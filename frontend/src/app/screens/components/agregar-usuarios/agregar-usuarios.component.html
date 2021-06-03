@@ -1,0 +1,107 @@
+<mat-card>
+    <mat-card-content>
+
+        <div class="row mt-3">
+            <div class="col">
+
+                <form (ngSubmit)="onSubmitRegistrarForm()" autocomplete="off" [formGroup]="registrarForm">
+
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"><b>Nota:</b> 
+                            La contraseña para los usuarios creador por defecto es 'maxiaula'
+                        </label>
+                    </div>
+
+                    <!-- Radio con el Tipo de usuario para administrador-->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label "><b>Ingrese el tipo de usuario</b> 
+                            
+                        </label>
+                        <div class="col-sm-9">
+                            <div class="btn-group text-center" *ngIf="usuarioActual!.tipo === 1">
+                                <input formControlName="tipo" type="radio" class="btn-check" value=3 id="option1" autocomplete="off" checked />
+                                <label class="btn btn-primary" for="option1">Alumno</label>
+
+                                <input formControlName="tipo" type="radio" class="btn-check" value=2 id="option2" autocomplete="off" />
+                                <label class="btn btn-primary" for="option2">Profesor</label>
+
+                                <input formControlName="tipo" type="radio" class="btn-check" value=4 id="option3" autocomplete="off" />
+                                <label class="btn btn-primary" for="option3">Apoderado</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Nombre -->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"><b>Nombre</b></label>
+                        <div class="col-sm-9">
+
+                            <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre del usuario">
+
+                            <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
+                                El nombre no es válido
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- RUT -->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"><b>RUT</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" formControlName="rut" placeholder="RUT del usuario">
+                            <span class="form-text text-danger" *ngIf="campoNoValido('rut')">
+                                {{rutErrorMsg}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"><b>Correo</b></label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" formControlName="correo" placeholder="Email del usuario">
+                            <span class="form-text text-danger" *ngIf="campoNoValido('correo')">
+                                {{ emailErrorMsg }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--Fecha de Nacimiento-->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"><b>Fecha de Nacimiento</b></label>
+                        <div class="col-sm-9">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Ingresa la fecha de nacimiento</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="fecha">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                            <span class="form-text text-danger" *ngIf="campoNoValido('fecha')">
+                                Por favor ingrese una fecha de nacimiento válida
+                            </span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary btn-xl">
+                                        Registrar
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+    </mat-card-content>
+</mat-card>
