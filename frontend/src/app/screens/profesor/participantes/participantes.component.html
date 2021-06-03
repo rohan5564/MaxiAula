@@ -1,2 +1,4 @@
 <h1 class="text-center">Lista de participantes pertenecientes al curso</h1>
+<button [routerLink]="['/maxiaula/profesor/curso/' + curso!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
+
 <app-tabla-usuarios [usuarios]="participantes$ | async" [usuarioActual]="usuarioActual" [cursoActual]="curso"></app-tabla-usuarios>

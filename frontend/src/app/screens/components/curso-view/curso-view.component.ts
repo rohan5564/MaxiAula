@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Curso } from 'src/app/core/models/curso.model';
@@ -20,7 +21,8 @@ export class CursoViewComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private cursoP: CursoProviderService,
-    private auth: AuthService
+    private auth: AuthService,
+    private _sanitizer: DomSanitizer
   ) {
     
    }
@@ -39,6 +41,17 @@ export class CursoViewComponent implements OnInit, OnDestroy {
     console.log('Entrando',this.usuarioActual)
   }
 
+  getVideoIframe(url: string) {
+    var video, results;
+ 
+    if (url === null) {
+        return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video   = (results === null) ? url : results[1];
+ 
+    return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);   
+  }
 
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.

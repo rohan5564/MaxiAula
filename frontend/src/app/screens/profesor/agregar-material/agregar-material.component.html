@@ -1,1 +1,18 @@
-<p>agregar-material works!</p>
+<ng-container *ngIf="!curso || !usuarioActual; else divAgregarMaterial">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-template #divAgregarMaterial>
+
+
+    <div class="animate__animated animate__bounceInDown">
+        <app-agregar-material-component [cursoActual]="curso" [usuarioActual]="usuarioActual"></app-agregar-material-component>
+    </div>
+
+</ng-template>

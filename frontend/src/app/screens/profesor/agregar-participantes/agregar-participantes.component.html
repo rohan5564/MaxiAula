@@ -9,42 +9,49 @@
 </ng-container>
 
 <ng-template #divAgregarUsuarios>
-
-    <button *ngIf="curso" [routerLink]="['/maxiaula/profesor/curso/' + curso!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
-    <mat-tab-group dynamicHeight mat-align-tabs="center">
-        <mat-tab>
-            <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">add</mat-icon>
-                Agregar Alumno ya existente
-            </ng-template>
-            <div class="mb-3 mt-4 row">
-                <label class="col-sm-3 col-form-label">RUT del Alumno ya inscrito a agregar:</label>
-                <div class="col-sm-9">
-
-                    <form (ngSubmit)="onSubmitRut()" [formGroup]="rutForm">
-
-                        <input class="form-control" formControlName="rut" laceholder="RUT del Alumno">
+    <div class="animate__animated animate__bounceInDown">
+        <mat-card>
+            <mat-card-content>
 
 
-                        <button class="btn btn-primary mt-3" type="submit">
+
+                <button *ngIf="curso" [routerLink]="['/maxiaula/profesor/curso/' + curso!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
+                <mat-tab-group dynamicHeight mat-align-tabs="center">
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon">add</mat-icon>
+                            Agregar Alumno ya existente
+                        </ng-template>
+                        <div class="mb-3 mt-4 row">
+                            <label class="col-sm-3 col-form-label">RUT del Alumno ya inscrito a agregar:</label>
+                            <div class="col-sm-9">
+
+                                <form (ngSubmit)="onSubmitRut()" [formGroup]="rutForm">
+
+                                    <input class="form-control" formControlName="rut" laceholder="RUT del Alumno">
+
+
+                                    <button class="btn btn-primary mt-3" type="submit">
                                 Agregar al curso
                             </button>
-                    </form>
+                                </form>
 
-                </div>
-            </div>
-        </mat-tab>
+                            </div>
+                        </div>
+                    </mat-tab>
 
-        <mat-tab>
-            <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">person_add</mat-icon>
-                Inscribir Alumno y agregarlo al curso
-            </ng-template>
-            <!--Agregar usuarios-->
-            <app-agregar-usuarios [cursoActual]="curso" [usuarioActual]="usuarioActual"></app-agregar-usuarios>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon">person_add</mat-icon>
+                            Inscribir Alumno y agregarlo al curso
+                        </ng-template>
+                        <!--Agregar usuarios-->
+                        <app-agregar-usuarios [cursoActual]="curso" [usuarioActual]="usuarioActual"></app-agregar-usuarios>
 
-        </mat-tab>
+                    </mat-tab>
 
-    </mat-tab-group>
-
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </ng-template>

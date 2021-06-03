@@ -1,1 +1,59 @@
-<p>agregar-material works!</p>
+<mat-card>
+    <mat-card-content>
+        <button [routerLink]="['/maxiaula/profesor/curso/' + cursoActual!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
+        <div class="mb-3 mt-4 row">
+            <form>
+
+                <mat-tab-group dynamicHeight mat-align-tabs="center">
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon">smart_display</mat-icon>
+                            Añadir Video de YouTube
+                        </ng-template>
+                        <div class="mb-3 mt-4 row">
+                            <label class="col-sm-3 col-form-label">Link del video de YouTube a agregar:</label>
+                            <div class="col-sm-9">
+
+                                <form (ngSubmit)="submitVideo()" [formGroup]="videoForm">
+                                    <input class="form-control" formControlName="link" placeholder="link del video de YouTube">
+
+
+                                    <button [disabled]="!videoForm.valid" class="btn btn-primary mt-3" type="submit">
+                                        Agregar Material al curso
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon">add_photo_alternate</mat-icon>
+                            Añadir Imagen
+                        </ng-template>
+                        <div class="mb-3 mt-4 row">
+                            <label class="col-sm-3 col-form-label">Link de la imagen a agregar:</label>
+                            <div class="col-sm-9">
+
+                                <form (ngSubmit)="submitImagen()" [formGroup]="imageForm">
+                                    <input class="form-control" formControlName="link" placeholder="link de la imagen .jpg">
+
+
+                                    <button [disabled]="!imageForm.valid" class="btn btn-primary mt-3" type="submit">
+                                        Agregar Material al curso
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </mat-tab>
+
+
+                </mat-tab-group>
+            </form>
+        </div>
+
+    </mat-card-content>
+</mat-card>
