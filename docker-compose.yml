@@ -1,0 +1,37 @@
+version: '3.8' # docker engine v19.03.0+
+
+services:
+  back:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    environment: 
+      PORT: ${BACK_PORT}
+    networks: 
+      - maxiaula
+    expose:
+      - ${BACK_PORT}
+    ports:
+      - '${BACK_PORT}:${BACK_PORT}'
+  front:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on: 
+      - back
+    networks: 
+      - maxiaula
+    expose:
+      - ${FRONT_PORT}
+      - 49153
+    ports:
+      - '${FRONT_PORT}:${FRONT_PORT}'
+    volumes: 
+      - type: 'bind'
+        read_only: false
+        source: ./frontend/
+        target: /app-front/
+
+networks:
+  maxiaula:
+    driver: bridge
