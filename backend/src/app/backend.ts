@@ -8,7 +8,9 @@ async function main() {
     
     const server: Express = express();
     const port: number = 57002;
-    
+    const bodyParser = require('body-parser');
+
+    server.use(bodyParser.json())
     server.use(express.json());
     server.use(morgan('dev'));
     server.use(cors());
