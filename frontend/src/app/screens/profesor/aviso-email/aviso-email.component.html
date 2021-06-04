@@ -1,0 +1,80 @@
+<ng-container *ngIf="!cursos; else divCursos">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-template #divCursos>
+    <div class="animate__animated animate__bounceInDown">
+
+        <mat-card>
+            <mat-card-content>
+
+                <mat-horizontal-stepper linear #stepper>
+                    <!--Paso 1-->
+                    <mat-step [stepControl]="cursoControl">
+                        <ng-template matStepLabel>Selecciona el Curso</ng-template>
+
+                        <div class="row">
+                            <h4 class="text-center">
+                                Seleccione un curso en el cual quiera enviar un aviso y luego presione siguiente
+                            </h4>
+                            <div class="col-4">
+
+                            </div>
+                            <div class="col-4">
+                                <mat-form-field appearance="fill">
+
+                                    <mat-select [formControl]="cursoControl" required>
+
+                                        <mat-option *ngFor="let curso of cursos" [value]="curso">
+                                            {{curso.nombre | titlecase}}
+
+                                        </mat-option>
+
+                                    </mat-select>
+                                    <mat-error *ngIf="cursoControl.hasError('required')">Debe seleccionar uno de sus cursos</mat-error>
+                                    <mat-hint>Recuerde presionar siguiente para continuar</mat-hint>
+                                </mat-form-field>
+
+
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col ">
+                                    <button matStepperNext [disabled]="cursoControl.hasError('required')" class="btn btn-primary btn-xl">
+                                        Siguiente
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </mat-step>
+                    <!--Paso 2-->
+                    <mat-step>
+
+                        <ng-template matStepLabel>Complete el mensaje</ng-template>
+
+                        <app-mensaje-email [cursoActual]="cursoControl.value" [usuarioActual]="usuarioActual"></app-mensaje-email>
+
+
+                    </mat-step>
+
+                </mat-horizontal-stepper>
+
+
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+</ng-template>

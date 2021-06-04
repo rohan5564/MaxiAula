@@ -6,20 +6,22 @@
             <ng-container>
 
 
-                <!--Adm. Usuarios-->
+                <!--Añadir Participantes-->
                 <a [routerLink]="['../agregar-participantes', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>person_add</mat-icon>
                     <span class="d-none d-sm-inline">Añadir Participantes</span>
                 </a>
-                <!--Adm. Cursos-->
+                <!--Adm. participantes-->
                 <a [routerLink]="['../participantes/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>group</mat-icon>
                     <span class="d-none d-sm-inline">Editar Participantes</span>
                 </a>
+                <!--Editar Curso-->
                 <a [routerLink]="['../edit', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>school</mat-icon>
                     <span class="d-none d-sm-inline">Editar Curso</span>
                 </a>
+                <!--Agregar Material-->
                 <a [routerLink]="['../agregar-material', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>add</mat-icon>
                     <span class="d-none d-sm-inline">Añadir Material</span>

@@ -9,8 +9,7 @@ import { Mail } from '../../models/mail.model';
 })
 export class MailService {
 
-  baseURL = environment.baseURL;
-
+  
   constructor(
     private http: HttpService
   ) { 
@@ -19,7 +18,7 @@ export class MailService {
 
   sendMessage (body: Mail) {
 
-    return this.http.post<Mail>(this.baseURL+'/mail/mensaje', body);
+    return this.http.post<Mail>('/mail/mensaje', body);
 
   }
 }

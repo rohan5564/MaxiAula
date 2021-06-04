@@ -15,6 +15,7 @@ import { ParticipantesComponent } from './participantes/participantes.component'
 import { AdministrarCursosComponent } from './administrar-cursos/administrar-cursos.component';
 import { AgregarParticipantesComponent } from './agregar-participantes/agregar-participantes.component';
 import { AgregarMaterialComponent } from './agregar-material/agregar-material.component';
+import { AvisoEmailComponent } from './aviso-email/aviso-email.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AgregarMaterialComponent } from './agregar-material/agregar-material.co
     AdministrarCursosComponent,
     AgregarParticipantesComponent,
     AgregarMaterialComponent,
+    AvisoEmailComponent,
   ],
   imports: [
     CommonModule,
