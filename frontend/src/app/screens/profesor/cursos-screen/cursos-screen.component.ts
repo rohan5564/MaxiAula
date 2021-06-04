@@ -24,7 +24,7 @@ export class CursosScreenComponent implements OnInit, OnDestroy {
 
    this.sus = this.cursosProfe$.subscribe(
       cursos => {
-        console.log(cursos);
+       // console.log(cursos);
         this.cursos = cursos;
       }      
     )

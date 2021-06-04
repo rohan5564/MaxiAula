@@ -47,7 +47,7 @@ export class AgregarUsuariosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.cursoActual)
+    
 
   }
 

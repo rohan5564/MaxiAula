@@ -12,6 +12,7 @@ import { ScreensModule } from '../screens.module';
 import { MaterialModule } from '../../utilities/material.module';
 import { PrimeNgModule } from '../../utilities/prime-ng.module';
 import { AddUsersComponent } from './add-users/add-users.component';
+import { EnviarMailsComponent } from './enviar-mails/enviar-mails.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AddUsersComponent } from './add-users/add-users.component';
     AdministrarCursosScreenComponent,
     AdministrarUsuariosScreenComponent,
     AddUsersComponent,
+    EnviarMailsComponent,
   ],
   imports: [
     CommonModule,

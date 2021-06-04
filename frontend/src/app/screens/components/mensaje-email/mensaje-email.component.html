@@ -1,0 +1,66 @@
+<h1 class="text.center">Complete los campos para enviar el mensaje</h1>
+
+<div class="row container">
+    <div class="col">
+        <div class="row mt-3">
+            <div class="col">
+
+                <form (ngSubmit)="onSubmitMensaje()" autocomplete="off" [formGroup]="mensajeForm">
+
+
+                    <!-- Asunto -->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"><b>Asunto</b></label>
+                        <div class="col-sm-9">
+
+                            <input type="text" class="form-control" formControlName="asunto" placeholder="Asunto del mensaje">
+
+                            <span class="form-text text-danger" *ngIf="campoNoValido('asunto')">
+                                El asunto es requerido
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <!-- Destinatario Solo para Admin. -->
+                    <div class="mb-3 row" *ngIf="usuarioActual!.tipo === 1">
+                        <label class="col-sm-3 col-form-label"><b>Destinatario</b></label>
+                        <div class="col-sm-9">
+
+                            <input type="text" class="form-control" formControlName="destinatario" placeholder="Correo del destinatario">
+
+                        </div>
+                    </div>
+
+                    <!-- Cuerpo -->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"><b>Cuerpo del mensaje</b></label>
+                        <div class="col-sm-9">
+
+                            <textarea type="text-area" class="form-control" formControlName="cuerpo"> </textarea>
+
+                            <span class="form-text text-danger" *ngIf="campoNoValido('cuerpo')">
+                                El cuerpo del mensaje es requerido
+                            </span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary btn-xl">
+                                        Enviar Mensaje
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

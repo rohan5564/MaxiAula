@@ -11,6 +11,12 @@
                     <span class="d-none d-sm-inline">Principal</span>
                     <!-- se oculta en telefono-->
                 </a>
+                <!--Principal-->
+                <a [routerLink]="['/maxiaula/admin/enviar-mails']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>email</mat-icon>
+                    <span class="d-none d-sm-inline">Enviar Mails</span>
+                    <!-- se oculta en telefono-->
+                </a>
                 <!--Agregar Usuarios-->
                 <a [routerLink]="['/maxiaula/admin/agregar-usuarios']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>person_add</mat-icon>
@@ -41,6 +47,11 @@
                 <a [routerLink]="['/maxiaula/profesor/cursos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>school</mat-icon>
                     <span class="d-none d-sm-inline">Mis Cursos</span>
+                </a>
+                <!--Aviso Email-->
+                <a [routerLink]="['/maxiaula/profesor/aviso']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>email</mat-icon>
+                    <span class="d-none d-sm-inline">Nuevo aviso por email</span>
                 </a>
                 <!--Agregar Usuarios-->
                 <a [routerLink]="['/maxiaula/profesor/agregar-alumnos']" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
