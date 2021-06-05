@@ -9,11 +9,10 @@ volumes:
 
 services:
   back:
+    container_name: maxi-back
     build: 
       context: ./backend
       dockerfile: Dockerfile
-    depends_on: 
-      - back
     environment: 
       PORT: ${BACK_PORT}
     networks: 
@@ -27,6 +26,8 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile
+    depends_on: 
+        - back
     networks: 
       - maxiaula
     volumes: 
