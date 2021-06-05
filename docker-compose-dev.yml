@@ -1,0 +1,32 @@
+version: '3.8' # docker engine v19.03.0+
+
+networks:
+  maxiaula-dev:
+    driver: bridge
+
+services:
+  back-dev:
+    container_name: maxi-back-dev
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    environment: 
+      PORT: ${BACK_PORT}
+    networks: 
+      - maxiaula-dev
+    # expose:
+    #   - ${BACK_PORT}
+    ports:
+      - '${BACK_PORT}:${BACK_PORT}'
+  front-dev:
+    container_name: maxi-front-dev
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    depends_on: 
+      - back-dev
+    networks: 
+      - maxiaula-dev
+    expose:
+      - ${FRONT_PORT}
+      - 49153

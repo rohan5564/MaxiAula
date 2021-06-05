@@ -8,26 +8,26 @@ volumes:
   shared_volume:
 
 services:
-#   back:
-#     container_name: maxi-back
-#     build: 
-#       context: ./backend
-#       dockerfile: Dockerfile
-#     environment: 
-#       PORT: ${BACK_PORT}
-#     networks: 
-#       - maxiaula
-#     expose:
-#       - ${BACK_PORT}
-#     ports:
-#       - '${BACK_PORT}:${BACK_PORT}'
+  back:
+    container_name: maxi-back
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    environment: 
+      PORT: ${BACK_PORT}
+    networks: 
+      - maxiaula
+    # expose:
+    #   - ${BACK_PORT}
+    ports:
+      - '${BACK_PORT}:${BACK_PORT}'
   front:
     container_name: maxi-front
     build: 
       context: ./frontend
       dockerfile: Dockerfile
-    # depends_on: 
-    #   - back
+    depends_on: 
+      - back
     networks: 
       - maxiaula
     volumes: 
