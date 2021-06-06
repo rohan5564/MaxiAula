@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { SelectItem } from 'primeng/api';
 
 import { Curso } from 'src/app/core/models/curso.model';
-import { User } from 'src/app/core/models/user.model';
 import { CursoProviderService } from 'src/app/core/providers/curso/curso-provider.service';
 import { PopupService } from 'src/app/core/services/popup/popup.service';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { SelectItem } from 'primeng/api';
+import { ThemePalette } from '@angular/material/core';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-tabla-cursos',
@@ -78,7 +78,12 @@ export class TablaCursosComponent implements OnInit {
 
           await this.cursoP.deleteCursoById(curso._id).toPromise(); // eliminar de la base de datos
           this.popUp.aviso('Curso Eliminado','Se ha eliminado el curso correctamente','success');  
-          delete this.cursos[index]; // eliminar de la tabla
+
+          this.cursos!.forEach( (item: Curso, index: any) => { // borrar del arreglo de cursos
+            if(item === curso) this.cursos!.splice(index,1);
+          });
+
+          //delete this.cursos[index]; // eliminar de la tabla
         } catch (error) {
 
           this.popUp.aviso('Error al eliminar el curso!','No se pudo eliminar el curso','error');

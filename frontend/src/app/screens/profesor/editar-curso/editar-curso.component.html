@@ -1,0 +1,17 @@
+<ng-container *ngIf="!cursoActual; else divCurso">
+    <div class="container h-100 d-flex justify-content-center">
+
+        <div class="jumbotron my-auto">
+            <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-template #divCurso>
+
+    <div class="animate__animated animate__bounceInDown">
+        <app-curso-edit [cursoActual]="cursoActual"></app-curso-edit>
+    </div>
+
+</ng-template>

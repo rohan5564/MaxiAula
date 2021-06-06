@@ -1,34 +1,31 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-import { ScreensComponent } from './screens.component';
-import { HomeScreenComponent } from './home-screen/home-screen.component';
-import { ScreensRoutingModule } from './screens-routing.module';
-import { MaterialModule } from '../utilities/material.module';
-import { SharedModule } from '../shared/shared.module';
-import { MiPerfilScreenComponent } from './mi-perfil-screen/mi-perfil-screen.component';
+import { AgregarMaterialComponent } from './components/agregar-material/agregar-material.component';
+import { AgregarUsuariosComponent } from './components/agregar-usuarios/agregar-usuarios.component';
 import { CardComponent } from './components/card/card.component';
 import { CardListComponent } from './components/card-list/card-list.component';
-import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
-import { TablaUsuariosComponent } from './components/tabla-usuarios/tabla-usuarios.component';
-import { PrimeNgModule } from '../utilities/prime-ng.module';
-import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
-import { CursoViewComponent } from './components/curso-view/curso-view.component';
-import { CursoOptionsComponent } from './components/curso-options/curso-options.component';
+import { CommonModule } from '@angular/common';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
-import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
-import { SemestrePipe } from './pipes/semestre.pipe';
-import { AgregarUsuariosComponent } from './components/agregar-usuarios/agregar-usuarios.component';
-import { AgregarMaterialComponent } from './components/agregar-material/agregar-material.component';
+import { CursoEditComponent } from './components/curso-edit/curso-edit.component';
+import { CursoOptionsComponent } from './components/curso-options/curso-options.component';
+import { CursoViewComponent } from './components/curso-view/curso-view.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { MaterialModule } from '../utilities/material.module';
 import { MensajeEmailComponent } from './components/mensaje-email/mensaje-email.component';
+import { MiPerfilScreenComponent } from './mi-perfil-screen/mi-perfil-screen.component';
+import { NgModule } from '@angular/core';
+import { PrimeNgModule } from '../utilities/prime-ng.module';
 import { RecursosViewComponent } from './components/recursos-view/recursos-view.component';
-
-
-
+import { RouterModule } from '@angular/router';
+import { ScreensComponent } from './screens.component';
+import { ScreensRoutingModule } from './screens-routing.module';
+import { SemestrePipe } from './pipes/semestre.pipe';
+import { SharedModule } from '../shared/shared.module';
+import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
+import { TablaUsuariosComponent } from './components/tabla-usuarios/tabla-usuarios.component';
+import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
+import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +46,8 @@ import { RecursosViewComponent } from './components/recursos-view/recursos-view.
     AgregarMaterialComponent,
     MensajeEmailComponent,
     RecursosViewComponent,
+    CursoEditComponent,
+  
     
   ],
   exports:[
@@ -62,6 +61,7 @@ import { RecursosViewComponent } from './components/recursos-view/recursos-view.
     AgregarUsuariosComponent,
     AgregarMaterialComponent,
     MensajeEmailComponent,
+    CursoEditComponent,
     
   ],
   imports: [

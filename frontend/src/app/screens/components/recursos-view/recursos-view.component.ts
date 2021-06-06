@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Curso, Recurso } from 'src/app/core/models/curso.model';
+
 import { AuthService } from '../../../auth/services/auth.service';
-import { PopupService } from '../../../core/services/popup/popup.service';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { PopupService } from '../../../core/services/popup/popup.service';
 
 @Component({
   selector: 'app-recursos-view',
@@ -53,7 +54,7 @@ export class RecursosViewComponent implements OnInit {
       async result => {
         if (result.isConfirmed) {
 
-          this.recursos!.forEach( (item, index) => {
+          this.recursos!.forEach( (item, index) => { // borrar del arreglo de recursos
             if(item === recurso) this.recursos!.splice(index,1);
           });
 

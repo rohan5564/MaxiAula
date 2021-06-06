@@ -1,13 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { SelectItem } from 'primeng/api';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { User } from 'src/app/core/models/user.model';
-import { UserProviderService } from '../../../core/providers/user/user-provider.service';
-import { PopupService } from '../../../core/services/popup/popup.service';
 import { Curso } from '../../../core/models/curso.model';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
+import { PopupService } from '../../../core/services/popup/popup.service';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { SelectItem } from 'primeng/api';
+import { ThemePalette } from '@angular/material/core';
+import { User } from 'src/app/core/models/user.model';
+import { UserProviderService } from '../../../core/providers/user/user-provider.service';
 
 @Component({
   selector: 'app-tabla-usuarios',
@@ -86,8 +86,12 @@ export class TablaUsuariosComponent implements OnInit {
                       try {
 
                         await this.userP.deleteUsuarioById(user._id).toPromise(); // eliminar de la base de datos
-                        this.popUp.aviso('Usuario Eliminado','Se ha eliminado correctamente el usuario','success');  
-                        delete this.usuarios[index]; // eliminar de la tabla
+                        this.popUp.aviso('Usuario Eliminado','Se ha eliminado correctamente el usuario','success'); 
+
+                        this.usuarios!.forEach( (item: User, index: any) => { // borrar del arreglo de usuarios
+                          if(item === user) this.usuarios!.splice(index,1);
+                        }); 
+                        //delete this.usuarios[index]; // eliminar de la tabla
                       } catch (error) {
 
                         this.popUp.aviso('Error al eliminar el usuario!','No se pudo eliminar el usuario','error');
@@ -112,7 +116,11 @@ export class TablaUsuariosComponent implements OnInit {
                       )
                       await this.cursoP.updateCursoById(this.cursoActual!._id , this.cursoActual!).toPromise(); // actualizar curso
                       this.popUp.aviso('Usuario Eliminado','Se ha eliminado correctamente el usuario del curso','success');  
-                      delete this.usuarios[index]; // eliminar de la tabla
+                      
+                      this.usuarios!.forEach( (item: User, index: any) => { // borrar del arreglo de usuarios
+                        if(item === user) this.usuarios!.splice(index,1);
+                      }); 
+                      //delete this.usuarios[index]; // eliminar de la tabla
                     } catch (error) {
 
                       this.popUp.aviso('Error al eliminar el usuario!','No se pudo eliminar el usuario','error');

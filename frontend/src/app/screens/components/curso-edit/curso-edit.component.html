@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-content>
+        <h1 class="text-center">Crear un nuevo curso</h1>
+        <form (ngSubmit)="onSubmitEditCurso()" [formGroup]="editCursoForm" autocomplete="off">
+            <!-- Portada -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Portada del Curso</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" [ngModel]="cursoActual!.portadaURL" formControlName="portada" placeholder="link de la imagen (.jpg .png) para utilizar como portada del curso">
+
+                </div>
+            </div>
+
+            <!-- Nombre -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Nombre</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" [ngModel]="cursoActual!.nombre" formControlName="nombre" placeholder="Nombre del Curso">
+
+                    <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
+                        El nombre no es válido
+                    </span>
+                </div>
+            </div>
+            <!-- Descripcion -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Descripcion del curso incluir horario por favor</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" [ngModel]="cursoActual!.descripcion" formControlName="descripcion" placeholder="Descripcion del curso + horario">
+
+                    <span class="form-text text-danger" *ngIf="campoNoValido('descripcion')">
+                        La descripcion no es válida
+                    </span>
+                </div>
+            </div>
+            <!-- Semestre -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Semestre</b></label>
+                <div class="col-sm-9">
+                    <p-dropdown [options]="statuses" [ngModel]="cursoActual!.semestre" formControlName="semestre" [style]="{'width':'25%'}"></p-dropdown>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-primary btn-xl mt-3" type="submit">
+                        Editar este Curso
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
