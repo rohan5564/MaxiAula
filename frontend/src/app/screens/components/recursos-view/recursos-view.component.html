@@ -1,0 +1,34 @@
+<mat-card>
+    <div class="row">
+        <div class="col">
+
+            <div class="row ">
+
+                <h1>Imágenes</h1>
+                <div class="div" *ngFor="let recurso of recursos">
+                    <div *ngIf="recurso.imagenURL" class="div">
+                        <div class="">
+                            <img class="img-fluid img-thumbnail hover-shadow" width="200" height="100" src="{{recurso.imagenURL}}">
+
+                        </div>
+                        <button (click)="borrarRecurso(recurso)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 2" pButton label="Eliminar"></button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="row ">
+                <h1>Videos</h1>
+                <div class="div" *ngFor="let recurso of recursos">
+                    <ng-container *ngIf='recurso.videoURL'>
+                        <iframe width="300" height="200" [src]="getVideoIframe(recurso.videoURL)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+                        <button (click)="borrarRecurso(recurso)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 2" pButton label="Eliminar"></button>
+                    </ng-container>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</mat-card>

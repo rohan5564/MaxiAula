@@ -21,8 +21,7 @@ export class CursoViewComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private cursoP: CursoProviderService,
-    private auth: AuthService,
-    private _sanitizer: DomSanitizer
+    private auth: AuthService
   ) {
     
    }
@@ -41,17 +40,6 @@ export class CursoViewComponent implements OnInit, OnDestroy {
     console.log('Entrando',this.usuarioActual)
   }
 
-  getVideoIframe(url: string) {
-    var video, results;
- 
-    if (url === null) {
-        return '';
-    }
-    results = url.match('[\\?&]v=([^&#]*)');
-    video   = (results === null) ? url : results[1];
- 
-    return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);   
-  }
 
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.

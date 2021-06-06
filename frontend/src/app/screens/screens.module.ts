@@ -25,6 +25,7 @@ import { SemestrePipe } from './pipes/semestre.pipe';
 import { AgregarUsuariosComponent } from './components/agregar-usuarios/agregar-usuarios.component';
 import { AgregarMaterialComponent } from './components/agregar-material/agregar-material.component';
 import { MensajeEmailComponent } from './components/mensaje-email/mensaje-email.component';
+import { RecursosViewComponent } from './components/recursos-view/recursos-view.component';
 
 
 
@@ -47,6 +48,7 @@ import { MensajeEmailComponent } from './components/mensaje-email/mensaje-email.
     AgregarUsuariosComponent,
     AgregarMaterialComponent,
     MensajeEmailComponent,
+    RecursosViewComponent,
     
   ],
   exports:[

@@ -19,7 +19,7 @@
 
 
 
-    <div class="div mt-3 animate__animated animate__fadeInUp">
+    <div class="div mt-3 mb-2 animate__animated animate__fadeInUp">
         <mat-card>
 
             <mat-card-content>
@@ -34,32 +34,9 @@
 
                 {{curso.descripcion}}
 
-                <mat-grid-list cols="2" rowHeight="2:1">
-                    <mat-grid-tile *ngIf="curso.recursos">
-
-                        <div class="row">
-                            <h1>Imágenes</h1>
-                            <div class="div" *ngFor="let recurso of curso.recursos">
-                                <img *ngIf="recurso.imagenURL" mat-card-md-image src="{{recurso.imagenURL}}">
-                            </div>
-                        </div>
-
-                    </mat-grid-tile>
-                    <mat-grid-tile>
-                        <div class="row">
-                            <h1>Videos</h1>
-                            <div class="div" *ngFor="let recurso of curso.recursos">
-                                <ng-container *ngIf='recurso.videoURL'>
-                                    <iframe width="300" height="200" [src]="getVideoIframe(recurso.videoURL)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-                                </ng-container>
-                            </div>
-                        </div>
+                <app-recursos-view [recursos]=curso.recursos [cursoActualID]=curso._id></app-recursos-view>
 
 
-
-                    </mat-grid-tile>
-
-                </mat-grid-list>
 
 
 

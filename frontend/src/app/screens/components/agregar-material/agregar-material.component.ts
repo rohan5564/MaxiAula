@@ -6,6 +6,7 @@ import { Curso, Recurso } from 'src/app/core/models/curso.model';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
 import { User } from 'src/app/core/models/user.model';
 import { PopupService } from 'src/app/core/services/popup/popup.service';
+import { MailService } from '../../../core/services/mail/mail.service';
 
 @Component({
   selector: 'app-agregar-material-component',
@@ -35,7 +36,8 @@ export class AgregarMaterialComponent implements OnInit {
     private _sanitizer: DomSanitizer,
     private cursoP: CursoProviderService,
     private fb: FormBuilder,
-    private popUp: PopupService
+    private popUp: PopupService,
+    private mail: MailService
   ) { 
 
   }
@@ -86,7 +88,8 @@ export class AgregarMaterialComponent implements OnInit {
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
           this.popUp.aviso('Felicidades!','El video  ha sido añadido exitosamente!','success');
-          this.videoForm.reset();   
+          this.videoForm.reset();
+          await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes);   
                  
         }
         catch(error){
@@ -116,7 +119,8 @@ export class AgregarMaterialComponent implements OnInit {
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
           this.popUp.aviso('Felicidades!','La imagen  ha sido añadido exitosamente!','success');
           this.imageForm.reset();   
-                 
+          await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes); 
+                
         }
         catch(error){
           this.popUp.aviso('Error!','Algo falló','error');

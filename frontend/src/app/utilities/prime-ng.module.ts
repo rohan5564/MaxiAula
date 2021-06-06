@@ -20,7 +20,6 @@ import { DropdownModule } from 'primeng/dropdown';
     ToolbarModule,
     TableModule,
     DropdownModule
-    
   ],
 })
 export class PrimeNgModule { }
