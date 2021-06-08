@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Agregar Nuevo Hijo</h1>
+<div mat-dialog-content>
+    <p>Ingresa el rut del hijo o hija para agregar</p>
+    <mat-form-field>
+        <mat-label>Rut del Hijo o Hija</mat-label>
+        <input matInput [(ngModel)]="data.rut">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button pButton pRipple type="button" label="Aceptar" class="p-button-text" [mat-dialog-close]="data.rut" cdkFocusInitial></button>
+    <button pButton pRipple type="button" label="Cancelar" class="p-button-danger p-button-text" (click)="onNoClick()"></button>
+
+</div>

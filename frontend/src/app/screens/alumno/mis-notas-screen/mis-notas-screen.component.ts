@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { map } from 'rxjs/operators';
 import { Curso, Notas } from 'src/app/core/models/curso.model';
+
 import { AuthService } from '../../../auth/services/auth.service';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mis-notas-screen',
@@ -16,8 +17,8 @@ export class MisNotasScreenComponent implements OnInit {
   color: ThemePalette = 'warn';
   mode: ProgressSpinnerMode = 'indeterminate';
 
-  rut = this.auth.user.rut!
-  cursosAlu$ = this.cursosP.getCursosAlu(this.rut);
+  rut = '';
+  
   /*
   cursos: Curso[] | undefined;
   notas: any;
@@ -25,9 +26,9 @@ export class MisNotasScreenComponent implements OnInit {
   curso:any;
   */
   constructor(
-    private auth: AuthService,
-    private cursosP: CursoProviderService
+    public  auth: AuthService
   ) { 
+    
    // this.cursosAlu.subscribe(
     //  cursos => {
        
@@ -77,6 +78,6 @@ export class MisNotasScreenComponent implements OnInit {
   }
   
   ngOnInit(): void {
-   
+    this.rut = this.auth.user.rut;
   }
 }

@@ -1,45 +1,56 @@
-<div class="div mt-3 animate__animated animate__fadeInDown">
-    <mat-card>
-        <mat-card-header>
+<mat-grid-list cols="1" *ngIf="!cursos; else divNotas">
+    <mat-grid-tile>
+        <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
 
 
-        </mat-card-header>
-        <mat-card-content>
+<ng-template #divNotas>
 
-            <table class="table table-striped table-hover">
 
-                <thead>
-                    <tr>
-                        <th scope="col">Curso</th>
+    <div class="div mt-3 animate__animated animate__fadeInDown">
+        <mat-card>
+            <mat-card-header>
+                RUT del hijo o hija: {{rut}}
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let curso of cursos; let i = index;">
-                        {{curso.nombre | uppercase}}
-                        <th scope="row"></th>
+            </mat-card-header>
+            <mat-card-content>
 
-                        <td *ngFor="let notas of curso.notas; let i = index;">
-                            <div class="text-center" *ngIf="notas.rutAlumno === rut">
-                                <a class="" *ngFor="let nota of notas.notas; let i = index">
-                                    <strong>Nota {{i+1}}:</strong> {{nota | number}}
-                                </a>
-                                <div class="float-end">
-                                    <strong>Promedio:</strong> {{notas.promedio}}
+                <table class="table table-striped table-hover">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Curso</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let curso of cursos; let i = index;">
+                            {{curso.nombre | uppercase}}
+                            <th scope="row"></th>
+
+                            <td *ngFor="let notas of curso.notas; let i = index;">
+                                <div class="text-center" *ngIf="notas.rutAlumno === rut">
+                                    <a class="" *ngFor="let nota of notas.notas; let i = index">
+                                        <strong>Nota {{i+1}}:</strong> {{nota | number}}
+                                    </a>
+                                    <div class="float-end">
+                                        <strong>Promedio:</strong> {{notas.promedio}}
+                                    </div>
+
                                 </div>
-
-                            </div>
-                        </td>
+                            </td>
 
 
-                    </tr>
+                        </tr>
 
-                </tbody>
-            </table>
-        </mat-card-content>
+                    </tbody>
+                </table>
+            </mat-card-content>
 
 
 
 
-    </mat-card>
-</div>
+        </mat-card>
+    </div>
+</ng-template>

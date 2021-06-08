@@ -26,6 +26,7 @@ import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.com
 import { TablaUsuariosComponent } from './components/tabla-usuarios/tabla-usuarios.component';
 import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
 import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
+import { DialogHijosComponent } from './components/dialog-hijos/dialog-hijos.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
     MensajeEmailComponent,
     RecursosViewComponent,
     CursoEditComponent,
+    DialogHijosComponent,
   
     
   ],

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Curso } from '../../../core/models/curso.model';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
+import { DialogHijosComponent } from '../dialog-hijos/dialog-hijos.component';
+import { MatDialog } from '@angular/material/dialog';
 import { PopupService } from '../../../core/services/popup/popup.service';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { SelectItem } from 'primeng/api';
@@ -36,7 +38,8 @@ export class TablaUsuariosComponent implements OnInit {
   constructor(
     private userP: UserProviderService,
     private cursoP: CursoProviderService,
-    private popUp : PopupService
+    private popUp : PopupService,
+    public dialog: MatDialog
   ) {
  
    }
@@ -149,6 +152,34 @@ export class TablaUsuariosComponent implements OnInit {
       }  
 
   }
+  rut: string = '';
+  async agregarHijo(user: User){ // falta validacion 
+    const dialogRef = this.dialog.open(DialogHijosComponent, {
+      width: '300px',
+      data: {rut: this.rut}
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      
+      this.rut = result;
+
+      if (this.rut) {
+
+        user.hijos?.push(this.rut);
+
+        await this.userP.updateUsuarioById(user._id, user).toPromise();
+        this.popUp.aviso('Se ha agregado el hijo', 'Se agregó el hijo correctamente', 'success');
+
+
+      }
+
+      //console.log('dialogo cerrado', this.rut);
+    });
+  }
+  
+  
+
+  
 
 }
 

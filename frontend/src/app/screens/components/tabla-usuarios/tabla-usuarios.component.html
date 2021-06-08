@@ -84,7 +84,7 @@
 
                                     </td>
 
-
+                                    <!-- Opciones -->
                                     <ng-container *ngIf="usuarioActual!.tipo === 1 || usuarioActual!.tipo === 2">
                                         <td>
                                             <button *ngIf="!editing" pInitEditableRow (click)="onRowEditInit(user)" pButton class="p-button-rounded p-button-warning ">
@@ -97,6 +97,10 @@
                                             <button pButton class="p-button-rounded p-button-danger mt-1" (click)="deleteUser(user, ri)">
                                                 <mat-icon mat-list-icon>delete</mat-icon>
                                                 <span class=" d-none d-sm-inline float-end">Eliminar</span>   
+                                            </button>
+                                            <button *ngIf="usuarioActual!.tipo === 1 && user.tipo === 4" pButton class="p-button-rounded p-button-help mt-1" (click)="agregarHijo(user)">
+                                                <mat-icon mat-list-icon>person_add_alt_1</mat-icon>
+                                                <span class=" d-none d-sm-inline float-end">Agregar Hijo</span>   
                                             </button>
                                         </td>
 

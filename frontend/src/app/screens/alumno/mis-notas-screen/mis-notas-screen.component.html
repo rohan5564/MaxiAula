@@ -1,14 +1,13 @@
-<mat-grid-list cols="1" *ngIf="!cursosAlu$; else divNotas">
+<mat-grid-list cols="1" *ngIf="!rut; else divNotas">
     <mat-grid-tile>
         <mat-progress-spinner [color]="color" [mode]="mode"></mat-progress-spinner>
     </mat-grid-tile>
 </mat-grid-list>
 
-
 <ng-template #divNotas>
 
-    <app-ver-notas [cursos]="cursosAlu$ | async" [rut]="rut"></app-ver-notas>
 
+    <app-ver-notas [rut]="rut">
 
-
+    </app-ver-notas>
 </ng-template>
