@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Curso, Recurso } from 'src/app/core/models/curso.model';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { Curso, Recurso } from 'src/app/core/models/curso.model';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
-import { User } from 'src/app/core/models/user.model';
-import { PopupService } from 'src/app/core/services/popup/popup.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MailService } from '../../../core/services/mail/mail.service';
+import { PopupService } from 'src/app/core/services/popup/popup.service';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-agregar-material-component',
@@ -76,7 +76,6 @@ export class AgregarMaterialComponent implements OnInit {
   async submitVideo() {
 
     let recurso: Recurso = {
-      _id: this.cursoActual!._id,
       videoURL: this.videoForm.controls['link'].value
     }
     this.popUp.pregunta('¿Quiere añadir este video?','Añadir video al curso','question')
@@ -106,7 +105,6 @@ export class AgregarMaterialComponent implements OnInit {
 
   submitImagen() {
     let recurso: Recurso = {
-      _id: this.cursoActual!._id,
       videoURL: this.imageForm.controls['link'].value
     }
     this.popUp.pregunta('¿Quiere añadir esta imagen?','Añadir imagen al curso','question')

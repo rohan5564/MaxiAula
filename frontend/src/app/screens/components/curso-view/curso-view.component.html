@@ -31,15 +31,22 @@
                     <img mat-card-image src="{{curso.portadaURL}}" alt="Portada del Curso">
 
                 </div>
+                <div class="row container">
+                    {{curso.descripcion}}
+                </div>
+                <hr>
+                <div class="row container">
+                    <div class="col-4" *ngIf="curso.linkChat">
+                        <h4>Click para ir al chat del curso</h4>
+                        <a href="{{curso.linkChat}}" target="_blank">
+                            <img class="img-thumbnail" src="https://www.oas.org/ext/Portals/14/EasyDNNNews/588/300300p2250EDNmainImage.png" alt="Chat del Curso">
+                        </a>
+                    </div>
 
-                {{curso.descripcion}}
+                </div>
+                <hr>
 
                 <app-recursos-view [recursos]=curso.recursos [cursoActualID]=curso._id></app-recursos-view>
-
-
-
-
-
 
 
             </mat-card-content>

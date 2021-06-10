@@ -6,9 +6,11 @@ import { CardComponent } from './components/card/card.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CommonModule } from '@angular/common';
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
+import { CrearTareaComponent } from './components/crear-tarea/crear-tarea.component';
 import { CursoEditComponent } from './components/curso-edit/curso-edit.component';
 import { CursoOptionsComponent } from './components/curso-options/curso-options.component';
 import { CursoViewComponent } from './components/curso-view/curso-view.component';
+import { DialogHijosComponent } from './components/dialog-hijos/dialog-hijos.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { MaterialModule } from '../utilities/material.module';
@@ -26,7 +28,6 @@ import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.com
 import { TablaUsuariosComponent } from './components/tabla-usuarios/tabla-usuarios.component';
 import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
 import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
-import { DialogHijosComponent } from './components/dialog-hijos/dialog-hijos.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { DialogHijosComponent } from './components/dialog-hijos/dialog-hijos.com
     RecursosViewComponent,
     CursoEditComponent,
     DialogHijosComponent,
+    CrearTareaComponent,
   
     
   ],
@@ -64,6 +66,7 @@ import { DialogHijosComponent } from './components/dialog-hijos/dialog-hijos.com
     AgregarMaterialComponent,
     MensajeEmailComponent,
     CursoEditComponent,
+    CrearTareaComponent,
     
   ],
   imports: [

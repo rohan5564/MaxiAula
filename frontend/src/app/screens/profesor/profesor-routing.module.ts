@@ -4,6 +4,7 @@ import { AdministrarCursosComponent } from './administrar-cursos/administrar-cur
 import { AgregarAlumnosScreenComponent } from './agregar-alumnos-screen/agregar-alumnos-screen.component';
 import { AgregarMaterialComponent } from './agregar-material/agregar-material.component';
 import { AgregarParticipantesComponent } from './agregar-participantes/agregar-participantes.component';
+import { AgregarTareaComponent } from './agregar-tarea/agregar-tarea.component';
 import { AvisoEmailComponent } from './aviso-email/aviso-email.component';
 import { CrearCursoComponent } from '../components/crear-curso/crear-curso.component';
 import { CursoViewComponent } from '../components/curso-view/curso-view.component';
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'curso/agregar-participantes/:id', component: AgregarParticipantesComponent},
   {path: 'curso/agregar-material/:id', component: AgregarMaterialComponent},
   {path: 'aviso', component: AvisoEmailComponent},
-  {path: 'curso/editar/:id', component: EditarCursoComponent}
+  {path: 'curso/editar/:id', component: EditarCursoComponent},
+  {path: 'curso/agregar-tarea/:id', component: AgregarTareaComponent}
 
 ];
 

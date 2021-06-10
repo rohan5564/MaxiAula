@@ -18,7 +18,7 @@
                 </a>
                 <!--Editar Curso-->
                 <a [routerLink]="['../editar', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                    <mat-icon mat-list-icon>school</mat-icon>
+                    <mat-icon mat-list-icon>edit_note</mat-icon>
                     <span class="d-none d-sm-inline">Editar Curso</span>
                 </a>
                 <!--Agregar Material-->
@@ -26,6 +26,13 @@
                     <mat-icon mat-list-icon>add</mat-icon>
                     <span class="d-none d-sm-inline">Añadir Material</span>
                 </a>
+
+                <!--Agregar Tarea-->
+                <a [routerLink]="['../agregar-tarea', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>add_task</mat-icon>
+                    <span class="d-none d-sm-inline">Añadir Tarea</span>
+                </a>
+
 
 
             </ng-container>

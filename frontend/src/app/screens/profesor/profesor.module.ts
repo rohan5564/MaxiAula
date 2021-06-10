@@ -17,6 +17,7 @@ import { AgregarParticipantesComponent } from './agregar-participantes/agregar-p
 import { AgregarMaterialComponent } from './agregar-material/agregar-material.component';
 import { AvisoEmailComponent } from './aviso-email/aviso-email.component';
 import { EditarCursoComponent } from './editar-curso/editar-curso.component';
+import { AgregarTareaComponent } from './agregar-tarea/agregar-tarea.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { EditarCursoComponent } from './editar-curso/editar-curso.component';
     AgregarMaterialComponent,
     AvisoEmailComponent,
     EditarCursoComponent,
+    AgregarTareaComponent,
   ],
   imports: [
     CommonModule,

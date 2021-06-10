@@ -1,5 +1,6 @@
-import { Schema, model, Document } from "mongoose";
-import { Curso, Recurso } from '../../models/curso.model';
+import { Document, Schema, model } from "mongoose";
+
+import { Curso } from '../../models/curso.model';
 
 const definition: Partial<Record<keyof Curso, any>> = {
 
@@ -11,8 +12,10 @@ const definition: Partial<Record<keyof Curso, any>> = {
     cratedAt: { type: Date},
     participantes: { type: Array },
     recursos: { type: Array },
-    notas: {type: Array},
-    portadaURL: {type: String}
+    tareas: { type: Array },
+    notas: { type: Array },
+    portadaURL: {type: String},
+    linkChat: { type: String }
 }
 
 const schema: Schema<Curso> = new Schema(definition)
