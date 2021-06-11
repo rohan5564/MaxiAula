@@ -22,6 +22,15 @@
                 </div>
             </div>
 
+            <!-- Link Archivos -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Link de acceso a una carpeta compartida del curso</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" [ngModel]="cursoActual!.linkArchivos" formControlName="linkArchivos" placeholder="link de acceso a una carpete compartida para compartir archivos como Google Drive (opcional)">
+                </div>
+            </div>
+
             <!-- Nombre -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label"><b>Nombre</b></label>

@@ -1,1 +1,64 @@
-<p>crear-tarea works!</p>
+<mat-card>
+    <mat-card-content>
+        <button [routerLink]="['/maxiaula/profesor/curso/' + cursoActual!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
+        <h1 class="text-center">Añadir Nueva Tarea para el Curso</h1>
+        <hr>
+        <form (ngSubmit)="onSubmitTarea()" [formGroup]="nuevaTareaForm" autocomplete="off">
+
+            <!-- Nombre -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Nombre de la Tarea</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre de la tarea">
+                    <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
+                        Ingrese un nombre a la tarea
+                    </span>
+                </div>
+            </div>
+
+            <!-- Descripcion -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Descripción</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" formControlName="descripcion" placeholder="Detalle las tareas a realizar en la tarea">
+                    <span class="form-text text-danger" *ngIf="campoNoValido('descripcion')">
+                        Ingrese una descripción de las tarea
+                    </span>
+                </div>
+            </div>
+
+            <!-- Rango de Fecha de la tarea -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Rango de fecha de la tarea</b></label>
+                <div class="col-sm-9">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ingresa un rango de fecha</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate placeholder="Fecha de Inicio de la Tarea" formControlName="fechaInicio">
+                            <input matEndDate placeholder="Fecha limite de la tarea" formControlName="fechaLimite">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                    <span class="form-text text-danger" *ngIf="campoNoValido('fechaLimite') || campoNoValido('fechaInicio')">
+                        Por favor ingrese un rango de fecha válido
+                    </span>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-primary btn-xl mt-3" type="submit">
+                        Agregar Tarea
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

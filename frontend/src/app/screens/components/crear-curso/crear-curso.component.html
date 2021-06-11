@@ -2,13 +2,14 @@
     <mat-card>
         <mat-card-content>
             <h1 class="text-center">Crear un nuevo curso</h1>
+            <hr>
             <form (ngSubmit)="onSubmitCrearCurso()" [formGroup]="nuevoCursoForm" autocomplete="off">
                 <!-- Portada -->
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label"><b>Portada del Curso</b></label>
                     <div class="col-sm-9">
 
-                        <input type="text" class="form-control" formControlName="portada" placeholder="link de la imagen (.jpg .png) para utilizar como portada del curso">
+                        <input type="text" class="form-control" formControlName="portada" placeholder="link de la imagen (.jpg .png) para utilizar como portada del curso (opcional)">
                     </div>
                 </div>
 
@@ -17,7 +18,16 @@
                     <label class="col-sm-3 col-form-label"><b>Link de acceso al chat del Curso</b></label>
                     <div class="col-sm-9">
 
-                        <input type="text" class="form-control" formControlName="linkChat" placeholder="link de acceso al chat del curso preferentemente de WhatsApp">
+                        <input type="text" class="form-control" formControlName="linkChat" placeholder="link de acceso al chat del curso preferentemente de WhatsApp (opcional)">
+                    </div>
+                </div>
+
+                <!-- Link Archivos -->
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label"><b>Link de acceso a una carpeta compartida del curso</b></label>
+                    <div class="col-sm-9">
+
+                        <input type="text" class="form-control" formControlName="linkArchivos" placeholder="link de acceso a una carpete compartida para compartir archivos como Google Drive (opcional)">
                     </div>
                 </div>
 

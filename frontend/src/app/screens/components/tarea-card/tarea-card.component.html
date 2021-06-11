@@ -1,0 +1,20 @@
+<mat-card *ngIf="tarea" class="mt-2 mb-2">
+
+
+    <mat-card-title class="text-center">{{tarea.nombreTarea | titlecase}}</mat-card-title>
+
+
+
+    <img mat-card-image src="https://image.freepik.com/vector-gratis/ninos-clase-haciendo-tarea_7710-93.jpg" alt="Foto del Curso">
+
+    <mat-card-content>
+        <p>
+            <b>Tareas a realizar</b> <br> {{tarea.descripcion | uppercase}}
+        </p>
+        <p>
+            <b>Fecha Inicio: </b> {{tarea.fechaInicio | date:'longDate'}}
+            <b>Fecha Límite: </b> {{tarea.fechaLimite | date:'longDate'}}
+        </p>
+    </mat-card-content>
+
+</mat-card>

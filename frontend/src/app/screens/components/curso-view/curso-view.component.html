@@ -23,8 +23,8 @@
         <mat-card>
 
             <mat-card-content>
-                <h1>{{curso.nombre | titlecase}}</h1>
-
+                <h1 class="text-center">{{curso.nombre | titlecase}}</h1>
+                <hr>
                 <div class="row container mt-2">
                     <div class="col-4"></div>
 
@@ -34,19 +34,46 @@
                 <div class="row container">
                     {{curso.descripcion}}
                 </div>
-                <hr>
-                <div class="row container">
-                    <div class="col-4" *ngIf="curso.linkChat">
-                        <h4>Click para ir al chat del curso</h4>
-                        <a href="{{curso.linkChat}}" target="_blank">
-                            <img class="img-thumbnail" src="https://www.oas.org/ext/Portals/14/EasyDNNNews/588/300300p2250EDNmainImage.png" alt="Chat del Curso">
-                        </a>
+                <!-- Links -->
+                <ng-container>
+                    <hr>
+                    <h3 class="text-center">Links</h3>
+                    <div class="row container">
+                        <div class="col-4" *ngIf="curso.linkChat">
+                            <h4>Click para ir al chat del curso</h4>
+                            <a href="{{curso.linkChat}}" target="_blank">
+                                <img class="img-thumbnail" src="https://www.oas.org/ext/Portals/14/EasyDNNNews/588/300300p2250EDNmainImage.png" alt="Chat del Curso">
+                            </a>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-4" *ngIf="curso.linkArchivos">
+                            <h4>Click para ir a la carpeta de archivos del curso</h4>
+                            <a href="{{curso.linkArchivos}}" target="_blank">
+                                <img class="img-thumbnail" src="https://lecciones.batiburrillo.net/wp-content/uploads/2010/07/Carpeta1.jpg" alt="Carpeta de Archivos del Curso">
+                            </a>
+                        </div>
+                    </div>
+                </ng-container>
+
+
+                <!-- Tareas -->
+                <ng-container *ngIf="curso.tareas">
+                    <hr>
+                    <h3 class="text-center">Tareas del Curso</h3>
+                    <div class="row container">
+                        <app-tarea-card-list [tareas]="curso.tareas" [cursoActualID]="curso._id"></app-tarea-card-list>
                     </div>
 
-                </div>
-                <hr>
+                </ng-container>
 
-                <app-recursos-view [recursos]=curso.recursos [cursoActualID]=curso._id></app-recursos-view>
+                <!-- Recursos -->
+                <ng-container *ngIf="curso.recursos">
+                    <hr>
+                    <h3 class="text-center">Material</h3>
+                    <app-recursos-view [recursos]="curso.recursos" [cursoActualID]="curso._id"></app-recursos-view>
+                </ng-container>
+
+
 
 
             </mat-card-content>

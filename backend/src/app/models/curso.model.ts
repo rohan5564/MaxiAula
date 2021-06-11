@@ -12,6 +12,7 @@ export interface Curso {
     tareas?: Tarea[];       /* Tareas que pueda tener el curso */
     portadaURL?: string;    /* Imagen de portada del curso */
     linkChat?: string;      /* Link para el chat del curso */
+    linkArchivos?: string;  /* Link para la carpeta de archivos del curso */
 }
 
 export interface Recurso {
@@ -30,6 +31,7 @@ export interface Notas {
 export interface Tarea {
     nombreTarea: string;
     descripcion: string;
+    fechaInicio: Date;
     fechaLimite: Date;
-    estado: number;
+    estado: number;     /* estado de la tarea 0 activa, 1 completada */
 }

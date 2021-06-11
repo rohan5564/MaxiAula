@@ -6,16 +6,17 @@ const definition: Partial<Record<keyof Curso, any>> = {
 
     profACargo: { type: String, required: true},
     nombre: { type: String, required: true },
-    descripcion: {type: String},
+    descripcion: { type: String },
     anio: { type: Number },
     semestre: { type: Number},
-    cratedAt: { type: Date},
+    cratedAt: { type: Date },
     participantes: { type: Array },
     recursos: { type: Array },
     tareas: { type: Array },
     notas: { type: Array },
-    portadaURL: {type: String},
-    linkChat: { type: String }
+    portadaURL: { type: String },
+    linkChat: { type: String },
+    linkArchivos: { type: String }
 }
 
 const schema: Schema<Curso> = new Schema(definition)

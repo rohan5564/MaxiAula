@@ -62,7 +62,7 @@ export class RecursosViewComponent implements OnInit {
               recursos: this.recursos
           }
           await this.cursoP.updateCursoById(this.cursoActualID!, cursoPartial).toPromise();
-          this.popUp.aviso('Se ha eliminado el recurso','Se elimonó correctamente el recurso','success');
+          this.popUp.aviso('Se ha eliminado el recurso','Se eliminó correctamente el recurso','success');
         }
 
       });

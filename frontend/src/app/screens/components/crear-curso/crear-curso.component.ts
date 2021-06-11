@@ -25,7 +25,8 @@ export class CrearCursoComponent implements OnInit {
     descripcion: ['', [Validators.required]],
     semestre: ['1', [Validators.required]],
     portada: ['', ],
-    linkChat: ['',]
+    linkChat: ['',],
+    linkArchivos: ['',]
 
     
   });
@@ -67,6 +68,7 @@ export class CrearCursoComponent implements OnInit {
             portadaURL: this.nuevoCursoForm.controls['portada'].value,
             semestre: this.nuevoCursoForm.controls['semestre'].value,
             linkChat: this.nuevoCursoForm.controls['linkChat'].value,
+            linkArchivos: this.nuevoCursoForm.controls['linkArchivos'].value,
             anio: this.year        
           }
 

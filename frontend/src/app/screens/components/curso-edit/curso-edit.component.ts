@@ -22,7 +22,8 @@ export class CursoEditComponent implements OnInit {
     descripcion: ['', [Validators.required]],
     semestre: ['1', [Validators.required]],
     portada: ['', ],
-    linkChat: ['',]
+    linkChat: ['',],
+    linkArchivos: ['',]
 
     
   });
@@ -59,7 +60,8 @@ export class CursoEditComponent implements OnInit {
             descripcion: this.editCursoForm.controls['descripcion'].value,
             portadaURL: this.editCursoForm.controls['portada'].value,
             semestre: this.editCursoForm.controls['semestre'].value,
-            linkChat: this.editCursoForm.controls['linkChat'].value       
+            linkChat: this.editCursoForm.controls['linkChat'].value,
+            linkArchivos: this.editCursoForm.controls['linkArchivos'].value       
           }
 
       

@@ -6,6 +6,7 @@ import { CursoProviderService } from '../../../core/providers/curso/curso-provid
 import { DomSanitizer } from '@angular/platform-browser';
 import { MailService } from '../../../core/services/mail/mail.service';
 import { PopupService } from 'src/app/core/services/popup/popup.service';
+import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
 
 @Component({
@@ -37,7 +38,8 @@ export class AgregarMaterialComponent implements OnInit {
     private cursoP: CursoProviderService,
     private fb: FormBuilder,
     private popUp: PopupService,
-    private mail: MailService
+    private mail: MailService,
+    private router: Router
   ) { 
 
   }
@@ -86,8 +88,8 @@ export class AgregarMaterialComponent implements OnInit {
           this.cursoActual?.recursos?.push(recurso);
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
-          this.popUp.aviso('Felicidades!','El video  ha sido añadido exitosamente!','success');
-          this.videoForm.reset();
+          this.popUp.aviso('Felicidades!','¡El video  ha sido añadido exitosamente!','success');
+          this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]);
           await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes);   
                  
         }
@@ -115,8 +117,8 @@ export class AgregarMaterialComponent implements OnInit {
           this.cursoActual?.recursos?.push(recurso);
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
-          this.popUp.aviso('Felicidades!','La imagen  ha sido añadido exitosamente!','success');
-          this.imageForm.reset();   
+          this.popUp.aviso('Felicidades!','¡La imagen  ha sido añadido exitosamente!','success');
+          this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]); 
           await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes); 
                 
         }
