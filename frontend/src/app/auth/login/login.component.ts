@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/core/models/user.model';
-import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AuthService } from '../services/auth.service';
+import { PopupService } from '../../core/services/popup/popup.service';
+import { Router } from '@angular/router';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,9 @@ export class LoginComponent implements OnInit {
   constructor( 
     private router: Router, 
     private authService: AuthService,
-    private fb: FormBuilder ) { 
+    private fb: FormBuilder,
+    private popUp: PopupService
+    ) { 
    
   }
 
@@ -77,28 +80,14 @@ export class LoginComponent implements OnInit {
                     break;
             }
             default: {
-              Swal.fire({
-                title: 'Usuario no válido!',
-                text: 'No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema',
-                icon: 'error',
-                confirmButtonText: 'Aceptar',
-                confirmButtonColor: 'rgb(240,95,64)'
-              })
-              //alert('Usuario no válido, no tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema');
+              this.popUp.aviso('¡Usuario no válido','No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema','error');
             }
           }
 
         },
         err => {
           console.log(err);
-          Swal.fire({
-            title: 'Usuario no válido!',
-            text: 'Correo o Contraseña Incorrectos!!, asegurese que se encuentran bien igresados',
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: 'rgb(240,95,64)'
-          })
-          //alert('Correo o Contraseña Incorrectos!!');
+          this.popUp.aviso('¡Usuario no válido','¡Correo o Contraseña Incorrectos!, asegurese que se encuentran bien ingresados','error');
         }
       );
     }

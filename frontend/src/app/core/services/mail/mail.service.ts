@@ -1,6 +1,7 @@
 import { HttpService } from '../http/http.service';
 import { Injectable } from '@angular/core';
 import { Mail } from '../../models/mail.model';
+import { User } from '../../models/user.model';
 import { UserProviderService } from '../../providers/user/user-provider.service';
 
 @Injectable({
@@ -16,6 +17,7 @@ export class MailService {
 
   }
 
+  // enviar el email
   sendMessage (body: Mail) {
 
     return this.http.post<Mail>('/mail/mensaje', body);
@@ -59,5 +61,16 @@ export class MailService {
     }
   }
 
+  async recuperarContra(user: User) {
+    
+    let mail: Mail;
+    mail = {
+      asunto: 'Recuperar Contraseña',
+      destinatario: user.correo,
+      cuerpo: 'La contraseña de su cuenta de MaxiAula es: ' + user.contraseña
+    }
+
+    await this.sendMessage(mail).toPromise();
+  }
 
 }

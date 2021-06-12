@@ -28,13 +28,18 @@
                                     </span>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-xl">Ingresar</button>
-                                <button class="btn btn-light btn-xl inline" [routerLink]="['/']">Volver</button>
+                                <button type="submit" class="btn btn-primary btn-xl mr-3">Ingresar</button>
+                                <button class="btn btn-light btn-xl inline ml-3" [routerLink]="['/']">Volver</button>
                             </form>
                             <hr>
                             <div class="col text-center">
                                 <h3>¿No tienes un usuario?</h3>
                                 <button class="btn btn-primary btn-xl" [routerLink]="['/auth/registro']">¡Registrate aquí!</button>
+                            </div>
+                            <hr>
+                            <div class="col text-center">
+                                <h3>¿No recuerdas tu contraseña?</h3>
+                                <button class="btn btn-primary btn-xl" [routerLink]="['/auth/recuperar-contra']">Recuperar Contraseña</button>
                             </div>
                         </div>
                     </div>

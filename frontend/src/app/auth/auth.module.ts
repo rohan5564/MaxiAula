@@ -8,13 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { PrimeNgModule } from '../utilities/prime-ng.module';
 import { MaterialModule } from '../utilities/material.module';
+import { RecuperarContraComponent } from './recuperar-contra/recuperar-contra.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RecuperarContraComponent
   ],
   imports: [
     CommonModule,
