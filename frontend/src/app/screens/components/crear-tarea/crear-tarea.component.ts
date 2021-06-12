@@ -3,6 +3,7 @@ import { Curso, Tarea } from 'src/app/core/models/curso.model';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
+import { MailService } from '../../../core/services/mail/mail.service';
 import { PopupService } from '../../../core/services/popup/popup.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
@@ -30,7 +31,8 @@ export class CrearTareaComponent implements OnInit {
     private popUp: PopupService,
     private cursoP: CursoProviderService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private mail: MailService
   ) { }
 
   ngOnInit(): void {
@@ -67,7 +69,7 @@ export class CrearTareaComponent implements OnInit {
           this.popUp.aviso('Felicidades!','¡La tarea se añadió exitosamente!','success');
           this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]);
 
-         // await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes);   
+          await this.mail.avisarNuevaTarea(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes);   
                  
         }
         catch(error){

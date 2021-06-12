@@ -11,6 +11,28 @@
 
 </mat-toolbar>
 
+
+<div fxLayout="row">
+
+    <div fxFlex="29">
+        <div class="col-3 Fixed animate__animated animate__fadeInDownBig mt-3">
+
+            <app-sidemenu></app-sidemenu>
+
+        </div>
+    </div>
+
+
+    <div fxFlex="70">
+        <div class="animate__animated animate__fadeIn mt-3">
+
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+</div>
+
+<!--
 <div class="col-3 Fixed animate__animated animate__fadeInDownBig">
 
     <app-sidemenu></app-sidemenu>
@@ -22,24 +44,6 @@
     <div class="col-3"></div>
     <div class="col ">
         <div class="animate__animated animate__fadeIn mt-3">
-
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
-
-<!--
-<div class=" Fixed animate__animated animate__fadeInDownBig">
-
-    <app-sidemenu></app-sidemenu>
-</div>
-
-
-<div class="row">
-
-    <div class="col-3"></div>
-    <div class="col ">
-        <div class="animate__animated animate__fadeIn">
 
             <router-outlet></router-outlet>
         </div>

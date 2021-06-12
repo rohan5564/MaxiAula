@@ -110,7 +110,7 @@ export class TablaUsuariosComponent implements OnInit {
                 .then(async (result) => {
                   if (result.isConfirmed) {                  
                     try {
-                      console.log(this.usuarioActual, this.cursoActual)
+                     // console.log(this.usuarioActual, this.cursoActual)
 
                       this.cursoActual?.participantes.filter(
                         rut => {

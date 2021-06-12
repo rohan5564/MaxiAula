@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidator, ValidationErrors } from '@angular/forms';
+import { delay, map } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, delay } from 'rxjs/operators';
 import { UserProviderService } from '../../core/providers/user/user-provider.service';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class EmailValidatorService implements AsyncValidator {
 
     const email = control.value;
     return this.userP.getUsuarioByEmail(email).pipe(
-      //delay(1000),
+      delay(1000),
       map( resp => {
           return ( resp === null ) ? null : { emailTomado: true }
       })

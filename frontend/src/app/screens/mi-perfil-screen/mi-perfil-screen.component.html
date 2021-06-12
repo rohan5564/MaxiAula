@@ -30,32 +30,39 @@
 
 -->
 
-<div class="div mt-3  animate__animated animate__fadeInDown">
-    <mat-card>
+<ng-container *ngIf="!editar">
+
+    <mat-card class="mt-3  animate__animated animate__fadeInDown">
         <mat-card-header>
             <mat-card-title><strong>Mi Perfil</strong></mat-card-title>
             <mat-card-subtitle>Información</mat-card-subtitle>
             <mat-card-actions class="text-center">
-                <button [routerLink]="['../modificar-perfil', usuario._id]" [disabled]="true" class="btn btn-primary float-end">
-                            <mat-icon mat-list-icon>edit_note</mat-icon>
-                            <span class=" d-none d-sm-inline float-end"></span>   
-                        </button>
+                <button (click)="editar=true" class="btn btn-primary float-end">
+                    <mat-icon mat-list-icon>edit_note</mat-icon>
+                    <span class=" d-none d-sm-inline float-end"></span>   
+                </button>
+                <!--
+                <button [routerLink]="['/maxiaula/modificar-perfil']" class="btn btn-primary float-end">
+                    <mat-icon mat-list-icon>edit_note</mat-icon>
+                    <span class=" d-none d-sm-inline float-end"></span>   
+                </button>
+                -->
             </mat-card-actions>
         </mat-card-header>
         <div class="row">
             <div class="col-6">
                 <mat-card-content>
                     <p class="card-text">
-                        <strong>Nombre: </strong> {{usuario.nombre | titlecase}}
+                        <strong>Nombre: </strong> {{usuario!.nombre | titlecase}}
                     </p>
                     <p class="card-text">
-                        <strong>RUT: </strong> {{usuario.rut}}
+                        <strong>RUT: </strong> {{usuario!.rut}}
                     </p>
                     <p class="card-text">
-                        <strong>Correo electrónico: </strong> {{usuario.correo}}
+                        <strong>Correo electrónico: </strong> {{usuario!.correo}}
                     </p>
                     <p class="card-text">
-                        <strong>Fecha de Nacimiento: </strong>{{usuario.fechaNac | date:'longDate'}}
+                        <strong>Fecha de Nacimiento: </strong>{{usuario!.fechaNac | date:'longDate'}}
                     </p>
 
                 </mat-card-content>
@@ -68,4 +75,22 @@
 
 
     </mat-card>
-</div>
+</ng-container>
+
+<ng-container *ngIf="editar">
+
+    <mat-card class="mt-3  animate__animated animate__fadeInDown">
+        <mat-card-content>
+
+            <app-modificar-perfil [usuarioActual]="usuario"></app-modificar-perfil>
+            <div class="row">
+                <div class="col text-center">
+                    <button (click)="editar=false" class="btn btn-outline-primary mt-3" label="Volver al Curso">Cancelar</button>
+                </div>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+
+
+</ng-container>

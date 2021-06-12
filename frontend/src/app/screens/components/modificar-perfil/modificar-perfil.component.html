@@ -1,0 +1,91 @@
+<h1 class="text-center">Modificar Perfil</h1>
+<hr>
+<div class="row mt-3">
+    <div class="col">
+
+        <form (ngSubmit)="onSubmitEdit()" autocomplete="off" [formGroup]="editPerfilForm">
+
+
+            <!-- Nombre -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Nombre</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre del usuario">
+
+                    <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
+                        El nombre no es válido
+                    </span>
+                </div>
+            </div>
+
+
+
+            <!-- Correo -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Correo</b></label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" formControlName="correo" placeholder="Email del usuario">
+                    <span class="form-text text-danger" *ngIf="campoNoValido('correo')">
+                        {{ emailErrorMsg }}
+                    </span>
+                </div>
+            </div>
+
+            <!--Contraseña-->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Contraseña</b></label>
+                <div class="col-sm-9">
+                    <input id="inputPassword" formControlName="contra" type="password" placeholder="Ingrese una contraseña" required="" class="form-control">
+
+                    <span class="form-text text-danger" *ngIf="campoNoValido('contra')">
+                            La contraseña debe tener al menos 8 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <!--Confirmacion de contraseña-->
+            <div class=" mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Repita la contraseña</b></label>
+                <div class="col-sm-9">
+                    <input id="inputPassword2" formControlName="confcontra" type="password" placeholder="Repita la contraseña" required="" class="form-control">
+                    <span class="form-text text-danger" *ngIf="campoNoValido('confcontra')">
+                        Las contraseñas no coinciden
+                    </span>
+                </div>
+            </div>
+
+            <!--Fecha de Nacimiento-->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Fecha de Nacimiento</b></label>
+                <div class="col-sm-9">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Ingresa la fecha de nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fecha">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                    </mat-form-field>
+                    <span class="form-text text-danger" *ngIf="campoNoValido('fecha')">
+                        Por favor ingrese una fecha de nacimiento válida
+                    </span>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary btn-xl">
+                                Modificar Perfil
+                    </button>
+                </div>
+            </div>
+
+
+
+        </form>
+
+
+    </div>
+
+</div>

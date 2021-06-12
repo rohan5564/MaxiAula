@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from '../../auth/services/auth.service';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-mi-perfil-screen',
@@ -8,7 +10,9 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class MiPerfilScreenComponent implements OnInit {
 
-  usuario: any;
+  editar = false;
+
+  usuario: User | undefined;
   constructor(
     private auth : AuthService
   ) { }

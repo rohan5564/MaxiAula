@@ -7,7 +7,7 @@
                 <label class="col-sm-3 col-form-label"><b>Portada del Curso</b></label>
                 <div class="col-sm-9">
 
-                    <input type="text" class="form-control" [ngModel]="cursoActual!.portadaURL" formControlName="portada" placeholder="link de la imagen (.jpg .png) para utilizar como portada del curso">
+                    <input type="text" class="form-control" formControlName="portada" placeholder="link de la imagen (.jpg .png) para utilizar como portada del curso">
 
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <label class="col-sm-3 col-form-label"><b>Link del Chat</b></label>
                 <div class="col-sm-9">
 
-                    <input type="text" class="form-control" [ngModel]="cursoActual!.linkChat" formControlName="linkChat" placeholder="link de acceso al chat del curso preferentemente de WhatsApp">
+                    <input type="text" class="form-control" formControlName="linkChat" placeholder="link de acceso al chat del curso preferentemente de WhatsApp">
 
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <label class="col-sm-3 col-form-label"><b>Link de acceso a una carpeta compartida del curso</b></label>
                 <div class="col-sm-9">
 
-                    <input type="text" class="form-control" [ngModel]="cursoActual!.linkArchivos" formControlName="linkArchivos" placeholder="link de acceso a una carpete compartida para compartir archivos como Google Drive (opcional)">
+                    <input type="text" class="form-control" formControlName="linkArchivos" placeholder="link de acceso a una carpete compartida para compartir archivos como Google Drive (opcional)">
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                 <label class="col-sm-3 col-form-label"><b>Nombre</b></label>
                 <div class="col-sm-9">
 
-                    <input type="text" class="form-control" [ngModel]="cursoActual!.nombre" formControlName="nombre" placeholder="Nombre del Curso">
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre del Curso">
 
                     <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">
                         El nombre no es válido
@@ -48,7 +48,7 @@
                 <label class="col-sm-3 col-form-label"><b>Descripcion del curso incluir horario por favor</b></label>
                 <div class="col-sm-9">
 
-                    <input type="text" class="form-control" [ngModel]="cursoActual!.descripcion" formControlName="descripcion" placeholder="Descripcion del curso + horario">
+                    <input type="text" class="form-control" formControlName="descripcion" placeholder="Descripcion del curso + horario">
 
                     <span class="form-text text-danger" *ngIf="campoNoValido('descripcion')">
                         La descripcion no es válida
@@ -69,6 +69,14 @@
                     </button>
                 </div>
             </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button [routerLink]="['/maxiaula/profesor/curso/' + cursoActual!._id]" class="btn btn-outline-primary mt-2" label="Volver al Curso">
+                        Volver al Curso
+                    </button>
+                </div>
+            </div>
+
         </form>
     </mat-card-content>
 </mat-card>

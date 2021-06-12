@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { AuthService } from '../../../auth/services/auth.service';
 import { Curso } from 'src/app/core/models/curso.model';
 import { CursoProviderService } from 'src/app/core/providers/curso/curso-provider.service';
-import { AuthService } from '../../../auth/services/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-curso-view',
@@ -37,7 +38,7 @@ export class CursoViewComponent implements OnInit, OnDestroy {
     )
     .subscribe( (curso) => this.curso = curso );
 
-    console.log('Entrando',this.usuarioActual)
+   // console.log('Entrando',this.usuarioActual)
   }
 
 
@@ -45,6 +46,6 @@ export class CursoViewComponent implements OnInit, OnDestroy {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
     
-    console.log('destruyendo curso')
+   // console.log('destruyendo curso')
   }
 }

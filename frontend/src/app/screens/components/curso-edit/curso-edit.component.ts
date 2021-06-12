@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Curso } from 'src/app/core/models/curso.model';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
@@ -17,16 +17,7 @@ export class CursoEditComponent implements OnInit {
   @Input()
   cursoActual: Curso | undefined;
 
-  editCursoForm = this.fb.group({
-    nombre: ['',[Validators.required]],
-    descripcion: ['', [Validators.required]],
-    semestre: ['1', [Validators.required]],
-    portada: ['', ],
-    linkChat: ['',],
-    linkArchivos: ['',]
-
-    
-  });
+  editCursoForm!: FormGroup;
 
   statuses : SelectItem[] = [{label: '1er Semestre', value: 1},{label: '2do Semestre', value: 2}];
 
@@ -38,6 +29,14 @@ export class CursoEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.editCursoForm = this.fb.group({
+      nombre: [this.cursoActual!.nombre,[Validators.required]],
+      descripcion: [this.cursoActual!.descripcion, [Validators.required]],
+      semestre: [this.cursoActual!.semestre, [Validators.required]],
+      portada: [this.cursoActual!.portadaURL, ],
+      linkChat: [this.cursoActual!.linkChat, ],
+      linkArchivos: [this.cursoActual!.linkArchivos, ]     
+    });
   }
 
   campoNoValido( campo: string ) {

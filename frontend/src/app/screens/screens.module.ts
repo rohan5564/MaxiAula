@@ -30,6 +30,7 @@ import { TareaCardComponent } from './components/tarea-card/tarea-card.component
 import { TareaCardListComponent } from './components/tarea-card-list/tarea-card-list.component';
 import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
 import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
+import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
     CrearTareaComponent,
     TareaCardComponent,
     TareaCardListComponent,
+    ModificarPerfilComponent,
   
     
   ],

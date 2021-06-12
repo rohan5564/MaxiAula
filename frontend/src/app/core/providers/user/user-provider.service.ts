@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { User } from 'src/app/core/models/user.model';
+
 import { HttpService } from '../../services/http/http.service';
+import { Injectable } from '@angular/core';
+import { User } from 'src/app/core/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +60,7 @@ export class UserProviderService {
   public getParticipantes(users: string[]): Observable<User[]> {
 
     let participantes: User[] = [];
-    console.log(users)
+    //console.log(users)
     users.forEach( rut =>{
         this.getUsuarioByRUT(rut).subscribe(
           user => {
@@ -69,7 +70,7 @@ export class UserProviderService {
     } )
     
     participantes.filter(Boolean);
-    console.log(participantes)
+    //console.log(participantes)
     return of(participantes);
   }
   

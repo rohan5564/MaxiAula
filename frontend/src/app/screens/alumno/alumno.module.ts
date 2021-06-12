@@ -10,6 +10,7 @@ import { MisNotasScreenComponent } from './mis-notas-screen/mis-notas-screen.com
 import { MisCursosScreenComponent } from './mis-cursos-screen/mis-cursos-screen.component';
 import { ScreensModule } from '../screens.module';
 import { MaterialModule } from '../../utilities/material.module';
+import { MisTareasComponent } from './mis-tareas/mis-tareas.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MaterialModule } from '../../utilities/material.module';
     AlumnoScreenComponent,
     MisNotasScreenComponent,
     MisCursosScreenComponent,
+    MisTareasComponent,
   ],
   imports: [
     CommonModule,

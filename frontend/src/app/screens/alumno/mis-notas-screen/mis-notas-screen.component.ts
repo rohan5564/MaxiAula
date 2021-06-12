@@ -18,62 +18,11 @@ export class MisNotasScreenComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
 
   rut = '';
-  
-  /*
-  cursos: Curso[] | undefined;
-  notas: any;
-  notasNumber: any;
-  curso:any;
-  */
+
   constructor(
     public  auth: AuthService
   ) { 
     
-   // this.cursosAlu.subscribe(
-    //  cursos => {
-       
-     //   this.cursos = cursos;
-        
-         /*
-         cursos.map(
-          (curso) => {
-           // this.notas= curso.notas;
-           this.notas = curso.notas!.map( (notas) =>
-            {
-              console.log(this.notas)
-              if (notas.rutAlumno === this.rut) {
-                
-                //this.notas?.concat (notas);
-                //this.notas?.push(notas)
-                return notas;
-              }
-              return null
-            } )
-            
-            
-
-
-
-            this.notas = this.notas.filter(Boolean);
-            console.log(this.notas)
-
-            this.notasNumber = this.notas.map(
-              (notas:any) => {
-                return notas.notas}
-            )
-            this.notasNumber = this.notasNumber.filter(Boolean);
-            console.log(this.notasNumber)
-
-          }
-          
-        )
-         */
-
-    //  }
-    //)
-    
-
- 
     
   }
   
