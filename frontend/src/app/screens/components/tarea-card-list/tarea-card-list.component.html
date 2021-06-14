@@ -2,7 +2,7 @@
 
     <div fxFlex="20" fxFlex.lg="10" fxFlex.sm="10" *ngFor="let tarea of tareas">
         <app-tarea-card [tarea]="tarea"></app-tarea-card>
-        <button (click)="borrarTarea(tarea)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 2" pButton>
+        <button (click)="borrarTarea(tarea)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 1 || usuarioActual.tipo === 2" pButton>
             <mat-icon mat-list-icon>delete</mat-icon>
             <span class=" d-none d-sm-inline float-end">Eliminar</span>  
         </button>

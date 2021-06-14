@@ -26,9 +26,8 @@ export class CrearCursoComponent implements OnInit {
     semestre: ['1', [Validators.required]],
     portada: ['', ],
     linkChat: ['',],
-    linkArchivos: ['',]
-
-    
+    linkArchivos: ['',],
+    linkClases: ['',]    
   });
   
   statuses : SelectItem[] = [{label: '1er Semestre', value: 1},{label: '2do Semestre', value: 2}];
@@ -69,6 +68,7 @@ export class CrearCursoComponent implements OnInit {
             semestre: this.nuevoCursoForm.controls['semestre'].value,
             linkChat: this.nuevoCursoForm.controls['linkChat'].value,
             linkArchivos: this.nuevoCursoForm.controls['linkArchivos'].value,
+            linkClases: this.nuevoCursoForm.controls['linkClases'].value,
             anio: this.year        
           }
 

@@ -11,7 +11,7 @@
                             <img class="img-fluid img-thumbnail hover-shadow" width="200" height="100" src="{{recurso.imagenURL}}">
 
                         </div>
-                        <button (click)="borrarRecurso(recurso)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 2" pButton>
+                        <button (click)="borrarRecurso(recurso)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 1 || usuarioActual.tipo === 2" pButton>
                             <mat-icon mat-list-icon>delete</mat-icon>
                             <span class=" d-none d-sm-inline float-end">Eliminar</span> 
                         </button>
@@ -27,7 +27,7 @@
                 <div class="div" *ngFor="let recurso of recursos">
                     <ng-container *ngIf='recurso.videoURL'>
                         <iframe width="300" height="200" [src]="getVideoIframe(recurso.videoURL)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-                        <button (click)="borrarRecurso(recurso)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 2" pButton>
+                        <button (click)="borrarRecurso(recurso)" class="p-button-danger p-button-rounded" *ngIf="usuarioActual.tipo === 1 || usuarioActual.tipo === 2" pButton>
                             <mat-icon mat-list-icon>delete</mat-icon>
                             <span class=" d-none d-sm-inline float-end">Eliminar</span>  
                         </button>

@@ -15,7 +15,7 @@
 
 
 
-                <button *ngIf="curso" [routerLink]="['/maxiaula/profesor/curso/' + curso!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
+                <button *ngIf="curso" [routerLink]="['./../../' + curso!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
                 <mat-tab-group dynamicHeight mat-align-tabs="center">
                     <mat-tab>
                         <ng-template mat-tab-label>

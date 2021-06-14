@@ -1,19 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { AddUsersComponent } from './add-users/add-users.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminScreenComponent } from './admin-screen/admin-screen.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { SharedModule } from '../../shared/shared.module';
 import { AdministrarCursosScreenComponent } from './administrar-cursos-screen/administrar-cursos-screen.component';
 import { AdministrarUsuariosScreenComponent } from './administrar-usuarios-screen/administrar-usuarios-screen.component';
-import { ScreensModule } from '../screens.module';
-import { MaterialModule } from '../../utilities/material.module';
-import { PrimeNgModule } from '../../utilities/prime-ng.module';
-import { AddUsersComponent } from './add-users/add-users.component';
+import { CommonModule } from '@angular/common';
 import { EnviarMailsComponent } from './enviar-mails/enviar-mails.component';
-
+import { MaterialModule } from '../../utilities/material.module';
+import { NgModule } from '@angular/core';
+import { PrimeNgModule } from '../../utilities/prime-ng.module';
+import { ProfesorModule } from '../profesor/profesor.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ScreensModule } from '../screens.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,8 @@ import { EnviarMailsComponent } from './enviar-mails/enviar-mails.component';
     MaterialModule,
     PrimeNgModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProfesorModule
   ]
 })
 export class AdminModule { }

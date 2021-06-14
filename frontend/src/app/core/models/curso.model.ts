@@ -13,6 +13,7 @@ export interface Curso {
     portadaURL?: string;    /* Imagen de portada del curso */
     linkChat?: string;      /* Link para el chat del curso */
     linkArchivos?: string;  /* Link para la carpeta de archivos del curso */
+    linkClases?: string;    /* Link de acceso a las clases por zoom o meet */
 }
 
 export interface Recurso {

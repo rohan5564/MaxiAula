@@ -12,6 +12,16 @@
                 </div>
             </div>
 
+            <!-- Link Clases -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label"><b>Link de la sala de clases de Meet o Zoom</b></label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" formControlName="linkClases" placeholder="link de acceso a la sala de clases de Google Meet o Zoom">
+
+                </div>
+            </div>
+
             <!-- Link Chat -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label"><b>Link del Chat</b></label>
@@ -71,7 +81,7 @@
             </div>
             <div class="row">
                 <div class="col text-center">
-                    <button [routerLink]="['/maxiaula/profesor/curso/' + cursoActual!._id]" class="btn btn-outline-primary mt-2" label="Volver al Curso">
+                    <button [routerLink]="['./../../' + cursoActual!._id]" class="btn btn-outline-primary mt-2" label="Volver al Curso">
                         Volver al Curso
                     </button>
                 </div>

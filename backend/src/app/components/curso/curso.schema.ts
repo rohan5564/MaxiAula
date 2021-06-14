@@ -16,7 +16,8 @@ const definition: Partial<Record<keyof Curso, any>> = {
     notas: { type: Array },
     portadaURL: { type: String },
     linkChat: { type: String },
-    linkArchivos: { type: String }
+    linkArchivos: { type: String },
+    linkClases: { type: String }
 }
 
 const schema: Schema<Curso> = new Schema(definition)

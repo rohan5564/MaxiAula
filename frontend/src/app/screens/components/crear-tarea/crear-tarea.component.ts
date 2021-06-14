@@ -67,8 +67,8 @@ export class CrearTareaComponent implements OnInit {
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
 
           this.popUp.aviso('Felicidades!','¡La tarea se añadió exitosamente!','success');
-          this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]);
-
+          (this.usuarioActual?.tipo === 2) ? this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]) : this.router.navigate(['/maxiaula/admin/curso/' + this.cursoActual!._id]);
+          
           await this.mail.avisarNuevaTarea(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes);   
                  
         }
@@ -78,7 +78,7 @@ export class CrearTareaComponent implements OnInit {
         }
       }
     });
-    console.log(nuevaTarea)
+   // console.log(nuevaTarea)
 
   }
 

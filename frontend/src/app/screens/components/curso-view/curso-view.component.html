@@ -10,8 +10,8 @@
 
 <ng-template #divCurso>
 
+    <!-- Opciones Profesor o Admin -->
     <div *ngIf="usuarioActual.tipo === 1 || usuarioActual.tipo === 2">
-
 
         <app-curso-options [usuarioActual]="usuarioActual" [cursoActual]="curso"></app-curso-options>
 
@@ -38,26 +38,39 @@
                 <ng-container>
                     <hr>
                     <h3 class="text-center">Links</h3>
+                    <hr>
                     <div class="row container">
+
+                        <!-- Clases -->
+                        <div class="col-4" *ngIf="curso.linkClases">
+                            <h4 class="d-none d-sm-inline">Click para ingresar a las clases del curso</h4>
+                            <a href="{{curso.linkClases}}" target="_blank">
+                                <img class="img-thumbnail mt-2" src="https://image.freepik.com/vector-gratis/interior-sala-clase-escuela-vacia-dibujos-animados-escritorio_88272-1461.jpg" alt="Clases">
+                            </a>
+                        </div>
+
+                        <!-- Chat -->
                         <div class="col-4" *ngIf="curso.linkChat">
                             <h4 class="d-none d-sm-inline">Click para ir al chat del curso</h4>
                             <a href="{{curso.linkChat}}" target="_blank">
-                                <img class="img-thumbnail" src="https://www.oas.org/ext/Portals/14/EasyDNNNews/588/300300p2250EDNmainImage.png" alt="Chat del Curso">
+                                <img class="img-thumbnail mt-5 ml-3" src="https://www.oas.org/ext/Portals/14/EasyDNNNews/588/300300p2250EDNmainImage.png" alt="Chat del Curso">
                             </a>
                         </div>
-                        <div class="col-4"></div>
+
+                        <!-- Archivos -->
                         <div class="col-4" *ngIf="curso.linkArchivos">
                             <h4 class="d-none d-sm-inline">Click para ir a la carpeta de archivos del curso</h4>
                             <a href="{{curso.linkArchivos}}" target="_blank">
-                                <img class="img-thumbnail" src="https://lecciones.batiburrillo.net/wp-content/uploads/2010/07/Carpeta1.jpg" alt="Carpeta de Archivos del Curso">
+                                <img class="img-thumbnail mt-2" src="https://lecciones.batiburrillo.net/wp-content/uploads/2010/07/Carpeta1.jpg" alt="Carpeta de Archivos del Curso">
                             </a>
                         </div>
+
                     </div>
                 </ng-container>
 
 
                 <!-- Tareas -->
-                <ng-container *ngIf="curso.tareas">
+                <ng-container *ngIf="curso.tareas!.length >= 1">
                     <hr>
                     <h3 class="text-center">Tareas del Curso</h3>
                     <div class="row container">
@@ -67,9 +80,10 @@
                 </ng-container>
 
                 <!-- Recursos -->
-                <ng-container *ngIf="curso.recursos">
+                <ng-container *ngIf="curso.recursos!.length >= 1">
                     <hr>
                     <h3 class="text-center">Material</h3>
+                    <hr>
                     <app-recursos-view [recursos]="curso.recursos" [cursoActualID]="curso._id"></app-recursos-view>
                 </ng-container>
 

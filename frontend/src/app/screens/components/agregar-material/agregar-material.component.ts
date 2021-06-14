@@ -89,7 +89,11 @@ export class AgregarMaterialComponent implements OnInit {
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
           this.popUp.aviso('Felicidades!','¡El video  ha sido añadido exitosamente!','success');
-          this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]);
+          if (this.usuarioActual?.tipo === 2) {
+            
+          }
+          (this.usuarioActual?.tipo === 2) ? this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]) : this.router.navigate(['/maxiaula/admin/curso/' + this.cursoActual!._id]);
+          
           await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes);   
                  
         }
@@ -118,9 +122,9 @@ export class AgregarMaterialComponent implements OnInit {
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
           this.popUp.aviso('Felicidades!','¡La imagen  ha sido añadido exitosamente!','success');
-          this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]); 
+          (this.usuarioActual?.tipo === 2) ? this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]) : this.router.navigate(['/maxiaula/admin/curso/' + this.cursoActual!._id]);
+          
           await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes); 
-                
         }
         catch(error){
           this.popUp.aviso('Error!','Algo falló','error');
