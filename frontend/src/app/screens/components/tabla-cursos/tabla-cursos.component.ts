@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { Curso } from 'src/app/core/models/curso.model';
 import { CursoProviderService } from 'src/app/core/providers/curso/curso-provider.service';
 import { PopupService } from 'src/app/core/services/popup/popup.service';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { SelectItem } from 'primeng/api';
+import { Table } from 'primeng/table';
 import { ThemePalette } from '@angular/material/core';
 import { User } from 'src/app/core/models/user.model';
 
@@ -30,6 +31,8 @@ export class TablaCursosComponent implements OnInit {
 
   clonedCursos: { [s: string]: Curso; } = {};
 
+  
+
   constructor(
     private cursoP: CursoProviderService,
     private popUp : PopupService
@@ -38,6 +41,12 @@ export class TablaCursosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  // obtener la tabla de primeng del html 
+  @ViewChild('dt') dt: Table | undefined;
+  // filtro para el buscador de una columna
+  applyFilter($event: any, stringVal: any) {
+    this.dt!.filter(($event.target as HTMLInputElement).value, stringVal,  'contains');
   }
 
   onRowEditInit(curso: Curso){

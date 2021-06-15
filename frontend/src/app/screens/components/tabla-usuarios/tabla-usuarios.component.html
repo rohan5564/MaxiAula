@@ -20,9 +20,20 @@
                 <div class="p-grid">
                     <div class="p-col p-mt-2">
                         <!--Tabla-->
-                        <p-table [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
+                        <p-table #dt [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
                             <!--Header-->
                             <ng-template pTemplate="header">
+                                <tr>
+                                    <th>
+                                        <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'nombre')" [value]="$any(dt).filters['nombre']?.value" placeholder="Buscar Nombre" class="p-column-filter">
+                                    </th>
+                                    <th>
+                                        <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'rut')" [value]="$any(dt).filters['rut']?.value" placeholder="Buscar RUT" class="p-column-filter">
+                                    </th>
+                                    <th>
+                                        <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'correo')" [value]="$any(dt).filters['correo']?.value" placeholder="Buscar Correo" class="p-column-filter">
+                                    </th>
+                                </tr>
                                 <tr>
                                     <th pSortableColumn="nombre">Nombre
                                         <p-sortIcon field="nombre"></p-sortIcon>
@@ -41,6 +52,8 @@
                                     </th>
 
                                 </tr>
+
+
                             </ng-template>
 
                             <!--Body-->

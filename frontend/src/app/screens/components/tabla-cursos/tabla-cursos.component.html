@@ -19,9 +19,18 @@
                 <div class="p-grid">
                     <div class="p-col p-mt-2">
                         <!--Tabla-->
-                        <p-table #dt1 [value]="cursos" selectionMode="single" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
+                        <p-table #dt [value]="cursos" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
                             <!--Header-->
                             <ng-template pTemplate="header">
+                                <tr>
+                                    <th *ngIf="usuarioActual!.tipo === 1">
+                                        <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'profACargo')" [value]="$any(dt).filters['profACargo']?.value" placeholder="Buscar RUT" class="p-column-filter">
+                                    </th>
+                                    <th>
+                                        <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'nombre')" [value]="$any(dt).filters['nombre']?.value" placeholder="Buscar nombre" class="p-column-filter">
+                                    </th>
+                                </tr>
+
                                 <tr>
 
                                     <th pSortableColumn="profACargo" *ngIf="usuarioActual!.tipo === 1">Prof. a Cargo
@@ -30,8 +39,8 @@
                                     <th pSortableColumn="nombre">Nombre
                                         <p-sortIcon field="nombre"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="año">Año
-                                        <p-sortIcon field="año"></p-sortIcon>
+                                    <th pSortableColumn="anio">Año
+                                        <p-sortIcon field="anio"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="semestre">Semestre
                                         <p-sortIcon field="semestre"></p-sortIcon>
@@ -53,12 +62,12 @@
                             <!--Body-->
                             <ng-template pTemplate="body" let-curso let-editing="editing" let-ri="rowIndex">
                                 <!--definer la fila editable-->
-                                <tr [pEditableRow]="curso">
+                                <tr [pEditableRow]="curso" [pSelectableRow]="curso">
 
                                     <td *ngIf="usuarioActual!.tipo === 1">
                                         <p-cellEditor>
                                             <ng-template pTemplate="input">
-                                                <input pInputText type="text" [(ngModel)]="curso.profACargo" placeholder="12345678-9" required>
+                                                <input style="width: 10em;" pInputText type="text" [(ngModel)]="curso.profACargo" placeholder="12345678-9" required>
                                             </ng-template>
                                             <ng-template pTemplate="output">
                                                 {{curso.profACargo}}
@@ -69,7 +78,7 @@
                                     <td>
                                         <p-cellEditor>
                                             <ng-template pTemplate="input">
-                                                <input pInputText type="text" [(ngModel)]="curso.nombre" required>
+                                                <input style="width: 10em;" pInputText type="text" [(ngModel)]="curso.nombre" required>
                                             </ng-template>
                                             <ng-template pTemplate="output">
                                                 {{ curso.nombre | titlecase }}
@@ -80,7 +89,7 @@
                                     <td>
                                         <p-cellEditor>
                                             <ng-template pTemplate="input">
-                                                <input pInputText type="number" [(ngModel)]="curso.anio" required>
+                                                <input style="width: 10em;" pInputText type="number" [(ngModel)]="curso.anio" required>
                                             </ng-template>
                                             <ng-template pTemplate="output">
                                                 {{ curso.anio }}
