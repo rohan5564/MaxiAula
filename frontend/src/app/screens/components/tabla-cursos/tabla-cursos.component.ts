@@ -40,8 +40,23 @@ export class TablaCursosComponent implements OnInit {
   
   }
 
+  // columnas para exportar en .csv 
+  cols!: any[];
   ngOnInit(): void {
+    this.cols = [
+      { field: '_id', header: 'id' },
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'profACargo', header: 'Rut profesor a cargo' },
+      { field: 'descripcion', header: 'Descripcion' },
+      { field: 'anio', header: 'Año' },
+      { field: 'semestre', header: 'Semestre' },
+      { field: 'cratedAt', header: 'Fecha de creacion' },
+      { field: 'linkChat', header: 'Link Chat' },
+      { field: 'linkArchivos', header: 'Link Archivos' },
+      { field: 'linkClases', header: 'Link Clases' }
+    ];
   }
+  
   // obtener la tabla de primeng del html 
   @ViewChild('dt') dt: Table | undefined;
   // filtro para el buscador de una columna

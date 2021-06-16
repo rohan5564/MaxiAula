@@ -45,7 +45,14 @@ export class TablaUsuariosComponent implements OnInit {
  
    }
 
+  // columnas para exportar en .csv 
+  cols!: any[];
   ngOnInit(): void {
+    this.cols = [
+      { field: 'rut', header: 'RUT' },
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'correo', header: 'Correo' }
+    ];
   }
 
   // obtener la tabla de primeng del html 
@@ -186,7 +193,7 @@ export class TablaUsuariosComponent implements OnInit {
     });
   }
   
-  
+
 
   
 

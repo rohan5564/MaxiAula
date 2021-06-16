@@ -19,7 +19,13 @@
                 <div class="p-grid">
                     <div class="p-col p-mt-2">
                         <!--Tabla-->
-                        <p-table #dt [value]="cursos" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
+                        <p-table #dt [columns]="cols" [value]="cursos" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
+                            <!-- Exportar como .csv -->
+                            <ng-template pTemplate="caption">
+                                <div class="p-d-flex">
+                                    <button type="button" pButton label="Exportar como .csv" class="p-button-rounded p-button-info" icon="pi pi-file-o" (click)="dt.exportCSV()" pTooltip="CSV" tooltipPosition="bottom"></button>
+                                </div>
+                            </ng-template>
                             <!--Header-->
                             <ng-template pTemplate="header">
                                 <!-- Buscadores -->
