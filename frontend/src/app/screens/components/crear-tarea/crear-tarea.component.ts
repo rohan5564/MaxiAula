@@ -57,7 +57,7 @@ export class CrearTareaComponent implements OnInit {
       estado: 0
     }
     
-    this.popUp.pregunta('¿Quiere añadir esta tarea?','Se añadirá la tarea al curso','question')
+    this.popUp.pregunta('¿Quiere añadir esta tarea?','Se añadirá la tarea al curso y además se notificará por email a los participantes de este.','question')
     .then( async result => {
       if (result.isConfirmed) {
         try {

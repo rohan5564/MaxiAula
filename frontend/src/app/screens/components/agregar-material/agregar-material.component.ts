@@ -80,7 +80,7 @@ export class AgregarMaterialComponent implements OnInit {
     let recurso: Recurso = {
       videoURL: this.videoForm.controls['link'].value
     }
-    this.popUp.pregunta('¿Quiere añadir este video?','Añadir video al curso','question')
+    this.popUp.pregunta('¿Quiere añadir este video?','Se añadirá el video al curso y además se notificará por email a los participantes de este.','question')
     .then(async (result) => {
       if (result.isConfirmed) {
 
@@ -89,9 +89,7 @@ export class AgregarMaterialComponent implements OnInit {
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
           this.popUp.aviso('Felicidades!','¡El video  ha sido añadido exitosamente!','success');
-          if (this.usuarioActual?.tipo === 2) {
-            
-          }
+        
           (this.usuarioActual?.tipo === 2) ? this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]) : this.router.navigate(['/maxiaula/admin/curso/' + this.cursoActual!._id]);
           
           await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes);   
@@ -113,7 +111,7 @@ export class AgregarMaterialComponent implements OnInit {
     let recurso: Recurso = {
       videoURL: this.imageForm.controls['link'].value
     }
-    this.popUp.pregunta('¿Quiere añadir esta imagen?','Añadir imagen al curso','question')
+    this.popUp.pregunta('¿Quiere añadir esta imagen?','Se añadirá la imagen al curso y además se notificará por email a los participantes de este.','question')
     .then(async (result) => {
       if (result.isConfirmed) {
 

@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-
 // PrimeNg
 import { ButtonModule } from 'primeng/button';
+import {CalendarModule} from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
 import { MenubarModule } from 'primeng/menubar';
-import {CalendarModule} from 'primeng/calendar';
-import {ToolbarModule} from 'primeng/toolbar';
+import { NgModule } from '@angular/core';
 import { TableModule } from 'primeng/table';
-import { DropdownModule } from 'primeng/dropdown';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   exports: [
@@ -19,7 +19,8 @@ import { DropdownModule } from 'primeng/dropdown';
     CalendarModule,
     ToolbarModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule
   ],
 })
 export class PrimeNgModule { }

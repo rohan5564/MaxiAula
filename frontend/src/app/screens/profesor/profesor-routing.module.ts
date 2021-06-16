@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdministrarCursosComponent } from './administrar-cursos/administrar-cursos.component';
+import { AdministrarNotasComponent } from './administrar-notas/administrar-notas.component';
 import { AgregarAlumnosScreenComponent } from './agregar-alumnos-screen/agregar-alumnos-screen.component';
 import { AgregarMaterialComponent } from './agregar-material/agregar-material.component';
 import { AgregarParticipantesComponent } from './agregar-participantes/agregar-participantes.component';
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'curso/agregar-material/:id', component: AgregarMaterialComponent},
   {path: 'aviso', component: AvisoEmailComponent},
   {path: 'curso/editar/:id', component: EditarCursoComponent},
-  {path: 'curso/agregar-tarea/:id', component: AgregarTareaComponent}
+  {path: 'curso/agregar-tarea/:id', component: AgregarTareaComponent},
+  {path: 'curso/notas/:id', component: AdministrarNotasComponent}
 
 ];
 

@@ -22,15 +22,16 @@
                         <p-table #dt [value]="cursos" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
                             <!--Header-->
                             <ng-template pTemplate="header">
+                                <!-- Buscadores -->
                                 <tr>
                                     <th *ngIf="usuarioActual!.tipo === 1">
                                         <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'profACargo')" [value]="$any(dt).filters['profACargo']?.value" placeholder="Buscar RUT" class="p-column-filter">
                                     </th>
                                     <th>
-                                        <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'nombre')" [value]="$any(dt).filters['nombre']?.value" placeholder="Buscar nombre" class="p-column-filter">
+                                        <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'nombre')" [value]="$any(dt).filters['nombre']?.value" placeholder="Buscar Curso" class="p-column-filter">
                                     </th>
                                 </tr>
-
+                                <!-- Cabezeras -->
                                 <tr>
 
                                     <th pSortableColumn="profACargo" *ngIf="usuarioActual!.tipo === 1">Prof. a Cargo
@@ -116,7 +117,7 @@
                                         {{curso.cratedAt | date}}
                                     </td>
 
-
+                                    <!-- Opciones -->
                                     <ng-container *ngIf="usuarioActual!.tipo === 1 || usuarioActual!.tipo === 2">
                                         <td>
                                             <button *ngIf="!editing" pInitEditableRow (click)="onRowEditInit(curso)" pButton class="p-button-rounded p-button-warning ">
@@ -140,6 +141,11 @@
 
                                     </ng-container>
 
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="6">No se encontraron resultados.</td>
                                 </tr>
                             </ng-template>
                         </p-table>

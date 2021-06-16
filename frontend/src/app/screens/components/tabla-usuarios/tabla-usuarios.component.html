@@ -23,6 +23,7 @@
                         <p-table #dt [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
                             <!--Header-->
                             <ng-template pTemplate="header">
+                                <!-- Buscadores -->
                                 <tr>
                                     <th>
                                         <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'nombre')" [value]="$any(dt).filters['nombre']?.value" placeholder="Buscar Nombre" class="p-column-filter">
@@ -34,6 +35,7 @@
                                         <input style="width: 10em;" pInputText type="text" (input)="applyFilter($event, 'correo')" [value]="$any(dt).filters['correo']?.value" placeholder="Buscar Correo" class="p-column-filter">
                                     </th>
                                 </tr>
+                                <!-- Cabezeras -->
                                 <tr>
                                     <th pSortableColumn="nombre">Nombre
                                         <p-sortIcon field="nombre"></p-sortIcon>
@@ -52,14 +54,12 @@
                                     </th>
 
                                 </tr>
-
-
                             </ng-template>
 
                             <!--Body-->
                             <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
                                 <!--definer la fila editable-->
-                                <tr [pEditableRow]="user">
+                                <tr [pEditableRow]="user" [pSelectableRow]="user">
                                     <td>
                                         <p-cellEditor>
                                             <ng-template pTemplate="input">
@@ -80,9 +80,6 @@
                                                 {{ user.correo }}
                                             </ng-template>
                                         </p-cellEditor>
-
-
-
                                     </td>
                                     <!--tipo de usuario solo editable para administrador-->
                                     <td class="text-center" *ngIf="usuarioActual!.tipo === 1">
@@ -135,11 +132,16 @@
                                     </ng-container>
                                 </tr>
                             </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="4">No se encontraron resultados.</td>
+                                </tr>
+                            </ng-template>
                         </p-table>
                     </div>
                 </div>
             </mat-card-content>
         </mat-card>
-
     </div>
+
 </ng-template>

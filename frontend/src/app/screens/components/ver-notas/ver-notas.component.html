@@ -11,35 +11,57 @@
     <div class="div mt-3 animate__animated animate__fadeInDown">
         <mat-card>
 
-            <b>RUT: </b> {{rut}}
+            <div class="text-center">
+                <b>Notas</b>
+                <br>
+                <b>RUT: </b> {{usuarioActual!.rut}}
+                <br>
+                <b>Nombre: </b> {{usuarioActual!.nombre}}
+            </div>
 
-
+            <hr>
             <mat-card-content>
 
-                <table class="table table-striped table-hover">
+                <table class="table  table-hover">
 
                     <thead>
                         <tr>
-                            <th scope="col">Curso</th>
+                            <th scope="col">Cursos</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let curso of cursos; let i = index;">
-                            {{curso.nombre | uppercase}}
-                            <th scope="row"></th>
+                            <b>{{curso.nombre | uppercase}}</b>
 
-                            <td *ngFor="let notas of curso.notas; let i = index;">
-                                <div class="text-center" *ngIf="notas.rutAlumno === rut">
-                                    <a class="" *ngFor="let nota of notas.notas; let i = index">
-                                        <strong>Nota {{i+1}}:</strong> {{nota | number}}
-                                    </a>
-                                    <div class="float-end">
-                                        <strong>Promedio:</strong> {{notas.promedio}}
-                                    </div>
+                            <div *ngFor="let notas of curso.notas; let i = index;">
+                                <div *ngIf="notas.rutAlumno === usuarioActual!.rut">
+                                    <!-- Sub-Tabla de Notas -->
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <td class="text-center" *ngFor="let nota of notas.notas; let i = index">
+                                                    <b>{{i+1}}</b>
+                                                </td>
+                                                <td class="text-center">
+                                                    <b>Promedio</b>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center" *ngFor="let nota of notas.notas; let i = index">
+                                                    {{nota | number}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{notas.promedio}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
                                 </div>
-                            </td>
+                            </div>
 
 
                         </tr>

@@ -17,7 +17,7 @@ export class MisNotasScreenComponent implements OnInit {
   color: ThemePalette = 'warn';
   mode: ProgressSpinnerMode = 'indeterminate';
 
-  rut = '';
+  usuarioActual = this.auth.user;
 
   constructor(
     public  auth: AuthService
@@ -27,6 +27,6 @@ export class MisNotasScreenComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.rut = this.auth.user.rut;
+    
   }
 }

@@ -114,19 +114,20 @@ export class TablaUsuariosComponent implements OnInit {
     }
 
     if (this.usuarioActual?.tipo === 2) {
-      this.popUp.pregunta('Eliminar Usuario','¿Desea eliminar este usuario del curso forma permanente?','error')
+      this.popUp.pregunta('Eliminar Usuario','¿Desea eliminar este paticipante del curso forma permanente?','error')
                 .then(async (result) => {
                   if (result.isConfirmed) {                  
                     try {
                      // console.log(this.usuarioActual, this.cursoActual)
 
-                      this.cursoActual?.participantes.filter(
-                        rut => {
-                          rut !== user.rut;
-                        }
-                      )
+                      this.cursoActual!.participantes.forEach( (item: string, index: any) => { // borrar del arreglo de participantes
+                        if(item === user.rut) this.cursoActual!.participantes.splice(index,1);
+                      }); 
+
+                      //console.log(this.cursoActual?.participantes);
+                      
                       await this.cursoP.updateCursoById(this.cursoActual!._id , this.cursoActual!).toPromise(); // actualizar curso
-                      this.popUp.aviso('Usuario Eliminado','Se ha eliminado correctamente el usuario del curso','success');  
+                      this.popUp.aviso('Participante Eliminado','Se ha eliminado correctamente al participante del curso','success');  
                       
                       this.usuarios!.forEach( (item: User, index: any) => { // borrar del arreglo de usuarios
                         if(item === user) this.usuarios!.splice(index,1);

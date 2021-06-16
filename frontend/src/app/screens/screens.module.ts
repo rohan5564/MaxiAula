@@ -16,6 +16,7 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { MaterialModule } from '../utilities/material.module';
 import { MensajeEmailComponent } from './components/mensaje-email/mensaje-email.component';
 import { MiPerfilScreenComponent } from './mi-perfil-screen/mi-perfil-screen.component';
+import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 import { NgModule } from '@angular/core';
 import { PrimeNgModule } from '../utilities/prime-ng.module';
 import { RecursosViewComponent } from './components/recursos-view/recursos-view.component';
@@ -25,12 +26,12 @@ import { ScreensRoutingModule } from './screens-routing.module';
 import { SemestrePipe } from './pipes/semestre.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
+import { TablaNotasComponent } from './components/tabla-notas/tabla-notas.component';
 import { TablaUsuariosComponent } from './components/tabla-usuarios/tabla-usuarios.component';
 import { TareaCardComponent } from './components/tarea-card/tarea-card.component';
 import { TareaCardListComponent } from './components/tarea-card-list/tarea-card-list.component';
 import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
 import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
-import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ModificarPerfilComponent } from './components/modificar-perfil/modifica
     TareaCardComponent,
     TareaCardListComponent,
     ModificarPerfilComponent,
+    TablaNotasComponent,
   
     
   ],
@@ -74,7 +76,8 @@ import { ModificarPerfilComponent } from './components/modificar-perfil/modifica
     CursoEditComponent,
     CrearTareaComponent,
     CardComponent,
-    TareaCardListComponent
+    TareaCardListComponent,
+    TablaNotasComponent,
     
   ],
   imports: [

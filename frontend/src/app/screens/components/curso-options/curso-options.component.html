@@ -1,5 +1,8 @@
 <mat-card class=" Fixed animate__animated animate__fadeInDown">
+    <h4 class="text-center">Opciones</h4>
+    <hr>
 
+    <!-- Parte Arriba -->
     <mat-card-content>
         <mat-nav-list fxLayout="row">
 
@@ -7,7 +10,7 @@
 
 
                 <!--Añadir Participantes-->
-                <a [routerLink]="['../agregar-participantes', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['../agregar-participantes/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>person_add</mat-icon>
                     <span class="d-none d-sm-inline">Añadir Participantes</span>
                 </a>
@@ -17,20 +20,38 @@
                     <span class="d-none d-sm-inline">Ver Participantes</span>
                 </a>
                 <!--Editar Curso-->
-                <a [routerLink]="['../editar', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['../editar/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>edit_note</mat-icon>
                     <span class="d-none d-sm-inline">Editar Curso</span>
                 </a>
+
+
+
+            </ng-container>
+        </mat-nav-list>
+    </mat-card-content>
+    <!-- Parte Abajo -->
+    <mat-card-content>
+        <mat-nav-list fxLayout="row">
+
+            <ng-container>
+
                 <!--Agregar Material-->
-                <a [routerLink]="['../agregar-material', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['../agregar-material/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>add</mat-icon>
                     <span class="d-none d-sm-inline">Añadir Material</span>
                 </a>
 
                 <!--Agregar Tarea-->
-                <a [routerLink]="['../agregar-tarea', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['../agregar-tarea/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <mat-icon mat-list-icon>add_task</mat-icon>
                     <span class="d-none d-sm-inline">Añadir Tarea</span>
+                </a>
+
+                <!--Editar Notas-->
+                <a [routerLink]="['../notas/', cursoActual!._id]" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon mat-list-icon>text_snippet</mat-icon>
+                    <span class="d-none d-sm-inline">Notas</span>
                 </a>
 
 

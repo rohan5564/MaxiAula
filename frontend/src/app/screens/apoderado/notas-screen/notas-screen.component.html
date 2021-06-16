@@ -11,7 +11,7 @@
 <ng-template #divNotas>
     <div class="div" *ngFor="let hijo of hijos">
 
-        <app-ver-notas [rut]=hijo.rut></app-ver-notas>
+        <app-ver-notas [usuarioActual]="hijo"></app-ver-notas>
 
     </div>
 

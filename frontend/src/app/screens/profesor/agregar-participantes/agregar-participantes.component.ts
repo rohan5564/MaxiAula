@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Curso, Notas } from 'src/app/core/models/curso.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { ActivatedRoute } from '@angular/router';
 import { formatRut, validateRut } from '@fdograph/rut-utilities';
-import { switchMap } from 'rxjs/operators';
 
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Curso } from 'src/app/core/models/curso.model';
-import { User } from 'src/app/core/models/user.model';
 import { CursoProviderService } from 'src/app/core/providers/curso/curso-provider.service';
-import { UserProviderService } from 'src/app/core/providers/user/user-provider.service';
 import { PopupService } from 'src/app/core/services/popup/popup.service';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
+import { User } from 'src/app/core/models/user.model';
+import { UserProviderService } from 'src/app/core/providers/user/user-provider.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-agregar-participantes',
@@ -71,7 +71,12 @@ export class AgregarParticipantesComponent implements OnInit {
 
   
     if (usuario !== null && this.curso?.participantes.indexOf(rut) === -1) {
-
+      let notas: Notas ={
+        rutAlumno: rut,
+        notas: [0],
+        promedio: 0
+      }
+      this.curso.notas?.push(notas);
       this.curso?.participantes.push(rut);
       try {
 

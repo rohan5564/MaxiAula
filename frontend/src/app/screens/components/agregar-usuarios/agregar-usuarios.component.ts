@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Curso, Notas } from 'src/app/core/models/curso.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatorService } from 'src/app/utilities/validator/validator.service';
 import { formatRut, validateRut } from '@fdograph/rut-utilities';
 
-import { Curso } from 'src/app/core/models/curso.model';
-import { User } from 'src/app/core/models/user.model';
-import { PopupService } from '../../../core/services/popup/popup.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
 import { EmailValidatorService } from 'src/app/utilities/validator/email-validator.service';
+import { PopupService } from '../../../core/services/popup/popup.service';
 import { RutValidatorService } from 'src/app/utilities/validator/rut-validator.service';
+import { User } from 'src/app/core/models/user.model';
+import { ValidatorService } from 'src/app/utilities/validator/validator.service';
 
 @Component({
   selector: 'app-agregar-usuarios',
@@ -103,7 +103,13 @@ export class AgregarUsuariosComponent implements OnInit {
     this.authService.signUpUser(usuario).subscribe(
       async res => {
                  
-        if (this.usuarioActual?.tipo === 2 && this.cursoActual?._id) {
+        if (this.usuarioActual?.tipo === 2 && this.cursoActual?._id) { // si lo inscribio un profesor y lo añadera al curso
+              let notas: Notas ={
+                  rutAlumno: usuario.rut!,
+                  notas: [0],
+                  promedio: 0
+              }
+              this.cursoActual.notas?.push(notas);
               this.cursoActual?.participantes.push(usuario.rut!);
               try {
 

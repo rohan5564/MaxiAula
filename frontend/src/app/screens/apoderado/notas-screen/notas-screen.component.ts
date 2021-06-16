@@ -19,9 +19,6 @@ export class NotasScreenComponent implements OnInit {
 
   hijos$ = this.userP.getHijos(this.auth.user);
   hijos:User[] = [];
-  cursosM :any; 
-  cursos: any;
-  //hijos: Observable<Observable<User[]>> | undefined;
 
   constructor(
     public userP: UserProviderService,
@@ -29,23 +26,12 @@ export class NotasScreenComponent implements OnInit {
     public cursoP: CursoProviderService
   ) {
      
-
-    this.hijos$.subscribe(
-      hijos => {
-        this.hijos = hijos;
-       // console.log(this.hijos)
-        
-      }
-      
-    )
+    this.hijos$.subscribe(hijos => this.hijos = hijos);
 
    }
 
 
   ngOnInit(): void {
-    
-    
-    
   }
 
 }

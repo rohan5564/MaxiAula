@@ -5,6 +5,7 @@ import { CursoProviderService } from '../../../core/providers/curso/curso-provid
 import { Observable } from 'rxjs';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ThemePalette } from '@angular/material/core';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-ver-notas',
@@ -13,8 +14,10 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class VerNotasComponent implements OnInit {
 
+
   @Input()
-  rut! :string;
+  usuarioActual: User | undefined;
+
   color: ThemePalette = 'warn';
   mode: ProgressSpinnerMode = 'indeterminate';
 
@@ -35,7 +38,7 @@ export class VerNotasComponent implements OnInit {
 
   ngOnInit(): void {
    // console.log(this.rut)
-    this.cursosAlu$ = this.cursoP.getCursosAlu(this.rut);
+    this.cursosAlu$ = this.cursoP.getCursosAlu(this.usuarioActual!.rut);
     this.cursosAlu$.subscribe(  cursos => this.cursos = cursos );
 
   }

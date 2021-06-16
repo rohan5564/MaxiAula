@@ -1,4 +1,4 @@
-<ng-container *ngIf="!rut; else divNotas">
+<ng-container *ngIf="!usuarioActual; else divNotas">
     <div class="container h-100 d-flex justify-content-center">
 
         <div class="jumbotron my-auto">
@@ -10,7 +10,7 @@
 <ng-template #divNotas>
 
 
-    <app-ver-notas [rut]="rut">
+    <app-ver-notas [usuarioActual]="usuarioActual">
 
     </app-ver-notas>
 </ng-template>
