@@ -48,7 +48,7 @@ export class TablaCursosComponent implements OnInit {
       { field: 'nombre', header: 'Nombre' },
       { field: 'profACargo', header: 'Rut profesor a cargo' },
       { field: 'descripcion', header: 'Descripcion' },
-      { field: 'anio', header: 'Año' },
+      { field: 'anio', header: 'Ano' },
       { field: 'semestre', header: 'Semestre' },
       { field: 'cratedAt', header: 'Fecha de creacion' },
       { field: 'linkChat', header: 'Link Chat' },

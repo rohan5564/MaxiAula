@@ -51,6 +51,17 @@ export class AgregarParticipantesComponent implements OnInit {
    
   }
 
+  yaEsta(rut: string): boolean {
+    let result = false;
+    this.curso?.participantes.forEach((item: string) => {
+      
+      if (item === rut) {
+        this.popUp.aviso('Usuario ya esta inscrito en el curso','El Usuario no existe o ya se encuentra dentro del curso, utilice la pestaña de la derecha','info');
+        result = true;
+      };
+    } );
+    return result;
+  }
 
   async onSubmitRut(){
     
@@ -58,10 +69,14 @@ export class AgregarParticipantesComponent implements OnInit {
 
     if ( validateRut( rut ) ) {
 
-      let usuario = await this.userP.getUsuarioByRUT(rut).toPromise();
+      
 
       //usuario$.subscribe(console.log)
-      this.ingresarAlCurso(usuario, rut);
+      if (!this.yaEsta(rut)) {
+
+        let usuario = await this.userP.getUsuarioByRUT(rut).toPromise();
+        this.ingresarAlCurso(usuario, rut);
+      }
         
     }
     else this.popUp.aviso('Rut Inválido','El RUT ingresado esta incorrecto', 'error');
@@ -70,17 +85,17 @@ export class AgregarParticipantesComponent implements OnInit {
   async ingresarAlCurso (usuario : User | undefined, rut : string) {
 
   
-    if (usuario !== null && this.curso?.participantes.indexOf(rut) === -1) {
+    if (usuario !== null ) {
       let notas: Notas ={
         rutAlumno: rut,
-        notas: [0],
+        notas: [],
         promedio: 0
       }
-      this.curso.notas?.push(notas);
+      this.curso!.notas?.push(notas);
       this.curso?.participantes.push(rut);
       try {
 
-        await this.cursoP.updateCursoById(this.curso._id, this.curso).toPromise();
+        await this.cursoP.updateCursoById(this.curso!._id, this.curso!).toPromise();
         this.popUp.aviso('Usuario Ingresado!','Se ha ingresado correctamente el alumno al curso.','success');
         
       } catch (error) {

@@ -19,8 +19,9 @@
 
                 <div class="p-grid">
                     <div class="p-col p-mt-2">
+                        <h3 *ngIf="cursoActual" class="text-center">{{cursoActual.nombre | titlecase}}</h3>
                         <!--Tabla-->
-                        <p-table #dt [columns]="cols" [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
+                        <p-table #dt [columns]="cols" [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" [autoLayout]="true" styleClass="p-datatable-responsive-demo">
                             <!-- Exportar como .csv -->
                             <ng-template pTemplate="caption">
                                 <div class="p-d-flex">

@@ -16,11 +16,12 @@
     <div class="div mt-3 mb-3 animate__animated animate__zoomIn">
         <mat-card>
             <mat-card-content>
-
+                <h3 class="text-center">{{cursoActual!.nombre | titlecase}}</h3>
                 <div class="p-grid">
                     <div class="p-col p-mt-2">
+
                         <!--Tabla-->
-                        <p-table #dt [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" editMode="row" styleClass="p-datatable-responsive-demo">
+                        <p-table #dt [value]="usuarios" [paginator]="true" [rows]="7" dataKey="_id" [autoLayout]="true" styleClass="p-datatable-responsive-demo">
                             <!--Header-->
                             <ng-template pTemplate="header">
                                 <!-- Buscadores -->
@@ -35,7 +36,7 @@
                                 </tr>
                                 <!-- Cabezeras -->
                                 <tr>
-                                    <th pSortableColumn="rut">RUT
+                                    <th style="width: 10%" pSortableColumn="rut">RUT
                                         <p-sortIcon field="rut"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="nombre">Nombre
@@ -51,8 +52,8 @@
 
                             <!--Body-->
                             <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
-                                <!--definer la fila editable-->
-                                <tr [pEditableRow]="user" [pSelectableRow]="user">
+
+                                <tr [pSelectableRow]="user">
 
                                     <td>
                                         {{ user.rut }}
@@ -72,7 +73,10 @@
                                                                 <b>{{i+1}}</b>
                                                             </td>
                                                             <td class="text-center">
-                                                                <b>Promedio</b>
+                                                                <span class="material-icons">
+                                                                    star
+                                                                </span>
+                                                                <span class="d-none d-sm-inline"><b>Promedio</b></span>
                                                             </td>
                                                         </tr>
                                                     </thead>

@@ -32,6 +32,7 @@ import { TareaCardComponent } from './components/tarea-card/tarea-card.component
 import { TareaCardListComponent } from './components/tarea-card-list/tarea-card-list.component';
 import { TipoUsuarioPipe } from './pipes/tipo-usuario.pipe';
 import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
+import { DialogNotasComponent } from './components/dialog-notas/dialog-notas.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { VerNotasComponent } from './components/ver-notas/ver-notas.component';
     TareaCardListComponent,
     ModificarPerfilComponent,
     TablaNotasComponent,
+    DialogNotasComponent,
   
     
   ],

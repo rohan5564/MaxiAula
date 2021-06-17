@@ -5,6 +5,7 @@ import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { MenubarModule } from 'primeng/menubar';
 import { NgModule } from '@angular/core';
 import { TableModule } from 'primeng/table';
@@ -20,7 +21,8 @@ import { ToolbarModule } from 'primeng/toolbar';
     ToolbarModule,
     TableModule,
     DropdownModule,
-    DialogModule
+    DialogModule,
+    InputNumberModule
   ],
 })
 export class PrimeNgModule { }

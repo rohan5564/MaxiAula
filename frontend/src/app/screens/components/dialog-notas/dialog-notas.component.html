@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>Editar Notas</h1>
+<div mat-dialog-content>
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="text-center" *ngFor="let nota of data.notas.notas; let i = index">
+                    <b>{{i+1}}</b>
+                </td>
+                <td class="text-center">
+                    <a>
+                        <span class="material-icons">
+                            add
+                        </span>
+                        <span class="d-none d-sm-inline">Nueva Nota</span>
+                    </a>
+
+                </td>
+                <td class="text-center">
+                    <span class="material-icons">
+                        star
+                    </span>
+                    <span class="d-none d-sm-inline"><b>Promedio</b></span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center" *ngFor="let nota of data.notas.notas; let i = index">
+                    <p-inputNumber [(ngModel)]="data.notas.notas[i]" [min]="0" [max]="70"></p-inputNumber>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-ml-1 p-mb-1" (click)="eliminarNota(nota, data.notas.notas)"></button>
+
+                </td>
+
+                <td class="text-center">
+                    <p-inputNumber [(ngModel)]="data.notaNueva" [min]="0" [max]="70"></p-inputNumber>
+                </td>
+                <td class="text-center">
+                    {{data.notas.promedio}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<div mat-dialog-actions>
+
+    <button pButton pRipple type="button" label="Aceptar" class="p-button-text p-mr-2" [mat-dialog-close]="data" cdkFocusInitial></button>
+    <button pButton pRipple type="button" label="Cancelar" class="p-button-danger p-button-text" (click)="onNoClick()"></button>
+
+</div>

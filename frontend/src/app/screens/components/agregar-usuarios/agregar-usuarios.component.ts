@@ -106,7 +106,7 @@ export class AgregarUsuariosComponent implements OnInit {
         if (this.usuarioActual?.tipo === 2 && this.cursoActual?._id) { // si lo inscribio un profesor y lo añadera al curso
               let notas: Notas ={
                   rutAlumno: usuario.rut!,
-                  notas: [0],
+                  notas: [],
                   promedio: 0
               }
               this.cursoActual.notas?.push(notas);

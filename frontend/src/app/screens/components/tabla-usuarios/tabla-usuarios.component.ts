@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Curso, Notas } from 'src/app/core/models/curso.model';
 
-import { Curso } from '../../../core/models/curso.model';
 import { CursoProviderService } from '../../../core/providers/curso/curso-provider.service';
 import { DialogHijosComponent } from '../dialog-hijos/dialog-hijos.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -132,6 +132,10 @@ export class TablaUsuariosComponent implements OnInit {
                       }); 
 
                       //console.log(this.cursoActual?.participantes);
+
+                      this.cursoActual!.notas!.forEach( (item: Notas, index: any) => { // borrar del arreglo de notas del curso
+                        if(item.rutAlumno === user.rut) this.cursoActual!.notas!.splice(index,1);
+                      });
                       
                       await this.cursoP.updateCursoById(this.cursoActual!._id , this.cursoActual!).toPromise(); // actualizar curso
                       this.popUp.aviso('Participante Eliminado','Se ha eliminado correctamente al participante del curso','success');  
