@@ -3,9 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { Curso } from 'src/app/core/models/curso.model';
 import { Mail } from 'src/app/core/models/mail.model';
-import { User } from 'src/app/core/models/user.model';
 import { MailService } from '../../../core/services/mail/mail.service';
 import { PopupService } from '../../../core/services/popup/popup.service';
+import { User } from 'src/app/core/models/user.model';
 import { UserProviderService } from '../../../core/providers/user/user-provider.service';
 
 @Component({
@@ -86,6 +86,8 @@ export class MensajeEmailComponent implements OnInit {
               destinatario: this.mensajeForm.controls['destinatario'].value,
               cuerpo: this.mensajeForm.controls['cuerpo'].value
             }
+            console.log(mail)
+            
             await this.mail.sendMessage(mail).toPromise();
             this.popUp.aviso('Se ha enviado su mensaje', 'Se enviado correctamente su mensaje','success');
             

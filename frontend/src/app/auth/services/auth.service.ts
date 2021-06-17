@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { distinct, map, tap } from 'rxjs/operators';
+
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { PopupService } from '../../core/services/popup/popup.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
-import { tap, map, distinct } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 import { UserProviderService } from '../../core/providers/user/user-provider.service';
-import { PopupService } from '../../core/services/popup/popup.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthService {
  
   constructor(
     private http: HttpClient, 
-    public router: Router, 
+    private router: Router, 
     private userp: UserProviderService,
     private popUp: PopupService
     ) { 
@@ -80,7 +81,8 @@ export class AuthService {
   salir() {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
-    this.router.navigate(['/']);
+    this.router.navigate(['/'], { replaceUrl: true })
+    .finally( () => window.location.reload() ); // despues de salir recargar la pagina para que no retroceda con lo que quedo en memoria
   }
 
 }

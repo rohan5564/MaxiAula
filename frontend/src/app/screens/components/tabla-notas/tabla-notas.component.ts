@@ -61,17 +61,18 @@ export class TablaNotasComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(async result => {
 
+      if (notas.notas.length) {
+        
+        notas.promedio = notas.notas.reduce( (acumulado, actual) => acumulado + actual, 0) / notas.notas.length; // calcular promedio
+      }
+
       if (!result) return
       
       // si se agrego una nota
       if (result.notaNueva > 0) {
         notas.notas.push(result.notaNueva);
       }
-      
-      if (notas.notas.length) {
         
-        notas.promedio = notas.notas.reduce( (acumulado, actual) => acumulado + actual, 0) / notas.notas.length; // calcular promedio
-      }
 
       this.popUp.pregunta('¿Desea guardar los cambios?','Se guardarán los cambio de forma permanente','question')
       .then( async resp => {

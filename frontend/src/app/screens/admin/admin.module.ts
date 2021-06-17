@@ -31,7 +31,7 @@ import { SharedModule } from '../../shared/shared.module';
     PrimeNgModule,
     RouterModule,
     ReactiveFormsModule,
-    ProfesorModule
+    ProfesorModule // se importa el modulo de profesor para acceder a todas las opciones de los cursos y screens
   ]
 })
 export class AdminModule { }

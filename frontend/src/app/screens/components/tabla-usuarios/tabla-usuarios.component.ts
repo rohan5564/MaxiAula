@@ -97,7 +97,7 @@ export class TablaUsuariosComponent implements OnInit {
   async deleteUser(user: User, index: number){
 
   
-    if (this.usuarioActual?.tipo === 1) {
+    if (!this.cursoActual) { // si no hay curso actual (tabla de usuarios general de admin)
         this.popUp.pregunta('Eliminar Usuario','¿Desea eliminar este usuario de forma permanente?','error')
                   .then(async (result) => {
                     if (result.isConfirmed) {                  
@@ -120,7 +120,7 @@ export class TablaUsuariosComponent implements OnInit {
                   });
     }
 
-    if (this.usuarioActual?.tipo === 2) {
+    if (this.cursoActual) { // si hay curso actual (tabla de participantes de un curso)
       this.popUp.pregunta('Eliminar Usuario','¿Desea eliminar este paticipante del curso forma permanente?','error')
                 .then(async (result) => {
                   if (result.isConfirmed) {                  

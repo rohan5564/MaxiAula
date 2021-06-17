@@ -1,8 +1,9 @@
-import mongooseModule from "./modules/mongoose.module";
 import express, { Express, Request, Response } from "express";
+
 import components from "./components";
-import morgan from "morgan";
 import cors from "cors";
+import mongooseModule from "./modules/mongoose.module";
+import morgan from "morgan";
 
 async function main() {
     
@@ -10,8 +11,9 @@ async function main() {
     const port: number = 57002;
     const bodyParser = require('body-parser');
 
-    server.use(bodyParser.json())
-    server.use(express.json());
+    server.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+    server.use(bodyParser.json({limit: '50mb'}))
+    server.use(express.json({limit: '50mb'}));
     server.use(morgan('dev'));
     server.use(cors());
     server.use('/api', ...components);
