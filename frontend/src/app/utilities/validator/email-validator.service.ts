@@ -16,7 +16,7 @@ export class EmailValidatorService implements AsyncValidator {
 
     const email = control.value;
     return this.userP.getUsuarioByEmail(email).pipe(
-      delay(1000),
+      delay(3000),
       map( resp => {
           return ( resp === null ) ? null : { emailTomado: true }
       })
