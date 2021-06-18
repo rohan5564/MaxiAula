@@ -1,5 +1,4 @@
-import { Response, Request } from "express";
-
+import { Request, Response } from "express";
 
 function success(req: Request, res: Response, message: any, status?: number) {
     let statusCode: number = status || 200;

@@ -1,4 +1,5 @@
-import { Schema, model, Document } from "mongoose";
+import { Document, Schema, model } from "mongoose";
+
 import { User } from '../../models/user.model';
 
 const definition: Partial<Record<keyof User, any>> = {
@@ -9,7 +10,7 @@ const definition: Partial<Record<keyof User, any>> = {
     fechaNac: { type: Date},
     correo: { type: String },
     tipo: { type: Number },
-    hijos: {type: Array}
+    hijos: { type: Array }
   
 }
 

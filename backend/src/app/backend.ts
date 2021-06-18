@@ -1,14 +1,13 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 
 import components from "./components";
 import cors from "cors";
-import mongooseModule from "./modules/mongoose.module";
+import mongooseModule from "./db/mongoose.module";
 import morgan from "morgan";
 
 async function main() {
     
     const server: Express = express();
-    const port: number = 57002;
     const bodyParser = require('body-parser');
 
     server.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -18,12 +17,17 @@ async function main() {
     server.use(cors());
     server.use('/api', ...components);
 
-    try {
-        await mongooseModule.connect();
-        console.log("Conexion Exitosa :D");
+    //Directorio publico
+  //  server.use(express.static('public'));
+    
 
-        server.listen(port, () => {
-            console.log("Servidor Escuchando en: http://localhost:"+port);
+    try {
+        // conectar a la base de datos
+        await mongooseModule.connect();
+        console.log("Conexion Exitosa a la base de datos :D");
+        
+        server.listen(process.env.PORT, () => {
+            console.log("Servidor Escuchando en: http://localhost:" + process.env.PORT);
         });
 
     } catch (error) {

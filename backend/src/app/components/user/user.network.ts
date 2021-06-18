@@ -1,18 +1,24 @@
 import express, { NextFunction, Request, Response, Router } from "express";
 
+import { User } from '../../models/user.model';
 import responseModule from "../../modules/response.module";
 import userController from "./user.controller"
-import { User } from '../../models/user.model';
 
 const router: Router = express.Router();
 
-
+// jason web token
 const jwt = require('jsonwebtoken');
+// encriptar
+//const bcrypt = require('bcryptjs');
 
 var userId;
 
 router.post('/add', async(req: Request, res: Response) => {
     const body: User = req.body;
+
+    // Hashear la contraseña
+   // const salt = bcrypt.genSaltSync();
+   // body.contraseña = bcrypt.hashSync( body.contraseña, salt );
 
     try {
         const result: User = await userController.addUser(body);
@@ -35,6 +41,7 @@ router.post('/signup', async (req: Request, res: Response) => {
         if (user1) {           
             return res.status(401).send('El RUT ya esta registrado!');
         }
+
         const result: User = await userController.addUser(body);
         
         const token = await jwt.sign({_id: result._id}, 'secretkey');
