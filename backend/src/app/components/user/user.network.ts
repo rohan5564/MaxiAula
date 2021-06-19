@@ -49,9 +49,7 @@ router.post('/signup', async (req: Request, res: Response) => {
         //responseModule.success(req, res, result, 201);
     } catch (error) {
         responseModule.error(req, res, "Error desconocido");
-    }
-
-		
+    }		
 });
 
 router.post('/signin', async (req: Request, res: Response) => {
