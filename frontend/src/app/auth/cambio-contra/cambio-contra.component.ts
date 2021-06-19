@@ -43,6 +43,10 @@ export class CambioContraComponent implements OnInit {
     
 
     const { _id, email } = this.decoded; // desestructurar el objeto decodificado del token
+    if (!email) {
+      this.popUp.aviso('¡Token no válido!', 'El token para cambiar de contraseña no es válido o ha expirado', 'error');
+      this.router.navigate(['/auth/login']);
+    }
 
     this.userP.getUsuarioByEmail(email).subscribe(user => this.usuario = user);
 

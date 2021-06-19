@@ -10,6 +10,9 @@ async function main() {
     const server: Express = express();
     const bodyParser = require('body-parser');
 
+    //path
+    const path = require('path');
+
     server.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     server.use(bodyParser.json({limit: '50mb'}))
     server.use(express.json({limit: '50mb'}));
@@ -18,8 +21,11 @@ async function main() {
     server.use('/api', ...components);
 
     //Directorio publico
-  //  server.use(express.static('public'));
-    
+    server.use(express.static('src/app/public'));
+    // todas las rutas
+    server.all( '*', ( req, res) => {
+        res.sendFile( path.resolve( __dirname, 'public/index.html'));
+    });
 
     try {
         // conectar a la base de datos

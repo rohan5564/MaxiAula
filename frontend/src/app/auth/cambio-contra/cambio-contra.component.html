@@ -7,9 +7,12 @@
             <mat-card class="mt-5">
                 <mat-card-content>
                     <h1 class="text-center">Recuperar Contraseña</h1>
+                    <div class="text-center">
+                        <small>{{usuario!.correo}}</small>
+                    </div>
                     <hr>
                     <form (ngSubmit)="onSubmitCambio()" [formGroup]="cambioContraForm" autocomplete="off">
-                        <!-- Portada -->
+                        <!-- Campos -->
                         <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label"><b>Nueva Contraseña</b></label>
                             <div class="col-sm-9">
@@ -43,14 +46,14 @@
                         <div class="row">
                             <div class="col text-center">
                                 <button class="btn btn-primary btn-xl mt-3" type="submit">
-                                    Recuperar Contraseña
+                                    Cambiar Contraseña
                                 </button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col text-center">
                                 <button [routerLink]="['/auth/login/']" class="btn btn-outline-primary mt-2" label="Volver">
-                                    Volver
+                                    Cancelar
                                 </button>
                             </div>
                         </div>
@@ -63,4 +66,3 @@
         </div>
     </div>
 </div>
-{{usuario |json}}

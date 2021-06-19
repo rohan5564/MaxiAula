@@ -21,6 +21,8 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const server = express_1.default();
         const bodyParser = require('body-parser');
+        //path
+        const path = require('path');
         server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
         server.use(bodyParser.json({ limit: '50mb' }));
         server.use(express_1.default.json({ limit: '50mb' }));
@@ -28,7 +30,11 @@ function main() {
         server.use(cors_1.default());
         server.use('/api', ...components_1.default);
         //Directorio publico
-        //  server.use(express.static('public'));
+        server.use(express_1.default.static('src/app/public'));
+        // todas las rutas
+        server.all('*', (req, res) => {
+            res.sendFile(path.resolve(__dirname, 'public/index.html'));
+        });
         try {
             // conectar a la base de datos
             yield mongoose_module_1.default.connect();

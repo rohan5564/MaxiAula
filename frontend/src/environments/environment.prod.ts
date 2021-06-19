@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  baseURL: ""
+  baseURL: "https://maxiaula.herokuapp.com/api"
 };
 
