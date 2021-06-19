@@ -1,0 +1,66 @@
+<div class="container animate__animated animate__bounceInDown">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md ">
+
+            <mat-card class="mt-5">
+                <mat-card-content>
+                    <h1 class="text-center">Recuperar Contraseña</h1>
+                    <hr>
+                    <form (ngSubmit)="onSubmitCambio()" [formGroup]="cambioContraForm" autocomplete="off">
+                        <!-- Portada -->
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label"><b>Nueva Contraseña</b></label>
+                            <div class="col-sm-9">
+
+                                <p-password formControlName="contra" [toggleMask]="true" [promptLabel]="'Ingrese una contraseña'" [weakLabel]="'Contraseña débil'" [mediumLabel]="'Contraseña Normal'" [strongLabel]="'Contraseña Fuerte, bien hecho!'">
+                                    <ng-template pTemplate="footer">
+                                        <p class="p-mt-2">Requisitos: </p>
+                                        <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+                                            <li>Al menos 8 caracteres</li>
+                                        </ul>
+                                    </ng-template>
+                                </p-password>
+                                <br>
+                                <span class="form-text text-danger" *ngIf="campoEsValido('contra')">
+                                    Ingrese una contraseña, recuerda que debe tener al menos 8 caracteres
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label"><b>Confirme su nueva Contraseña</b></label>
+                            <div class="col-sm-9">
+
+                                <p-password formControlName="confContra" [toggleMask]="true" [feedback]="false"> </p-password>
+                                <br>
+                                <span class="form-text text-danger" *ngIf="campoEsValido('confContra')">
+                                    Las contraseñas no coinciden
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col text-center">
+                                <button class="btn btn-primary btn-xl mt-3" type="submit">
+                                    Recuperar Contraseña
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                                <button [routerLink]="['/auth/login/']" class="btn btn-outline-primary mt-2" label="Volver">
+                                    Volver
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+{{usuario |json}}

@@ -18,14 +18,14 @@ const user_controller_1 = __importDefault(require("./user.controller"));
 const router = express_1.default.Router();
 // jason web token
 const jwt = require('jsonwebtoken');
-// encriptar
-//const bcrypt = require('bcryptjs');
+// hash para contraseñas
+const bcrypt = require('bcrypt');
 var userId;
 router.post('/add', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     // Hashear la contraseña
-    // const salt = bcrypt.genSaltSync();
-    // body.contraseña = bcrypt.hashSync( body.contraseña, salt );
+    const salt = bcrypt.genSaltSync();
+    body.contraseña = bcrypt.hashSync(body.contraseña, salt);
     try {
         const result = yield user_controller_1.default.addUser(body);
         response_module_1.default.success(req, res, result, 201);
@@ -45,8 +45,11 @@ router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function*
         if (user1) {
             return res.status(401).send('El RUT ya esta registrado!');
         }
+        // Hashear la contraseña
+        const salt = bcrypt.genSaltSync();
+        body.contraseña = bcrypt.hashSync(body.contraseña, salt);
         const result = yield user_controller_1.default.addUser(body);
-        const token = yield jwt.sign({ _id: result._id }, 'secretkey');
+        const token = yield jwt.sign({ _id: result._id }, process.env.SECRET_JWT_SEED);
         return res.status(200).json({ token, user: result });
         //responseModule.success(req, res, result, 201);
     }
@@ -60,9 +63,17 @@ router.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, function*
         const user = yield user_controller_1.default.getUserByEmail(body.correo);
         if (!user)
             return res.status(401).send('Usuario o contraseña incorrectos!');
-        if (user.contraseña !== body.contraseña)
-            return res.status(401).send('Usuario o contraseña incorrectos');
-        const token = jwt.sign({ _id: user._id }, 'secretkey');
+        // Hashear la contraseña
+        /*
+        const salt = bcrypt.genSaltSync();
+       console.log(bcrypt.hashSync( body.contraseña, salt ))
+
+        */
+        // comprobar contraseña
+        const comprobarContra = bcrypt.compareSync(body.contraseña, user.contraseña);
+        if (!comprobarContra)
+            return res.status(401).send('Usuario o contraseña incorrectos!');
+        const token = jwt.sign({ _id: user._id }, process.env.SECRET_JWT_SEED);
         return res.status(200).json({ token, user: user });
     }
     catch (error) {
@@ -121,6 +132,19 @@ router.get('/email/:email', (req, res) => __awaiter(void 0, void 0, void 0, func
         response_module_1.default.error(req, res, "Error Desconocido");
     }
 }));
+router.get('/recuperar-cuenta/:email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const email = req.params.email;
+    try {
+        const result = yield user_controller_1.default.getUserByEmail(email);
+        const token = jwt.sign({ _id: result._id, email: result.correo }, process.env.SECRET_JWT_SEED, {
+            expiresIn: '24h'
+        });
+        return res.status(200).json({ token });
+    }
+    catch (error) {
+        response_module_1.default.error(req, res, "Error Desconocido");
+    }
+}));
 /*
 router.get('/hijos/:rut', async(req: Request, res: Response) => {
     const rut: string = req.params.rut;
@@ -155,6 +179,11 @@ router.delete('/delete/:_id', (req, res) => __awaiter(void 0, void 0, void 0, fu
 router.put('/put/:_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const _id = req.params._id;
     const body = req.body;
+    if (body.contraseña) {
+        // Hashear la contraseña
+        const salt = bcrypt.genSaltSync();
+        body.contraseña = bcrypt.hashSync(body.contraseña, salt);
+    }
     try {
         const result = yield user_controller_1.default.putUser(_id, body);
         response_module_1.default.success(req, res, result);

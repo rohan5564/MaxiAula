@@ -9,6 +9,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MenubarModule } from 'primeng/menubar';
 import { NgModule } from '@angular/core';
+import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 
@@ -24,7 +25,8 @@ import { ToolbarModule } from 'primeng/toolbar';
     DropdownModule,
     DialogModule,
     InputNumberModule,
-    EditorModule
+    EditorModule,
+    PasswordModule
   ],
 })
 export class PrimeNgModule { }

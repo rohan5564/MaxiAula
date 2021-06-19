@@ -8,7 +8,6 @@ import { UserProviderService } from '../../providers/user/user-provider.service'
   providedIn: 'root'
 })
 export class MailService {
-
   
   constructor(
     private http: HttpService,
@@ -61,13 +60,13 @@ export class MailService {
     }
   }
 
-  async recuperarContra(user: User) {
+  async recuperarContra(user: User, token: string) {
     
     let mail: Mail;
     mail = {
       asunto: 'Recuperar Contraseña',
       destinatario: user.correo,
-      cuerpo: 'La contraseña de su cuenta de MaxiAula es: ' + user.contraseña
+      cuerpo: 'Para recuperar su contraseña utilice el siguiente link: ' + window.location.href + '/cambiar/' + token
     }
 
     await this.sendMessage(mail).toPromise();

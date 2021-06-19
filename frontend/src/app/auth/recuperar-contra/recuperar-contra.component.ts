@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import { AuthService } from '../services/auth.service';
 import { MailService } from '../../core/services/mail/mail.service';
 import { PopupService } from '../../core/services/popup/popup.service';
 import { Router } from '@angular/router';
@@ -23,7 +24,8 @@ export class RecuperarContraComponent implements OnInit {
     private fb: FormBuilder,
     private userP: UserProviderService,
     private mail: MailService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class RecuperarContraComponent implements OnInit {
     return this.recuperarContraForm.controls[campo].errors 
             && this.recuperarContraForm.controls[campo].touched;
   }
+  
 
   async onSubmitRecuperar() {
     if ( this.recuperarContraForm.invalid )  {
@@ -50,9 +53,17 @@ export class RecuperarContraComponent implements OnInit {
     }
     //console.log(usuario);
 
-    await this.mail.recuperarContra(usuario);
-    this.popUp.aviso('¡Se he recuperado su contraseña!', 'Se le ha enviado un correo con la contraseña para su recuperación', 'success');
-    this.router.navigate(['/auth/login']);
+    this.auth.recuperarContra(usuario.correo).subscribe( async resp => {
+
+      
+      await this.mail.recuperarContra(usuario!, resp.token);
+      this.popUp.aviso('¡Se ha enviado un email para recuperar su contraseña!', 'Para recuperar su contraseña debe cambiarla a través del link que se le envió a su correo', 'success');
+      this.router.navigate(['/auth/login']);
+    });
+
+  
+
+    
 
   }
 

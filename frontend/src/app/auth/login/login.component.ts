@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
                     break;
             }
             default: {
-              this.popUp.aviso('¡Usuario no válido','No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema','error');
+              this.popUp.aviso('¡Usuario no válido!','No tiene rol asignado, si usted es un profesor, espere que sea aprobado su acceso al sistema','error');
             }
           }
 

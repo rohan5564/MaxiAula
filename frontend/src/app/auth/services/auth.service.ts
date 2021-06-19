@@ -35,6 +35,10 @@ export class AuthService {
      return !!localStorage.getItem('token'); // devuelve true or false si se encontro un token en localStorage para saber si el usuario esta logeado
   }
 
+  recuperarContra(correo: string) {
+    return this.http.get<any>(this.baseURL + '/user/recuperar-cuenta/' + correo);
+  }
+
   verificaAutenticacion(tipo : number): Observable<boolean> {
 
       if (!localStorage.getItem('token') && !localStorage.getItem('id')) {

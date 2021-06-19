@@ -60,25 +60,33 @@ export class ModificarPerfilComponent implements OnInit {
   }
 
   async onSubmitEdit() {
+
     let contra = this.editPerfilForm.controls['contra'].value;
+    let usuarioEditado: Partial<User>
+
     if(this.editPerfilForm.controls['correo'].value === this.usuarioActual?.correo) {
       this.editPerfilForm.controls['correo'].updateValueAndValidity();
     }
     if (!contra) {
-      contra = this.usuarioActual?.contraseña;
+      usuarioEditado = {
+        nombre: this.editPerfilForm.controls['nombre'].value,
+        correo: this.editPerfilForm.controls['correo'].value,
+        fechaNac: this.editPerfilForm.controls['fecha'].value      
+      }
+    }
+    else {
+      usuarioEditado = {
+        nombre: this.editPerfilForm.controls['nombre'].value,
+        correo: this.editPerfilForm.controls['correo'].value,
+        contraseña: contra,
+        fechaNac: this.editPerfilForm.controls['fecha'].value      
+      }
     }
     if ( this.editPerfilForm.invalid )  {
       this.editPerfilForm.markAllAsTouched();
       return;
     }
   
-
-    let usuarioEditado: Partial<User> = {
-        nombre: this.editPerfilForm.controls['nombre'].value,
-        correo: this.editPerfilForm.controls['correo'].value,
-        contraseña: contra,
-        fechaNac: this.editPerfilForm.controls['fecha'].value      
-    }
 
     this.popUp.pregunta('¿Quiere editar su usuario?','Se modificará la información de su usuario','question')
     .then( async result => {
