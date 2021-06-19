@@ -55,17 +55,6 @@ export class AuthService {
   
   }
 
-  obtenerTipo( ): Observable<number>{
-    if (!localStorage.getItem('token') || !localStorage.getItem('id')) {
-      return of(0); // la funcion of transforma en observable las variables 
-    }
-    return this.userp.getUsuarioByID(localStorage.getItem('id')!).pipe(
-            map(resp =>{
-                return resp.tipo;          // retorna el observable del tipo desde el backend
-            })
-          );
-  }
-
   signUpUser(user: any) {
     return this.http.post<any>(this.baseURL + '/user/signup', user).pipe(
       tap( res => this._user = res.user)

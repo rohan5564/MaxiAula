@@ -56,6 +56,9 @@ export class MensajeEmailComponent implements OnInit {
       .then( async (result) => {
           if (result.isConfirmed) {
 
+            this.popUp.aviso('Se enviarán los mensajes', 'EL mensaje será enviado a los participantes del curso','success');
+            
+            
             for (let participante of this.cursoActual!.participantes) { // recorrer los participantes del curso
               
               let user = await this.userP.getUsuarioByRUT(participante).toPromise(); // obtener el usuario de ese curso para extraer su correo
@@ -66,11 +69,10 @@ export class MensajeEmailComponent implements OnInit {
                 cuerpo: this.mensajeForm.controls['cuerpo'].value
               }
              // console.log(mail)
-              await this.mail.sendMessage(mail).toPromise();
+              this.mail.sendMessage(mail).subscribe(); // enviar mensaje por email
       
             }
-            this.popUp.aviso('Se han enviado los mensajes', 'Se enviaron correctamente los mensajes','success');
-            this.mensajeForm.reset();
+            
           }
          
 
@@ -86,9 +88,9 @@ export class MensajeEmailComponent implements OnInit {
               destinatario: this.mensajeForm.controls['destinatario'].value,
               cuerpo: this.mensajeForm.controls['cuerpo'].value
             }
-            console.log(mail)
+           // console.log(mail)
             
-            await this.mail.sendMessage(mail).toPromise();
+            this.mail.sendMessage(mail).subscribe();
             this.popUp.aviso('Se ha enviado su mensaje', 'Se enviado correctamente su mensaje','success');
             
           }

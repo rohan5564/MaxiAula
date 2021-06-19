@@ -59,9 +59,9 @@ router.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         const user = yield user_controller_1.default.getUserByEmail(body.correo);
         if (!user)
-            return res.status(401).send('El Correo no esta registrado!');
+            return res.status(401).send('Usuario o contraseña incorrectos!');
         if (user.contraseña !== body.contraseña)
-            return res.status(401).send('Contraseña Incorrecta');
+            return res.status(401).send('Usuario o contraseña incorrectos');
         const token = jwt.sign({ _id: user._id }, 'secretkey');
         return res.status(200).json({ token, user: user });
     }

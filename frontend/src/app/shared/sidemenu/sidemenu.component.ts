@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from '../../auth/services/auth.service';
 import { PopupService } from '../../core/services/popup/popup.service';
-
 
 @Component({
   selector: 'app-sidemenu',
@@ -12,16 +12,13 @@ export class SidemenuComponent implements OnInit {
 
 
   
-  tipo = 0;
+  tipo = this.user.tipo;
   
   constructor(
     private auth:AuthService,
     private popUp: PopupService
     ) {
-    this.auth.obtenerTipo().subscribe(res => {
-      this.tipo = res;
-    });
-    
+
    }
 
   ngOnInit(): void {

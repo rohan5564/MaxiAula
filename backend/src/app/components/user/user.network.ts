@@ -60,8 +60,8 @@ router.post('/signin', async (req: Request, res: Response) => {
     try {
         const user = await userController.getUserByEmail(body.correo);
         
-        if (!user) return res.status(401).send('El Correo no esta registrado!');
-        if (user.contraseña !== body.contraseña) return res.status(401).send('Contraseña Incorrecta');
+        if (!user) return res.status(401).send('Usuario o contraseña incorrectos!');
+        if (user.contraseña !== body.contraseña) return res.status(401).send('Usuario o contraseña incorrectos');
 
 		const token = jwt.sign({_id: user._id}, 'secretkey');
 

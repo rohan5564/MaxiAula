@@ -1,0 +1,248 @@
+<mat-card class="animate__animated animate__backInUp mt-2">
+    <mat-card-content>
+        <!-- Administrador -->
+        <ng-container *ngIf="tipo === 1">
+
+            <h1 class="text-center">Bienvenido Administrador</h1>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        email
+                    </span>
+                        <b>Enviar Mails: </b> Envia mails individuales a nombre de MaxiAula
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        person_add
+                    </span>
+                        <b>Agregar Usuarios: </b> Agrega nuevos usuarios a la plataforma
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        group
+                    </span>
+                        <b>Administrar Usuarios: </b> Muestra una tabla con todos los usuarios de la plataforma con diferentes opciones
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        school
+                    </span>
+                        <b>Administrar Cursos: </b> Muestra una tabla con todos los cursos con diferentes opciones
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        logout
+                    </span>
+                        <b>Salir: </b> Salir de la plataforma
+                    </p>
+
+                </div>
+                <div class="col">
+                    <h5 class="text-center">Opciones dentro de un curso</h5>
+                    <hr>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        person_add
+                    </span>
+                        <b>Añadir participantes: </b> Agrega participantes ya incritos al curso o bien los incribe y agrega
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        group
+                    </span>
+                        <b>Ver participantes: </b> Se muestra una tabla con los distintos participantes del curso con distintas opciones
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        edit_note
+                    </span>
+                        <b>Editar Curso: </b> Edita la información básica del curso, tambien se utiliza para cambiar o agregar links de clases, chats, o carpetas compartidas
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        add
+                    </span>
+                        <b>Añadir Material: </b> Añade material a un curso como lo puede ser un link de un video de YouTube, se le avisará por email a los participantes, click en eliminar dentro del curso para elimimar un material
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        add_task
+                    </span>
+                        <b>Añadir Tarea: </b> Añade una nueva tarea al curso cun un plazo determinado, se le avisará por email a los participantes, click en eliminar dentro del curso para elimimar una tarea
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        text_snippet
+                    </span>
+                        <b>Notas: </b> Administra las notas de los participantes de un curso, click en editar notas para añadir, editar o eliminar las notas de un participante
+                    </p>
+                </div>
+            </div>
+        </ng-container>
+        <!-- Profesor -->
+        <ng-container *ngIf="tipo === 2">
+            <h1 class="text-center">Bienvenido Profesor</h1>
+            <hr>
+            <div class="row">
+                <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
+                <div class="col">
+                    <h5 class="text-center">Menú lateral</h5>
+                    <hr>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        school
+                    </span>
+                        <b>Mis Cursos: </b> Muestra los cursos en los que esta a cargo
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        email
+                    </span>
+                        <b>Nuevo aviso por email: </b> Seleccione uno de sus cursos para enviar un aviso por correo eletrónico a todos los participantes de este
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        person_add
+                    </span>
+                        <b>Agregar Alumnos: </b> Agrega nuevos alumnos a la plataforma
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        add
+                    </span>
+                        <b>Crear Curso: </b> Crea un nuevo curso desde cero
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        toc
+                    </span>
+                        <b>Administrar Cursos: </b> Muestra una tabla con todos los cursos con diferentes opciones
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        logout
+                    </span>
+                        <b>Salir: </b> Salir de la plataforma
+                    </p>
+                </div>
+                <div class="col">
+                    <h5 class="text-center">Opciones dentro de un curso</h5>
+                    <hr>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        person_add
+                    </span>
+                        <b>Añadir participantes: </b> Agrega participantes ya incritos al curso o bien los incribe y agrega
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        group
+                    </span>
+                        <b>Ver participantes: </b> Se muestra una tabla con los distintos participantes del curso con distintas opciones
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        edit_note
+                    </span>
+                        <b>Editar Curso: </b> Edita la información básica del curso, tambien se utiliza para cambiar o agregar links de clases, chats, o carpetas compartidas
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        add
+                    </span>
+                        <b>Añadir Material: </b> Añade material a un curso como lo puede ser un link de un video de YouTube, se le avisará por email a los participantes, click en eliminar dentro del curso para elimimar un material
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        add_task
+                    </span>
+                        <b>Añadir Tarea: </b> Añade una nueva tarea al curso cun un plazo determinado, se le avisará por email a los participantes, click en eliminar dentro del curso para elimimar una tarea
+                    </p>
+                    <p class="card-text">
+                        <span class="material-icons">
+                        text_snippet
+                    </span>
+                        <b>Notas: </b> Administra las notas de los participantes de un curso, click en editar notas para añadir, editar o eliminar las notas de un participante
+                    </p>
+                </div>
+
+            </div>
+        </ng-container>
+        <!-- Alumno -->
+        <ng-container *ngIf="tipo === 3">
+            <h1 class="text-center">Bienvenido Alumno</h1>
+            <hr>
+            <div fxLayout="row">
+                <div fxFlex>
+                    <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        class
+                    </span>
+                        <b>Mis Notas: </b> Muestras tus notas en los cursos en los que te encuentres
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        school
+                    </span>
+                        <b>Mis Cursos: </b> Muestras los cursos en los que te encuentres
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        task
+                    </span>
+                        <b>Mis Tareas: </b> Muestras las tareas de los cursos en los que te encuentres
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                        logout
+                    </span>
+                        <b>Salir: </b> Salir de la plataforma
+                    </p>
+
+                </div>
+            </div>
+
+        </ng-container>
+        <!-- Apoderado -->
+        <ng-container *ngIf="tipo === 4">
+            <h1 class="text-center">Bienvenido Apoderado</h1>
+            <hr>
+            <div fxLayout="row">
+                <div fxFlex>
+                    <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                            class
+                        </span>
+                        <b>Notas de mis hijos: </b> Muestra las notas de los hijos que tengas en la plataforma
+                    </p>
+
+                    <p class="card-text">
+                        <span class="material-icons">
+                            logout
+                        </span>
+                        <b>Salir: </b> Salir de la plataforma
+                    </p>
+
+                </div>
+            </div>
+        </ng-container>
+    </mat-card-content>
+</mat-card>

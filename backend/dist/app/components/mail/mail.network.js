@@ -10,7 +10,7 @@ const configMensaje = require('./mail.controller');
 router.post('/mensaje', (req, res) => {
     try {
         configMensaje(req.body);
-        response_module_1.default.success(req, res, 201);
+        response_module_1.default.success(req, res, 'Se envió el email', 201);
     }
     catch (error) {
         response_module_1.default.error(req, res, "Error desconocido");

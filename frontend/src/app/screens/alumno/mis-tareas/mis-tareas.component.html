@@ -13,6 +13,7 @@
         <mat-card-content>
             <h1 class="text-center">Mis Tareas</h1>
             <hr>
+            <h3 class="text-center" *ngIf="cursos!.length === 0">No hay tareas</h3>
             <ng-container *ngFor="let curso of cursos">
                 <ng-container *ngIf="curso.tareas && curso.tareas.length >= 1 ">
                     <h3 class="text-center">{{curso.nombre | titlecase}}</h3>
