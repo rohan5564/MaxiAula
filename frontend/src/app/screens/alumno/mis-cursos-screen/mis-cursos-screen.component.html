@@ -1,7 +1,11 @@
-<div class="text-center">
-    <h1>Mis Cursos</h1>
-</div>
-
+<mat-card class="animate__animated animate__slideInDown">
+    <mat-card-content>
+        <div class="text-center">
+            <h1>Mis Cursos</h1>
+            <hr>
+        </div>
+    </mat-card-content>
+</mat-card>
 
 <ng-container *ngIf="!cursos; else divCursos">
     <div class="container h-100 d-flex justify-content-center">
@@ -14,6 +18,12 @@
 </ng-container>
 
 <ng-template #divCursos>
-    <app-card-list [cursos]="cursos">
-    </app-card-list>
+    <mat-card *ngIf="cursos!.length === 0; else haycursos">
+        <mat-card-content>
+            <h3 class="text-center">No tienes cursos incritos, habla con tu profesor para que te incriba en alguno</h3>
+        </mat-card-content>
+    </mat-card>
+    <ng-template #haycursos>
+        <app-card-list [cursos]="cursos"></app-card-list>
+    </ng-template>
 </ng-template>

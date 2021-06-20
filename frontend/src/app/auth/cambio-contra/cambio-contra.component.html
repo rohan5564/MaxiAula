@@ -14,7 +14,7 @@
                     <form (ngSubmit)="onSubmitCambio()" [formGroup]="cambioContraForm" autocomplete="off">
                         <!-- Campos -->
                         <div class="mb-3 row">
-                            <label class="col-sm-3 col-form-label"><b>Nueva Contraseña</b></label>
+                            <label class="col-sm-3 col-form-label mt-2"><b>Nueva Contraseña</b></label>
                             <div class="col-sm-9">
 
                                 <p-password formControlName="contra" [toggleMask]="true" [promptLabel]="'Ingrese una contraseña'" [weakLabel]="'Contraseña débil'" [mediumLabel]="'Contraseña Normal'" [strongLabel]="'Contraseña Fuerte, bien hecho!'">
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-sm-3 col-form-label"><b>Confirme su nueva Contraseña</b></label>
+                            <label class="col-sm-3 col-form-label mt-2"><b>Confirme su nueva Contraseña</b></label>
                             <div class="col-sm-9">
 
                                 <p-password formControlName="confContra" [toggleMask]="true" [feedback]="false"> </p-password>

@@ -1,14 +1,15 @@
-<mat-card class="animate__animated animate__backInUp mt-2">
+<mat-card class="animate__animated animate__fadeInUp mt-2">
     <mat-card-content>
         <!-- Administrador -->
         <ng-container *ngIf="tipo === 1">
 
             <h1 class="text-center">Bienvenido Administrador</h1>
             <hr>
+            <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
             <div class="row">
                 <div class="col">
-                    <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
-
+                    <h5 class="text-center">Menú lateral</h5>
+                    <hr>
                     <p class="card-text">
                         <span class="material-icons">
                         email
@@ -90,10 +91,10 @@
         </ng-container>
         <!-- Profesor -->
         <ng-container *ngIf="tipo === 2">
-            <h1 class="text-center">Bienvenido Profesor</h1>
+            <h1 class="text-center">Bienvenido Profesor o Profesora</h1>
             <hr>
+            <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
             <div class="row">
-                <h4 class="text-center">Utiliza el menú a la izquierda para navegar en MaxiAula</h4>
                 <div class="col">
                     <h5 class="text-center">Menú lateral</h5>
                     <hr>
@@ -181,7 +182,7 @@
         </ng-container>
         <!-- Alumno -->
         <ng-container *ngIf="tipo === 3">
-            <h1 class="text-center">Bienvenido Alumno</h1>
+            <h1 class="text-center">Bienvenido Estudiante</h1>
             <hr>
             <div fxLayout="row">
                 <div fxFlex>

@@ -11,10 +11,10 @@
                     <form (ngSubmit)="onSubmitRecuperar()" [formGroup]="recuperarContraForm" autocomplete="off">
                         <!-- Campos -->
                         <div class="mb-3 row">
-                            <label class="col-sm-3 col-form-label"><b>Correo</b></label>
+                            <label class="col-sm-3 col-form-label mt-2"><b>Correo</b></label>
                             <div class="col-sm-9">
 
-                                <input type="email" formControlName="correo" class="form-control" placeholder="Correo electrónico de la cuenta">
+                                <input type="email" pInputText formControlName="correo" class="form-control" placeholder="Correo electrónico de la cuenta">
                                 <span class="form-text text-danger" *ngIf="campoEsValido('correo')">
                                     Ingrese un correo válido
                                 </span>

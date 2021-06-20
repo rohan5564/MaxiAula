@@ -88,7 +88,7 @@ export class AgregarMaterialComponent implements OnInit {
           this.cursoActual?.recursos?.push(recurso);
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
-          this.popUp.aviso('Felicidades!','¡El video  ha sido añadido exitosamente!','success');
+          this.popUp.aviso('¡Éxito!','¡El video  ha sido añadido exitosamente!','success');
         
           (this.usuarioActual?.tipo === 2) ? this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]) : this.router.navigate(['/maxiaula/admin/curso/' + this.cursoActual!._id]);
           
@@ -96,7 +96,7 @@ export class AgregarMaterialComponent implements OnInit {
                  
         }
         catch(error){
-          this.popUp.aviso('Error!','Algo falló','error');
+          this.popUp.aviso('¡Error!','Algo falló, revise su conexion a internet','error');
           console.log('fallo :c', error);
         }
       }
@@ -109,7 +109,7 @@ export class AgregarMaterialComponent implements OnInit {
 
   submitImagen() {
     let recurso: Recurso = {
-      videoURL: this.imageForm.controls['link'].value
+      imagenURL: this.imageForm.controls['link'].value
     }
     this.popUp.pregunta('¿Quiere añadir esta imagen?','Se añadirá la imagen al curso y además se notificará por email a los participantes de este.','question')
     .then(async (result) => {
@@ -119,13 +119,13 @@ export class AgregarMaterialComponent implements OnInit {
           this.cursoActual?.recursos?.push(recurso);
 
           await this.cursoP.updateCursoById(this.cursoActual!._id, this.cursoActual!).toPromise();
-          this.popUp.aviso('Felicidades!','¡La imagen  ha sido añadido exitosamente!','success');
+          this.popUp.aviso('¡Éxito!','¡La imagen  ha sido añadido exitosamente!','success');
           (this.usuarioActual?.tipo === 2) ? this.router.navigate(['/maxiaula/profesor/curso/' + this.cursoActual!._id]) : this.router.navigate(['/maxiaula/admin/curso/' + this.cursoActual!._id]);
           
           await this.mail.avisarNuevoContenido(this.cursoActual!.nombre, this.usuarioActual!.nombre, this.cursoActual!.participantes); 
         }
         catch(error){
-          this.popUp.aviso('Error!','Algo falló','error');
+          this.popUp.aviso('¡Error!','Algo falló, revise su conexion a internet','error');
           console.log('fallo :c', error);
         }
       }

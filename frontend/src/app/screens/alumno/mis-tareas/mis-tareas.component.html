@@ -9,7 +9,7 @@
 
 <ng-template #divTareas>
 
-    <mat-card class="animate__animated animate__bounceInDown mb-3">
+    <mat-card class="animate__animated animate__slideInUp mb-3">
         <mat-card-content>
             <h1 class="text-center">Mis Tareas</h1>
             <hr>
@@ -17,6 +17,7 @@
             <ng-container *ngFor="let curso of cursos">
                 <ng-container *ngIf="curso.tareas && curso.tareas.length >= 1 ">
                     <h3 class="text-center">{{curso.nombre | titlecase}}</h3>
+                    <hr>
                     <app-tarea-card-list [tareas]="curso.tareas"></app-tarea-card-list>
 
                 </ng-container>
