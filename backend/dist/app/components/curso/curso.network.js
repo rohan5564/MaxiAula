@@ -13,10 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const response_module_1 = __importDefault(require("../../modules/response.module"));
 const curso_controller_1 = __importDefault(require("./curso.controller"));
+const response_module_1 = __importDefault(require("../../modules/response.module"));
+const validar_jwt_middleware_1 = __importDefault(require("../../middlewares/validar-jwt.middleware"));
 const router = express_1.default.Router();
-router.post('/add', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/add', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     try {
         const result = yield curso_controller_1.default.addCurso(body);
@@ -26,7 +27,7 @@ router.post('/add', (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         response_module_1.default.error(req, res, "Error desconocido");
     }
 }));
-router.get('/all', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/all', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield curso_controller_1.default.getCursos();
         response_module_1.default.success(req, res, result);
@@ -35,7 +36,7 @@ router.get('/all', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         response_module_1.default.error(req, res, "Error desconocido");
     }
 }));
-router.get('/id/:_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/id/:_id', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const _id = req.params._id;
     try {
         const result = yield curso_controller_1.default.getCursoById(_id);
@@ -45,7 +46,7 @@ router.get('/id/:_id', (req, res) => __awaiter(void 0, void 0, void 0, function*
         response_module_1.default.error(req, res, "Error Desconocido");
     }
 }));
-router.delete('/delete/:_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete('/delete/:_id', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const _id = req.params._id;
     try {
         const result = yield curso_controller_1.default.deleteCurso(_id);
@@ -55,7 +56,7 @@ router.delete('/delete/:_id', (req, res) => __awaiter(void 0, void 0, void 0, fu
         response_module_1.default.error(req, res, "Error Desconocido");
     }
 }));
-router.put('/put/:_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.put('/put/:_id', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const _id = req.params._id;
     const body = req.body;
     try {
@@ -66,7 +67,7 @@ router.put('/put/:_id', (req, res) => __awaiter(void 0, void 0, void 0, function
         response_module_1.default.error(req, res, "Error Desconocido");
     }
 }));
-router.get('/cursosProf/:rut', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/cursosProf/:rut', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const rut = req.params.rut;
     try {
         const result = yield curso_controller_1.default.getCursosProf(rut);
@@ -76,7 +77,7 @@ router.get('/cursosProf/:rut', (req, res) => __awaiter(void 0, void 0, void 0, f
         response_module_1.default.error(req, res, "Error Desconocido");
     }
 }));
-router.get('/cursosAlu/:rut', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/cursosAlu/:rut', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const rut = req.params.rut;
     console.log(rut);
     try {

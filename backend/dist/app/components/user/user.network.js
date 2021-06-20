@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const response_module_1 = __importDefault(require("../../modules/response.module"));
 const user_controller_1 = __importDefault(require("./user.controller"));
+const validar_jwt_middleware_1 = __importDefault(require("../../middlewares/validar-jwt.middleware"));
 const router = express_1.default.Router();
-// jason web token
+// json web token
 const jwt = require('jsonwebtoken');
 // hash para contraseñas
 const bcrypt = require('bcrypt');
-var userId;
 router.post('/add', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     // Hashear la contraseña
@@ -37,7 +37,7 @@ router.post('/add', (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     try {
-        const user = yield user_controller_1.default.getUserByEmail(body.correo);
+        const user = yield user_controller_1.default.getUserByEmail(body.correo.toLowerCase());
         const user1 = yield user_controller_1.default.getUserByRUT(body.rut);
         if (user) {
             return res.status(401).send('El Correo ya esta registrado!');
@@ -60,7 +60,7 @@ router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function*
 router.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     try {
-        const user = yield user_controller_1.default.getUserByEmail(body.correo);
+        const user = yield user_controller_1.default.getUserByEmail(body.correo.toLowerCase());
         if (!user)
             return res.status(401).send('Usuario o contraseña incorrectos!');
         // Hashear la contraseña
@@ -80,30 +80,7 @@ router.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, function*
         response_module_1.default.error(req, res, "Error desconocido");
     }
 }));
-function verifyToken(req, res, next) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            if (!req.headers.authorization) {
-                return res.status(401).send('Unauhtorized Request');
-            }
-            let token = req.headers.authorization.split(' ')[1];
-            if (token === 'null') {
-                return res.status(401).send('Unauhtorized Request');
-            }
-            const payload = yield jwt.verify(token, 'secretkey');
-            if (!payload) {
-                return res.status(401).send('Unauhtorized Request');
-            }
-            userId = payload._id;
-            next();
-        }
-        catch (e) {
-            //console.log(e)
-            return res.status(401).send('Unauhtorized Request');
-        }
-    });
-}
-router.get('/all', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/all', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield user_controller_1.default.getUsers();
         response_module_1.default.success(req, res, result);
@@ -132,10 +109,10 @@ router.get('/email/:email', (req, res) => __awaiter(void 0, void 0, void 0, func
         response_module_1.default.error(req, res, "Error Desconocido");
     }
 }));
-router.get('/recuperar-cuenta/:email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const email = req.params.email;
+router.get('/recuperar-cuenta/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
     try {
-        const result = yield user_controller_1.default.getUserByEmail(email);
+        const result = yield user_controller_1.default.getUserById(id);
         const token = jwt.sign({ _id: result._id, email: result.correo }, process.env.SECRET_JWT_SEED, {
             expiresIn: '24h'
         });
@@ -166,7 +143,7 @@ router.get('/rut/:rut', (req, res) => __awaiter(void 0, void 0, void 0, function
         response_module_1.default.error(req, res, "Error Desconocido");
     }
 }));
-router.delete('/delete/:_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete('/delete/:_id', validar_jwt_middleware_1.default.validarJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const _id = req.params._id;
     try {
         const result = yield user_controller_1.default.deleteUser(_id);

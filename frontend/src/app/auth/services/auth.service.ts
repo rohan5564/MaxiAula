@@ -1,5 +1,5 @@
 import { Observable, of } from 'rxjs';
-import { distinct, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -35,8 +35,9 @@ export class AuthService {
      return !!localStorage.getItem('token'); // devuelve true or false si se encontro un token en localStorage para saber si el usuario esta logeado
   }
 
-  recuperarContra(correo: string) {
-    return this.http.get<any>(this.baseURL + '/user/recuperar-cuenta/' + correo);
+  // obtener token para recuperar contraseña 
+  obtenerTokenRecup(id: string) {
+    return this.http.get<any>(this.baseURL + '/user/recuperar-cuenta/' + id);
   }
 
   verificaAutenticacion(tipo : number): Observable<boolean> {
@@ -72,10 +73,9 @@ export class AuthService {
   }
 
   salir() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
+    localStorage.clear();
     this.router.navigate(['/'], { replaceUrl: true })
-    .finally( () => window.location.reload() ); // despues de salir recargar la pagina para que no retroceda con lo que quedo en memoria
+    .then( () => window.location.reload() ); // despues de salir recargar la pagina para que no retroceda con lo que quedo en memoria
   }
 
 }

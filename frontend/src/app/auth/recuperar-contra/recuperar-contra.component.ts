@@ -53,7 +53,7 @@ export class RecuperarContraComponent implements OnInit {
     }
     //console.log(usuario);
 
-    this.auth.recuperarContra(usuario.correo).subscribe( async resp => {
+    this.auth.obtenerTokenRecup(usuario._id).subscribe( async resp => {
 
       
       await this.mail.recuperarContra(usuario!, resp.token);

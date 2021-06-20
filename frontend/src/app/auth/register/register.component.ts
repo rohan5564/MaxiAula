@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+
 import { AuthService } from '../services/auth.service';
-import { ValidatorService } from '../../utilities/validator/validator.service';
-import { User } from 'src/app/core/models/user.model';
 import { EmailValidatorService } from '../../utilities/validator/email-validator.service';
-
-import { formatRut } from '@fdograph/rut-utilities'; // formateador de rut para guardar
-import { RutValidatorService } from '../../utilities/validator/rut-validator.service';
 import { PopupService } from '../../core/services/popup/popup.service';
-
+import { Router } from '@angular/router';
+import { RutValidatorService } from '../../utilities/validator/rut-validator.service';
+import { User } from 'src/app/core/models/user.model';
+import { ValidatorService } from '../../utilities/validator/validator.service';
+import { formatRut } from '@fdograph/rut-utilities'; // formateador de rut para guardar
 
 @Component({
   selector: 'app-register',

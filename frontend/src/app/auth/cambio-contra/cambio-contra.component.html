@@ -7,8 +7,8 @@
             <mat-card class="mt-5">
                 <mat-card-content>
                     <h1 class="text-center">Recuperar Contraseña</h1>
-                    <div class="text-center">
-                        <small>{{usuario!.correo}}</small>
+                    <div class="text-center" *ngIf="usuario">
+                        <small>{{usuario.correo}}</small>
                     </div>
                     <hr>
                     <form (ngSubmit)="onSubmitCambio()" [formGroup]="cambioContraForm" autocomplete="off">

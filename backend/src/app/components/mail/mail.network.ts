@@ -6,7 +6,6 @@ const router: Router = express.Router();
 const configMensaje = require('./mail.controller');
 
 router.post('/mensaje', (req: Request, res: Response) => {
-    
     try {
         configMensaje(req.body);
         responseModule.success(req, res, 'Se envió el email', 201);

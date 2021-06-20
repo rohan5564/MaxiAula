@@ -19,7 +19,7 @@ export class MailService {
   // enviar el email
   sendMessage (body: Mail) {
 
-    return this.http.post<Mail>('/mail/mensaje', body);
+    return this.http.post<any>('/mail/mensaje', body);
 
   }
 
@@ -60,6 +60,7 @@ export class MailService {
     }
   }
 
+  // Crear y enviar email para la recuperacion de la contraseña
   async recuperarContra(user: User, token: string) {
     
     let mail: Mail;

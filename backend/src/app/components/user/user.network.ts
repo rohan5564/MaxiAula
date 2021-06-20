@@ -3,15 +3,15 @@ import express, { NextFunction, Request, Response, Router } from "express";
 import { User } from '../../models/user.model';
 import responseModule from "../../modules/response.module";
 import userController from "./user.controller"
+import validaJWT from "../../middlewares/validar-jwt.middleware"
 
 const router: Router = express.Router();
 
-// jason web token
+// json web token
 const jwt = require('jsonwebtoken');
 // hash para contraseñas
 const bcrypt = require('bcrypt');
 
-var userId;
 
 router.post('/add', async(req: Request, res: Response) => {
     const body: User = req.body;
@@ -31,7 +31,7 @@ router.post('/add', async(req: Request, res: Response) => {
 router.post('/signup', async (req: Request, res: Response) => {
     const body: User = req.body;
     try {
-        const user = await userController.getUserByEmail(body.correo);
+        const user = await userController.getUserByEmail(body.correo.toLowerCase());
         const user1 = await userController.getUserByRUT(body.rut);
         
         if (user) {           
@@ -44,6 +44,7 @@ router.post('/signup', async (req: Request, res: Response) => {
         // Hashear la contraseña
         const salt = bcrypt.genSaltSync();
         body.contraseña = bcrypt.hashSync( body.contraseña, salt );
+        
         const result: User = await userController.addUser(body);
         
         const token = await jwt.sign({_id: result._id}, process.env.SECRET_JWT_SEED);
@@ -60,7 +61,7 @@ router.post('/signin', async (req: Request, res: Response) => {
     const body: User = req.body;
 
     try {
-        const user = await userController.getUserByEmail(body.correo);
+        const user = await userController.getUserByEmail(body.correo.toLowerCase());
         
         if (!user) return res.status(401).send('Usuario o contraseña incorrectos!');
 
@@ -84,29 +85,9 @@ router.post('/signin', async (req: Request, res: Response) => {
 
 });
 
-async function verifyToken(req: Request, res: Response, next: NextFunction) {
-	try {
-		if (!req.headers.authorization) {
-			return res.status(401).send('Unauhtorized Request');
-		}
-		let token = req.headers.authorization.split(' ')[1];
-		if (token === 'null') {
-			return res.status(401).send('Unauhtorized Request');
-		}
 
-		const payload = await jwt.verify(token, 'secretkey');
-		if (!payload) {
-			return res.status(401).send('Unauhtorized Request');
-		}
-		userId = payload._id;
-		next();
-	} catch(e) {
-		//console.log(e)
-		return res.status(401).send('Unauhtorized Request');
-	}
-}
 
-router.get('/all', async(req: Request, res: Response) => {
+router.get('/all', validaJWT.validarJWT ,async(req: Request, res: Response) => {
     try {
         const result: User[] = await userController.getUsers();
         responseModule.success(req, res, result);
@@ -135,11 +116,11 @@ router.get('/email/:email', async(req: Request, res: Response) => {
     }
 });
 
-router.get('/recuperar-cuenta/:email', async(req: Request, res: Response) => {
-    const email: string = req.params.email;
+router.get('/recuperar-cuenta/:id', async(req: Request, res: Response) => {
+    const id: string = req.params.id;
     
     try {
-        const result = await userController.getUserByEmail(email);
+        const result = await userController.getUserById(id);
         const token = jwt.sign({_id: result._id, email: result.correo }, process.env.SECRET_JWT_SEED, {
             expiresIn: '24h'
         });
@@ -171,7 +152,7 @@ router.get('/rut/:rut', async(req: Request, res: Response) => {
     }
 });
 
-router.delete('/delete/:_id', async(req: Request, res: Response) => {
+router.delete('/delete/:_id', validaJWT.validarJWT ,async(req: Request, res: Response) => {
     const _id: string = req.params._id;
     try {
         const result = await userController.deleteUser(_id);

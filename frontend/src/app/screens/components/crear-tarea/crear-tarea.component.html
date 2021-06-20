@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <button [routerLink]="['/maxiaula/profesor/curso/' + cursoActual!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
+        <button [routerLink]="['./../../' + cursoActual!._id]" class="btn btn-outline-primary" label="Volver al Curso">Volver al Curso</button>
         <h1 class="text-center">Añadir Nueva Tarea para el Curso</h1>
         <hr>
         <form (ngSubmit)="onSubmitTarea()" [formGroup]="nuevaTareaForm" autocomplete="off">
