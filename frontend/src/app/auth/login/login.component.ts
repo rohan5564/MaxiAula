@@ -14,6 +14,7 @@ import { User } from 'src/app/core/models/user.model';
 export class LoginComponent implements OnInit {
 
 
+  loading = false;
   
  // crear formulario de respuesta del login
   loginForm: FormGroup = this.fb.group({
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
+    this.loading = true;
 
     try {
 
@@ -88,6 +90,8 @@ export class LoginComponent implements OnInit {
         err => {
           console.log(err);
           this.popUp.aviso('¡Usuario no válido','¡Correo o Contraseña Incorrectos!, asegurese que se encuentran bien ingresados','error');
+          this.loading = false;
+
         }
       );
     }

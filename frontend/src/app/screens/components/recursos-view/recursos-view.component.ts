@@ -47,7 +47,7 @@ export class RecursosViewComponent implements OnInit {
 
   async borrarRecurso(recurso: Recurso) {
 
-    console.log(recurso)
+   //console.log(recurso)
 
     this.popUp.pregunta('¿Quiere eliminar este recurso?', 'El recurso se va a borrar de forma permanente','question')
     .then(
