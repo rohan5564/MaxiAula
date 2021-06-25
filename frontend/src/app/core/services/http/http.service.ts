@@ -19,6 +19,7 @@ export class HttpService {
    
   }
 
+  // configuracion de las cabezeras en las peticiones http ya que algunas solicitudes requiren que se envie el token de autorizacion
   private opciones() {
     this.httpOptions = {
       headers: new HttpHeaders({

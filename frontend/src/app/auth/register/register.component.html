@@ -106,7 +106,8 @@
 
 
                                 <div class="text-center">
-                                    <button type="submit" [disabled]="!registroForm2.valid" class="btn btn-primary btn-xl ">Aceptar Registrarse</button>
+                                    <button type="submit" [disabled]="!registroForm2.valid" class="btn btn-primary btn-xl ">Aceptar Registrarse<mat-icon *ngIf="this.registroForm2.valid && loading"><mat-spinner diameter="20">
+                                    </mat-spinner></mat-icon></button>
                                 </div>
 
                             </form>

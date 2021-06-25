@@ -17,6 +17,8 @@ import { formatRut } from '@fdograph/rut-utilities'; // formateador de rut para 
 })
 export class RegisterComponent implements OnInit {
 
+  loading = false;
+
   // crear formulario de respuesta del registro paso 1
   registroForm1: FormGroup = this.fb.group({
     correo: ['', [Validators.required, Validators.email], [this.emailValidator]],
@@ -110,24 +112,13 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  /*
-  rut1 = '';
-  fechas:Date | undefined;
-  estado : any;
-
-  */
   async onSubmitStep2() {
     if ( this.registroForm2.invalid )  {
       this.registroForm2.markAllAsTouched();
       return;
     }
-    /*
-    this.rut1 = this.registroForm2.controls['rut'].value;
-    this.fechas = this.registroForm2.controls['fecha'].value;
-    this.estado = this.registroForm2.controls['tipo'].value;
-   
-    console.log(this.rut1, this.fechas, this.estado)
-    */
+    this.loading = true;
+
     let usuario: Partial<User> = {
         correo : this.correo,
         nombre: this.registroForm2.controls['nombre'].value,
@@ -169,7 +160,7 @@ export class RegisterComponent implements OnInit {
         err => {
           console.log(err);
           this.popUp.aviso('Usuario no válido!','El usuario ya se encuentra registrado','error');
-            
+          this.loading = false;  
         }
         );
    

@@ -25,44 +25,62 @@
             <mat-card-content>
                 <h1 class="text-center">{{curso.nombre | titlecase}}</h1>
                 <hr>
-                <div class="row container mt-2">
-                    <div class="col-4"></div>
 
-                    <img mat-card-image src="{{curso.portadaURL}}" alt="Portada del Curso">
 
-                </div>
+
+                <img mat-card-image src="{{curso.portadaURL}}" alt="Portada del Curso">
+
+
                 <div class="row container">
-                    {{curso.descripcion}}
+                    <div class="text-center">
+                        {{curso.descripcion | uppercase}}
+                    </div>
                 </div>
                 <!-- Links -->
                 <ng-container>
                     <hr>
                     <h3 class="text-center">Links</h3>
                     <hr>
-                    <div class="row container">
+                    <div fxLayout="row wrap" fxLayoutGap="20px" fxLayout.xs="column">
 
                         <!-- Clases -->
-                        <div class="col-4" *ngIf="curso.linkClases">
-                            <h4 class="d-none d-sm-inline">Click para ingresar a las clases del curso</h4>
-                            <a href="{{curso.linkClases}}" target="_blank">
-                                <img class="img-thumbnail mt-2" src="https://image.freepik.com/vector-gratis/interior-sala-clase-escuela-vacia-dibujos-animados-escritorio_88272-1461.jpg" alt="Clases">
-                            </a>
+                        <div fxFlex *ngIf="curso.linkClases">
+                            <mat-card>
+                                <mat-card-content>
+                                    <h5 class="text-center ">Click para ingresar a las clases del curso</h5>
+                                    <hr>
+                                    <a href="{{curso.linkClases}}" target="_blank">
+                                        <img class="mt-1" mat-card-image src="https://image.freepik.com/vector-gratis/interior-sala-clase-escuela-vacia-dibujos-animados-escritorio_88272-1461.jpg" alt="Clases">
+                                    </a>
+                                </mat-card-content>
+                            </mat-card>
+
                         </div>
 
                         <!-- Chat -->
-                        <div class="col-4" *ngIf="curso.linkChat">
-                            <h4 class="d-none d-sm-inline">Click para ir al chat del curso</h4>
-                            <a href="{{curso.linkChat}}" target="_blank">
-                                <img class="img-thumbnail mt-5 ml-3" src="https://www.oas.org/ext/Portals/14/EasyDNNNews/588/300300p2250EDNmainImage.png" alt="Chat del Curso">
-                            </a>
+                        <div fxFlex *ngIf="curso.linkChat">
+                            <mat-card>
+                                <mat-card-content>
+                                    <h5 class="text-center ">Click para ir al chat del curso</h5>
+                                    <hr>
+                                    <a href="{{curso.linkChat}}" target="_blank">
+                                        <img class="mt-1" mat-card-image src="https://www.oas.org/ext/Portals/14/EasyDNNNews/588/300300p2250EDNmainImage.png" alt="Chat del Curso">
+                                    </a>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
 
                         <!-- Archivos -->
-                        <div class="col-4" *ngIf="curso.linkArchivos">
-                            <h4 class="d-none d-sm-inline">Click para ir a la carpeta de archivos del curso</h4>
-                            <a href="{{curso.linkArchivos}}" target="_blank">
-                                <img class="img-thumbnail mt-2" src="https://lecciones.batiburrillo.net/wp-content/uploads/2010/07/Carpeta1.jpg" alt="Carpeta de Archivos del Curso">
-                            </a>
+                        <div fxFlex *ngIf="curso.linkArchivos">
+                            <mat-card>
+                                <mat-card-content>
+                                    <h5 class="text-center ">Click para ir a la carpeta de archivos del curso</h5>
+                                    <hr>
+                                    <a href="{{curso.linkArchivos}}" target="_blank">
+                                        <img class="mt-1" mat-card-image src="https://lecciones.batiburrillo.net/wp-content/uploads/2010/07/Carpeta1.jpg" alt="Carpeta de Archivos del Curso">
+                                    </a>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
 
                     </div>
@@ -73,9 +91,9 @@
                 <ng-container *ngIf="curso.tareas!.length >= 1">
                     <hr>
                     <h3 class="text-center">Tareas del Curso</h3>
-                    <div class="row container">
-                        <app-tarea-card-list [tareas]="curso.tareas" [cursoActualID]="curso._id"></app-tarea-card-list>
-                    </div>
+
+                    <app-tarea-card-list [tareas]="curso.tareas" [cursoActualID]="curso._id"></app-tarea-card-list>
+
 
                 </ng-container>
 

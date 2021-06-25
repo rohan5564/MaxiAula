@@ -28,6 +28,7 @@
                                     </span>
                                 </div>
 
+                                <!-- Boton Ingresar con spinner mientras carga -->
                                 <button type="submit" class="btn btn-primary btn-xl mr-3">Ingresar<mat-icon *ngIf="this.loginForm.valid && loading"><mat-spinner diameter="20">
                                 </mat-spinner></mat-icon></button>
                                 <button class="btn btn-light btn-xl inline p-ml-3" [routerLink]="['/']">Volver</button>

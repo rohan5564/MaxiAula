@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
 import Swal, { SweetAlertIcon, SweetAlertResult } from 'sweetalert2';
+
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class PopupService {
 
   constructor() { }
 
+  // dispara el popup de aviso recibiendo el titulo, el cuerpo y el icono
   public aviso(titulo:string, texto:string, icono:SweetAlertIcon ) {
 
     Swal.fire({
@@ -20,7 +22,8 @@ export class PopupService {
 
   }
 
-  public pregunta (titulo:string, texto:string, icono:SweetAlertIcon): Promise<SweetAlertResult<any>> {
+  // dispara el popup de pregunta recibiendo el titulo, el cuerpo y el icono retornando la promesa con la respuesta de la pregunta
+  public pregunta(titulo:string, texto:string, icono:SweetAlertIcon): Promise<SweetAlertResult<any>> {
 
     return  Swal.fire({
               title: titulo,
